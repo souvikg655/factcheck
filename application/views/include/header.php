@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css">
 	<!-- Custom Stylesheet -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/owl.carousel.min.css">
+	<script src="<?php echo base_url()?>assets/js/jquery-2.2.4.js" type="text/javascript"></script>
+
 </head>
 <body>
 	<!-- header -->
@@ -41,7 +43,7 @@
 						<input type="email" name="emailid" id="emailid" placeholder="Email">
 					</li>
 					<li>
-						<input type="password" name="password" id="password" placeholder="Password">
+						<input type="password" name="password1" id="password1" placeholder="Password">
 					</li>
 					<li>
 						<input type="submit" value="Login" class="btn btn-blue">
@@ -70,26 +72,30 @@
 		<div id="intabdiv2" class="flex-body">
 			<h4>create an account</h4>
 			<h6>Welcome! Register for an account</h6>
-		    <form action="<?php echo base_url()?>user/registration" method="POST" name="registration" enctype='multipart/form-data'>
-			    <ul>
-			    	<li>
+			<!-- <form action="<?php echo base_url()?>user/registration" method="POST" name="registration" enctype='multipart/form-data'> -->
+				<?php echo form_open_multipart('user/registration');?>
+				<ul>
+					<li>
 						<input type="text" name="name" id="name" placeholder="Full Name">
-			    	</li>
-			    	<li>
+					</li>
+					<li>
 						<input type="email" name="email" id="email" placeholder="Email">
-			    	</li>
-			    	<li>
+					</li>
+					<li>
 						<input type="password" name="password" id="password" placeholder="Password">
-			    	</li>
-			    	<li>
-			    		<input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password">
-			    	</li>
-			    	<li>
+					</li>
+					<li>
+						<input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password">
+					</li>
+					<li>
 
-			    		<input id="file1" name="licence_image" id="licence_image" type="file" placeholder="Add profile picture">
-  						<!-- <label for="file1">Upload Property Picture</label> -->
-  						<label for="file1">Upload ID proof</label>
-			    	</li>
+						<input  name="licence_image" id="licence_image" type="file" placeholder="Add profile picture" onchange="readURL(this)">
+						<!-- <label for="file1">Upload Property Picture</label> -->
+						<label for="licence_image">Upload ID proof</label>
+					</li>
+					<li>
+						<img id="blah"  src="#" alt="" height="142" width="142"/>
+					</li>
 			    	<!-- <li>
 			    		<p>
 			    			Register as a
@@ -106,7 +112,26 @@
 			    	</li>
 			    	<li><p>Already have an account? <a href="javascript:void(0)" class="signup-button2">Login!</a></p></li>
 			    </ul>
-		    </form>
-	    </div>
-	    <div id="close2"><a href="#"><img src="assets/images/close_pop.png" alt="close-button"></a></div>
+			</form>
+		</div>
+		<div id="close2"><a href="#"><img src="assets/images/close_pop.png" alt="close-button"></a></div>
 	</div>
+
+	<script type="text/javascript">
+function readURL(input) {
+
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+
+	    reader.onload = function(e) {
+	      $('#blah').attr('src', e.target.result);
+	    }
+
+	    reader.readAsDataURL(input.files[0]);
+	  }
+	}
+
+	
+</script>
+	
+

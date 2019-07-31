@@ -4,7 +4,7 @@ $(document).ready(function(){
   custompopup();
   uploadFile();
   //customscroll();
-  imagepopup();
+  //imagepopup();
   dropdown();
 });
 
@@ -151,7 +151,7 @@ function customscroll() {
 
 
 // Image PopUp
-function imagepopup() {
+/*function imagepopup() {
   var $gallery = $('.image-aside a').simpleLightbox();
     $gallery.on('show.simplelightbox', function(){
       console.log('Requested for showing');
@@ -159,7 +159,7 @@ function imagepopup() {
     .on('shown.simplelightbox', function(){
       console.log('Shown');
   })
-}
+}*/
 
 
 function dropdown() {

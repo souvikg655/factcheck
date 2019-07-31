@@ -35,3 +35,4 @@
 <script src="<?php echo base_url()?>assets/js/function.js" type="text/javascript"></script>
 </body>
 </html>
+
