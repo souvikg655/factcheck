@@ -1,10 +1,10 @@
 $(document).ready(function(){
-	carousal();
+  carousal();
   loginPopup();
   custompopup();
   uploadFile();
   //customscroll();
-  //imagepopup();
+  // imagepopup();
   dropdown();
 });
 
@@ -151,15 +151,15 @@ function customscroll() {
 
 
 // Image PopUp
-/*function imagepopup() {
-  var $gallery = $('.image-aside a').simpleLightbox();
-    $gallery.on('show.simplelightbox', function(){
-      console.log('Requested for showing');
-    })
-    .on('shown.simplelightbox', function(){
-      console.log('Shown');
-  })
-}*/
+// function imagepopup() {
+//   var $gallery = $('.image-aside a').simpleLightbox();
+//     $gallery.on('show.simplelightbox', function(){
+//       console.log('Requested for showing');
+//     })
+//     .on('shown.simplelightbox', function(){
+//       console.log('Shown');
+//   })
+// }
 
 
 function dropdown() {

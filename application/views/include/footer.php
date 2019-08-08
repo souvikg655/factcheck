@@ -22,10 +22,11 @@
 <!-- Jqery Library -->
 <script src="<?php echo base_url()?>assets/js/jquery-2.2.4.js" type="text/javascript"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <!-- form validation -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
-<script src="<?php echo base_url()?>assets/js/form_validation.js" type="text/javascript"></script>
+<script src="<?php echo base_url()?>assets/js/toastr.js" type="text/javascript"></script>
 <!-- end form validation -->
 
 

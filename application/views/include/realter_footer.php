@@ -1,10 +1,11 @@
 	<!-- Jqery Library -->
 	<script src="<?php echo base_url()?>assets/js/jquery-2.2.4.js" type="text/javascript"></script>
 
-<!-- form validation -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
-<script src="<?php echo base_url()?>assets/js/form_validation.js" type="text/javascript"></script>
-<!-- end form validation -->
+	
+	<!-- form validation -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+	<script src="<?php echo base_url()?>assets/js/toastr.js" type="text/javascript"></script>
+	<!-- end form validation -->
 
 	<!-- Owl Carousal -->
 	<script src="<?php echo base_url()?>assets/js/owl.carousel.js" type="text/javascript"></script>

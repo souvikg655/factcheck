@@ -59,7 +59,10 @@ select { background-image: url(../images/select-dropdown.png); background-repeat
 input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):focus,
 select:focus,
 textarea:focus { outline: none !important; }
-label { color: #28204f; font-size: 13px; font-weight: normal; display: block; text-align: left; pointer-events: none; }
+label { color: #28204f; font-size: 13px; font-weight: normal; display: block; text-align: left; }
+input[type="submit"], button.submit { background: #39aed9; color: #fff; padding: 10px 25px; font-size: 14px; font-weight: 700; border: none; border-radius: 5px; text-transform: uppercase; cursor: pointer; }
+input[type="submit"]:hover, button.submit:hover,
+input[type="submit"]:focus, button.submit:focus { background: #28204f; color: #fff; }
 input[type=file] { position: absolute; filter: alpha(opacity=0); opacity: 0; left: 0px; }
 
 ::-webkit-input-placeholder { color: #28204f; opacity: 1; }
@@ -71,7 +74,7 @@ input[type=file] { position: absolute; filter: alpha(opacity=0); opacity: 0; lef
 .container { max-width: 1230px; margin: 0 auto; padding: 0 15px; position: relative; z-index: 3; }
 .container:after { content: ""; display: table; clear: both; }
 .row { -webkit-display: flex; display: flex; -webkit-flex-flow: wrap; flex-flow: wrap; }		
-.btn {}
+.btn { font-size: 13px; line-height: 20px; color: #fff; background-color: #ffc107; text-transform: capitalize; font-weight: 400; text-align: center; border: none; padding: 10px 30px; border-radius: 30px; cursor: pointer; }
 
 
 
@@ -177,6 +180,10 @@ HOME PAGE
 .flex-body h6 { color: #28204f; font-size: 13px; line-height: 20px; margin-bottom: 20px; }
 .flex-body ul {  }
 .flex-body li { position: relative; margin-bottom: 15px; }
+.flex-body li .block { width: calc(100% - 50px); position: relative; display: inline-block; vertical-align: top; }
+.flex-body li figure { width: 44px; height: 44px; border-radius: 5px; border: 1px solid #ddd; display: inline-block; vertical-align: top;
+    margin-left: 2px; overflow: hidden; }
+.flex-body li figure img { width: 100%; }
 .flex-body ul li:last-child { margin-bottom: 0px; }
 .flex-body input[type="submit"] { width: 100%; background: #39aed9; color: #fff; padding: 10px 25px; font-size: 14px; font-weight: 700; border: none; border-radius: 5px; text-transform: uppercase; cursor: pointer; }
 .flex-body input[type="submit"]:hover { background: #28204f; color: #fff; }
@@ -193,8 +200,7 @@ HOME PAGE
 .morelink:hover { color: #39aed9; text-decoration: underline; }
 .morecontent span h2 { font-size: 14px; margin: 10px 0 0 0; color: #000; font-weight: 700; }
 .morecontent span p { font-size: 12px; margin: 5px 0px; }
-
-.flex-body li [type=file] + label { border: 1px solid #ddd; border-radius: 5px; text-align: left; padding: 0px 15px 0px 50px; width: 100%; height: 44px; left: 0; top: 0px; position: relative; font-size: 13px; line-height: 42px; font-weight: 400; color: #28204f; background-image: url('../images/add-file.png'); background-position: 12px 10px; background-repeat: no-repeat; background-color: #fff; display: block; cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+[type=file] + label { border: 1px solid #ddd; border-radius: 5px; text-align: left; padding: 0px 15px 0px 50px; width: 100%; height: 44px; left: 0; top: 0px; position: relative; font-size: 13px; line-height: 42px; font-weight: 400; color: #28204f; background-image: url('../images/add-file.png'); background-position: 12px 10px; background-repeat: no-repeat; background-color: #fff; display: block; cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 
 /* ============================================
@@ -327,7 +333,7 @@ AFTER LOGIN PAGE
 
 
 /*Add Home------------------------------------------------*/
-.add-home {  }
+.add-home { width: 100%; overflow: hidden; position: relative; }
 .add-home h3 { padding: 0px; margin: 0px 0px 20px; text-align: left; }
 .add-home h3:before, .add-home h3:after { display: none; }
 
@@ -342,10 +348,11 @@ AFTER LOGIN PAGE
 .add-home ul li fieldset span { display: inline-block; vertical-align: middle; font-size: 13px; line-height: 20px; color: #28204f; text-transform: capitalize; margin-right: 15px; }
 .add-home ul li fieldset span:last-child { margin-right: 0px; }
 .add-home ul li input[type="radio"] { width: 20px; height: 20px; display: inline-block; vertical-align: middle; margin-right: 5px; }
-.add-home .col-3 { width: 32%; margin-right: 2%; float: left; }
-.add-home .col-3:nth-child(3n) { margin-right: 0px; }
-.add-home .col-2 { width: 49%; margin-right: 2%; float: left; }
-.add-home .col-2:nth-child(2n) { margin-right: 0px; }
+.col { width: 100%; }
+.col-2 { width: 49%; margin-right: 2%; float: left; }
+.col-2:nth-child(2n) { margin-right: 0px; }
+.col-3 { width: 32%; margin-right: 2%; float: left; }
+.col-3:nth-child(3n) { margin-right: 0px; }
 .add-home input[type="submit"] { background-color: #39aed9; color: #fff; font-size: 16px; line-height: 22px; text-transform: uppercase; font-weight: 400; padding: 12px 60px; border: none; border-radius: 5px; float: right; }
 .add-home input[type="submit"]:hover { background-color: #28204f; }
 
@@ -379,6 +386,31 @@ AFTER LOGIN PAGE
 }
 
 
+/*Profile Status------------------------------------------------*/
+.profile-status { padding: 0px; }
+.profile-status .status { display: inline-flex; flex-flow: wrap; width: 100%; justify-content: space-between; align-items: center; background-color: #39aed9; padding: 10px 15px; border-radius: 5px 5px 0px 0px; }
+.profile-status .status .btn.waiting { background-color: #ffc107; }
+.profile-status .status .btn.waiting:hover { background-color: #28204f; }
+.profile-status .status .btn.approved { background-color: #39aed9; }
+.profile-status .status .btn.approved:hover { background-color: #ffc107; }
+.profile-status .status .btn.rejected { background-color: #dc3545; }
+.profile-status .status h4 { color: #fff; margin: 0px; }
+.profile-status .profile-details { padding: 25px; }
+.profile-status ul { margin-bottom: 25px; }
+.profile-status li { display: inline-flex; flex-flow: wrap; width: 100%; margin-bottom: 15px; position: relative; }
+
+.profile-status li label { display: block; width: 200px; color: #28204f; text-align: right; text-transform: capitalize; padding-right: 30px; padding-top: 10px; }
+.profile-status li input:not([type="button"]):not([type="submit"]):not([type="checkbox"]):not([type="radio"]), textarea, select { width: calc(100% - 200px); }
+.profile-status li figure { width: 100px; height: 100px; border-radius: 5px; border: 1px solid #ddd; padding: 2px; position: relative; }
+.profile-status li figure img { width: 100%; height: 100%; border-radius: 5px; display: inline-block; vertical-align: top; }
+
+.profile-status li figure label.btn-file { background-image: url('../images/add-file.png'); background-repeat: no-repeat; background-position: center; background-size: 20px; background-color: #ffc107; margin: 0px; padding: 0px; width: 36px; height: 36px; overflow: hidden; border-radius: 50%; position: absolute; right: -14px; bottom: -13px; display: block; cursor: pointer; z-index: 99; }
+.profile-status li figure label.btn-file input[type=file] { cursor: inherit; display: block; font-size: 10px; filter: alpha(opacity=0); min-height: 100%; min-width: 100%; opacity: 0; position: absolute; right: 0; text-align: right; top: 0; height: 36px !important; z-index: 999; }
+.profile-status .reject-data { color: red; margin-bottom: 25px; }
+.profile-status input[type="submit"],
+.profile-status button.submit { padding: 12px 45px; border-radius: 30px; }
+
+
 /* Custom Popup------------------------------------------------------------------- */
 .custom-popup { position: fixed; left: 0; top: 0; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.6); opacity: 0; visibility: hidden; -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s; -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s; transition: opacity 0.3s 0s, visibility 0s 0.3s; z-index: 99; }
 .custom-popup.is-visible { opacity: 1; visibility: visible; -webkit-transition: opacity 0.3s 0s, visibility 0s 0s; -moz-transition: opacity 0.3s 0s, visibility 0s 0s; transition: opacity 0.3s 0s, visibility 0s 0s; }
@@ -387,8 +419,7 @@ AFTER LOGIN PAGE
 .custom-popup form {  }
 .custom-popup li { margin-bottom: 15px; }
 .custom-popup li:last-child { margin-bottom: 0px; }
-.custom-popup input[type="submit"] { width: 100%; background: #39aed9; color: #fff; padding: 10px 25px; font-size: 14px; font-weight: 700; border: none; border-radius: 5px; text-transform: uppercase; cursor: pointer; }
-.custom-popup input[type="submit"]:hover { background-color: #28204f; color: #fff; }
+.custom-popup input[type="submit"] { width: 100%; }
 .custom-popup textarea { height: 80px; }
 
 @media only screen and (max-width: 979px) {
