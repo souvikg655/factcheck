@@ -9,17 +9,31 @@ class User extends CI_Controller {
 		$this->load->helper(['form', 'url']);
 		$this->load->library('upload');
 		$this->load->model('user_model');
+		$this->load->model('home_model');
 		
 	}
 
 	public function index()
-	{
-		$this->load->view('index');
+	{	
+		if($this->session -> userdata('id')!=''){
+			/*$res = $this->home_model->fetch_home_data($this->session -> userdata('id'));
+			$this->load->view('dashboard',  array('data' => $res));*/
+			redirect('/home/dashboard');
+		}else{
+			$this->load->view('index');
+		}
+		
 	}
 
 	public function add_home()
 	{
-		$this->load->view('add_home');
+		$user_name = $this->session -> userdata('name');
+		
+		$data= array();
+		$data['user_name'] = $user_name;
+
+
+		$this->load->view('add_home', $data);
 	}
 
 
@@ -72,20 +86,40 @@ class User extends CI_Controller {
 		$data['email'] = $this->input->post('email');	
 		$data['password'] = md5($this->input->post('password'));
 
-		$flag = $this->user_model->login($data);
+		$res = $this->user_model->login($data);
+		
+		if(sizeof($res)>0){
+			$response['status'] = true;
+			$response['value'] = $res;
 
-		if($flag['status']){
-			$response['status'] = True;
-			$response['value'] = $flag['value'];
-
-			//print_r($flag['value']);
+			//print_r($flag);
 
 			//$this -> session -> set_userdata($flag['value']);
+			//die();
+			//print_r($flag['value'][0]->id);
+			$this -> session -> set_userdata('id', $res->id);
+			$this -> session -> set_userdata('name', $res->name);
+			$this -> session -> set_userdata('email', $res->email);
+
+			// $data = $res;
+			// for ($i = 0; $i<sizeof($data); $i++){
+			// 	print_r($data[$i]->id);
+			// }
+
+
 
 		}else{
-			$response['status'] = False;
+			$response['status'] = false;
 		}
 		echo (json_encode($response));
+	}
+
+	public function logout(){
+		$this -> session -> set_userdata('id', '');
+		$this -> session -> set_userdata('name', '');
+		$this -> session -> set_userdata('email', '');
+
+		redirect('/user');
 	}
 }
 

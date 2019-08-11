@@ -45,19 +45,10 @@ class User_model extends CI_Model {
 		$this -> db -> limit(1);
 		$query = $this -> db -> get();
 
-		if($query -> num_rows() == 1)
-		{
-			$result_data = $query->result();
-			$response['status'] = True;
-			$response['value'] = $result_data;
-			return $response;
-		}else{
-			$response['status'] = False;
-			return $response;
+		return $query->row();
 		}
 	}
 
-}
 
 
 ?>

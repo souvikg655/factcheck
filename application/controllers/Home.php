@@ -6,10 +6,6 @@ class Home extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('session');
-		//$this->ci->load->library('Session'); 
-		//$this->ci =& get_instance(); 
-		//$this->ci->load->library('Session');
-
 
 		$this->load->helper(['form', 'url']);
 		$this->load->library('upload');
@@ -18,8 +14,6 @@ class Home extends CI_Controller {
 
 	public function insert_home()
 	{	
-
-
 		$response = array();
 		$config['upload_path'] = './municipality_papers';
 		$config['allowed_types'] = 'pdf';
@@ -67,7 +61,8 @@ class Home extends CI_Controller {
 
 	public function fetch_home()
 	{	
-		$res = $this->home_model->fetch_home_data(1);
+		$user_id = $this->session -> userdata('id');
+		$res = $this->home_model->fetch_home_data($user_id);
 
 		if($res['status']){
 			$response['status'] = true;
@@ -82,22 +77,38 @@ class Home extends CI_Controller {
 
 	public function dashboard()
 	{	
-		// $foo = $this -> session -> userdata();
-		// print_r($foo);
+//		$foo = $this -> session -> userdata();
+		//print_r($foo);
 
 		// $this -> session -> set_userdata("value1", "value0000");
 		// $foo = $this -> session -> userdata();
 		// print_r($foo);
-		// die();
+		//die();
 
-		$res = $this->home_model->fetch_home_data(2); //2 is realter id
-		$this->load->view('dashboard',  array('data' => $res));
+		$user_name = $this->session -> userdata('name');
+		$user_id = $this->session -> userdata('id');
+
+		$res = $this->home_model->fetch_home_data($user_id); //2 is realter id
+
+		$data= array();
+		$data['data'] = $res;
+		$data['user_name'] = $user_name;
+		$this->load->view('dashboard', $data);
 	}
 
 	public function profile()
 	{
-		$res = $this->home_model->realtor_details(69); //2 is realter id
-		$this->load->view('profile',  array('data' => $res));
+		$user_name = $this->session -> userdata('name');
+		$user_id = $this->session -> userdata('id');
+
+		$res = $this->home_model->realtor_details($user_id);
+
+		$data= array();
+		$data['data'] = $res;
+		$data['user_name'] = $user_name;
+
+		
+		$this->load->view('profile',  $data);
 	}
 
 

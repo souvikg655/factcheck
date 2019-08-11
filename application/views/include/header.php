@@ -25,7 +25,7 @@
 					<a href="<?php echo base_url()?>"><img src="<?php echo base_url()?>assets/images/logo.png" alt=""></a>
 				</div>
 				<ul>
-					<li><a href="<?php echo base_url()?>home/dashboard">Dashboard</a></li>
+					<!-- <li><a href="<?php echo base_url()?>home/dashboard">Dashboard</a></li> -->
 					<li><a href="javascript:void(0);">about us</a></li>
 					<li><a href="javascript:void(0);">Contact us</a></li>
 					<li class="login"><a href="javascript:void(0);" rel="popuprel" class="popup">login</a></li>

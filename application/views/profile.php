@@ -2,9 +2,6 @@
 
 <?php include 'include/realter_header.php' ?>
 
-<?php
-
-?>
 
 <div class="main-panel">
 			<div class="white-box profile-status">
@@ -16,20 +13,20 @@
 					<ul>
 						<li>
 							<label for="">full name</label>
-							<input type="text" placeholder="Your Name" >
+							<input type="text" placeholder="Your Name" value="<?=$data->name?>" >
 						</li>
 						<li>
 							<label for="">email</label>
-							<input type="text" placeholder="email.yourcompany.com">
+							<input type="text" placeholder="email id" value="<?=$data->email?>" >
 						</li>
 						<li>
 							<label for="">conpamy name</label>
-							<input type="text" placeholder="Company Name" >
+							<input type="text" placeholder="Company Name" value="<?=$data->company?>" >
 						</li>
 						<li>
 							<label for="">municipal authentication</label>
 							<figure>
-								<img src="images/property-image.jpg" alt="" >
+								<img src="<?=base_url()?>uploads/<?=$data->image?>" alt="" >
 								<label class="btn-file">
 							    	<input type="file">
 							    </label>

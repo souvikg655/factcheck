@@ -44,12 +44,12 @@
 			</div>
 			<div class="dropdown user-profile">
 				<a href="javascript:void(0);" title="" class="profile">
-					jhon doe
+					<?=$user_name ?> <!-- <?php echo $user_name ?> -->
 				</a>
 				<div class="clickslide">
 					<ul>
 						<li><a href="javascript:void(0);" title="">Change Password</a></li>
-						<li><a href="<?php echo base_url()?>" title="">log out</a></li>
+						<li><a href="<?php echo base_url()?>user/logout" title="">log out</a></li>
 					</ul>
 				</div>
 			</div>

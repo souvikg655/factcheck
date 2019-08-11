@@ -91,14 +91,17 @@
 					<input type="text" name="address" id="address">
 				</li>
 				<li>
-					<label for="">Do you have municipality paper?</label>
+					<!-- <label for="">Do you have municipality paper?</label>
 					<fieldset>
 						<input type="radio" name="municipality_paper_check" value="YES" checked> <span>Yes</span>
 						<input type="radio" name="municipality_paper_check" value="NO"> <span>No</span>
-					</fieldset>
+					</fieldset> -->
 				</li>
 				<li class="first-hide">
 					<label for="">upload municipality paper (one image only)</label>
+					<input type="file" name="municipality_paper" id="municipality_paper">
+				</li>
+				<li>
 					<input type="file" name="municipality_paper" id="municipality_paper">
 				</li>
 <!-- 				<li>
