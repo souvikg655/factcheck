@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://34.67.235.241/factcheck/';
-//$config['base_url'] = 'http://localhost/factcheck/';
+
 /*
 |--------------------------------------------------------------------------
 | Index File

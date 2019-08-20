@@ -90,7 +90,7 @@ class User extends CI_Controller {
 
 		$res = $this->user_model->login($data);
 		
-		if(count($res)>0){
+		if(!empty($res)){
 			$response['status'] = true;
 			$response['value'] = $res;
 
