@@ -92,9 +92,9 @@
 				</li>
 				<li>
 				</li>
-				<li class="">
-					<label for="">upload municipality paper (one image only)</label>
+				<li>
 					<input type="file" name="municipality_paper" id="municipality_paper">
+					<label for="">upload municipality paper (one image only)</label>
 				</li>
 				
 				<li>
