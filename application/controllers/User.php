@@ -16,8 +16,6 @@ class User extends CI_Controller {
 	public function index()
 	{	
 		if($this->session -> userdata('id')!=''){
-			/*$res = $this->home_model->fetch_home_data($this->session -> userdata('id'));
-			$this->load->view('dashboard',  array('data' => $res));*/
 			redirect('/home/dashboard');
 		}else{
 			$this->load->view('index');
@@ -26,12 +24,16 @@ class User extends CI_Controller {
 	}
 
 	public function add_home()
-	{
+	{	
+
 		$user_name = $this->session -> userdata('name');
+		$user_id = $this->session -> userdata('id');
+		$res = $this->home_model->realtor_details($user_id);
 		
 		$data= array();
 		$data['user_name'] = $user_name;
-
+		$data['menu_type'] = "add_new";
+		$data['approval'] = $res->approval;
 
 		$this->load->view('add_home', $data);
 	}
@@ -92,21 +94,9 @@ class User extends CI_Controller {
 			$response['status'] = true;
 			$response['value'] = $res;
 
-			//print_r($flag);
-
-			//$this -> session -> set_userdata($flag['value']);
-			//die();
-			//print_r($flag['value'][0]->id);
 			$this -> session -> set_userdata('id', $res->id);
 			$this -> session -> set_userdata('name', $res->name);
 			$this -> session -> set_userdata('email', $res->email);
-
-			// $data = $res;
-			// for ($i = 0; $i<sizeof($data); $i++){
-			// 	print_r($data[$i]->id);
-			// }
-
-
 
 		}else{
 			$response['status'] = false;
@@ -121,6 +111,53 @@ class User extends CI_Controller {
 
 		redirect('/user');
 	}
+
+	public function update_profile()
+	{		
+		$response = array();
+		$config['upload_path'] = './uploads';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		$config['max_size']	= '2000';
+		$config['max_width']  = '20000';
+		$config['max_height']  = '30000';
+		
+		$this->upload->initialize($config);
+
+		if (!$this->upload->do_upload('image')) {
+
+			$data['name'] = $this->input->post('name');
+			$data['email'] = $this->input->post('email');
+			$data['company'] = $this->input->post('company');
+			$data['id'] = $this->session -> userdata('id');
+			$res = $this->user_model->update_user_without_image($data);
+
+			print_r( $this->upload->display_errors());
+			$response['status'] = true;
+			$response['message'] = "success";
+			echo json_encode($response);
+		}
+		else
+		{
+			$filedata = $this->upload->data();
+			$filename = $filedata['file_name'];
+			
+			$data['name'] = $this->input->post('name');
+			$data['email'] = $this->input->post('email');
+			$data['company'] = $this->input->post('company');
+			$data['image'] = $filename;
+			$data['id'] = $this->session -> userdata('id');
+			$res = $this->user_model->update_user_with_image($data);
+
+			$response['status'] = true;
+			$response['message'] = "success";
+			echo json_encode($response);
+
+			
+		}	
+		// echo (json_encode($response));
+	}
+
+
 }
 
 ?>

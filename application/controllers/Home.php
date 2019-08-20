@@ -10,6 +10,7 @@ class Home extends CI_Controller {
 		$this->load->helper(['form', 'url']);
 		$this->load->library('upload');
 		$this->load->model('home_model');
+		$this->load->model('user_model');
 	}
 
 	public function insert_home()
@@ -77,27 +78,32 @@ class Home extends CI_Controller {
 
 	public function dashboard()
 	{	
-//		$foo = $this -> session -> userdata();
-		//print_r($foo);
-
-		// $this -> session -> set_userdata("value1", "value0000");
-		// $foo = $this -> session -> userdata();
-		// print_r($foo);
-		//die();
-
 		$user_name = $this->session -> userdata('name');
 		$user_id = $this->session -> userdata('id');
+		$res = $this->user_model->fetch_user($user_id);
 
-		$res = $this->home_model->fetch_home_data($user_id); //2 is realter id
 
-		$data= array();
-		$data['data'] = $res;
-		$data['user_name'] = $user_name;
-		$this->load->view('dashboard', $data);
+		if($res->approval == 'ACCEPTED'){
+			$res1 = $this->home_model->fetch_home_data($user_id);
+
+			$data= array();
+			$data['data'] = $res1;
+			$data['user_name'] = $user_name;
+			$data['menu_type'] = "list";
+			$data['approval'] = $res->approval;
+
+			$this->load->view('dashboard', $data);
+		
+	}else{
+		$this->profile();
 	}
+}
+
+
 
 	public function profile()
 	{
+
 		$user_name = $this->session -> userdata('name');
 		$user_id = $this->session -> userdata('id');
 
@@ -106,6 +112,8 @@ class Home extends CI_Controller {
 		$data= array();
 		$data['data'] = $res;
 		$data['user_name'] = $user_name;
+		$data['menu_type'] = "profile";
+		$data['approval'] = $res->approval;
 
 		
 		$this->load->view('profile',  $data);

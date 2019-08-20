@@ -69,7 +69,7 @@
 							<option value="Ontario">Ontario (ON)</option>
 							<option value="Quebec">Quebec (QC)</option>
 							<option value="Saskatchewan">Saskatchewan (SK)</option>
-							<option value="Newfoundland and Labrador">Newfoundland and Labrador (NL)	</option>
+							<option value="Newfoundland and Labrador">Newfoundland and Labrador (NL)</option>
 							<option value="Nunavut">Nunavut (NU)	</option>
 							<option value="Yukon">Yukon (YT)	</option>
 							<option value="Northwest Territories">Northwest Territories (NT)	</option>
@@ -91,30 +91,12 @@
 					<input type="text" name="address" id="address">
 				</li>
 				<li>
-					<!-- <label for="">Do you have municipality paper?</label>
-					<fieldset>
-						<input type="radio" name="municipality_paper_check" value="YES" checked> <span>Yes</span>
-						<input type="radio" name="municipality_paper_check" value="NO"> <span>No</span>
-					</fieldset> -->
 				</li>
-				<li class="first-hide">
+				<li class="">
 					<label for="">upload municipality paper (one image only)</label>
 					<input type="file" name="municipality_paper" id="municipality_paper">
 				</li>
-				<li>
-					<input type="file" name="municipality_paper" id="municipality_paper">
-				</li>
-<!-- 				<li>
-					<label for="">Do you have property image?</label>
-					<fieldset>
-						<input type="radio" name="property_image_ckeck" value="YES" checked> <span>Yes</span>
-						<input type="radio" name="property_image_ckeck" value="NO"> <span>No</span>
-					</fieldset>
-				</li>
-				<li class="first-hide">
-					<label for="">upload property image (maximum 6 images)</label>
-					<input type="file" name="property_image" id="property_image">
-				</li> -->
+				
 				<li>
 					<input type="button" id="btn_add_home" value="save">
 				</li>

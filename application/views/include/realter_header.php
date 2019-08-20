@@ -18,6 +18,10 @@
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/mCustomScrollber.css">
 	<!-- lightbox -->
 	<link href='<?php echo base_url()?>assets/css/simplelightbox.min.css' rel='stylesheet' type='text/css'>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
 </head>
 <body>
 	<!-- Header -->
@@ -66,11 +70,16 @@
 		<div class="left-aside">
 			<nav>
 				<ul>
-					<!-- <li class="list"><a href="<?php echo base_url()?>" title="">Home</a></li> -->
-					<li class="profile-settings"><a href="<?php echo base_url()?>home/profile" title="">Profile</a></li>
-					<li class="list"><a href="<?php echo base_url()?>home/dashboard" title="">list</a></li>
-					<li class="add active"><a href="<?php echo base_url()?>user/add_home" title="">add new</a></li>
 					
+					<li class="profile-settings <?php echo $menu_type=='profile'?'active':''; ?> "><a href="<?php echo base_url()?>home/profile" title="">Profile</a></li>
+					
+					<?php 
+					if($approval=="ACCEPTED"){
+					?>
+					<li class="list <?php echo $menu_type=='list'?'active':''; ?>"><a href="<?php echo base_url()?>home/dashboard" title="">list</a></li>
+					
+					<li class="add <?php echo $menu_type=='add_new'?'active':''; ?>"><a href="<?php echo base_url()?>user/add_home" title="">add new</a></li>
+					<?php } ?>
 				</ul>
 			</nav>
 		</div>
