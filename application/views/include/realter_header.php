@@ -30,7 +30,7 @@
 			<a href="<?php echo base_url()?>" title=""><img src="<?php echo base_url()?>assets/images/logo.png" alt=""></a>
 		</div>
 		<div class="right-header">
-			<h6>Points: <span>1</span></h6>
+			<h6>Points: <span><?=$points ?></span></h6>
 			<div class="dropdown notification">
 				<a href="javascript:void(0);" title="" class="bell">
 					<span>3</span>

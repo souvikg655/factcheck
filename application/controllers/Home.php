@@ -91,6 +91,7 @@ class Home extends CI_Controller {
 			$data['user_name'] = $user_name;
 			$data['menu_type'] = "list";
 			$data['approval'] = $res->approval;
+			$data['points'] = $res->points;
 
 			$this->load->view('dashboard', $data);
 		
@@ -114,6 +115,7 @@ class Home extends CI_Controller {
 		$data['user_name'] = $user_name;
 		$data['menu_type'] = "profile";
 		$data['approval'] = $res->approval;
+		$data['points'] = $res->points;
 
 		
 		$this->load->view('profile',  $data);
