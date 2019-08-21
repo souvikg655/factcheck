@@ -60,7 +60,7 @@
 								</li>
 								<li>
 									<label></label>
-									<input type="submit" value="Send Email" class="btn btn-blue">
+									<input type="button" id="send_email" value="Send Email" class="btn btn-blue">
 								</li>
 							</ul>
 						</span>
@@ -103,17 +103,6 @@
 					<li>
 						<img id="blah"  src="#" alt="" height="100" width="100" style="border-radius: 50%;" />
 					</li>
-			    	<!-- <li>
-			    		<p>
-			    			Register as a
-			    			<span>
-				    			<input type="radio" id="test1" name="radio-group" checked>realter
-				    		</span>
-				    		<span for="">
-				    			<input type="radio" id="test2" name="radio-group">Normal User
-				    		</span>
-			    		</p>
-			    	</li> -->
 			    	<li>
 			    		<input type="button" value="Sign up Now!" id="btn_signup" name="btn_signup" class="btn btn-blue">
 			    	</li>
@@ -134,6 +123,7 @@
 				reader.readAsDataURL(input.files[0]);
 			}
 		}
+
 		$(document).ready(function(){
 			$("#btn_signup").click(function(){
 				var name =  $("#name").val();
@@ -214,6 +204,7 @@
 
 			});
 		});
+
 		$(document).ready(function(){
 			$("#btn_login").click(function(){
 				
@@ -255,6 +246,14 @@
 						}	
 					}
 				});
+			});
+		});
+
+		$(document).ready(function(){
+			$("#send_email").click(function(){
+				
+				alert("Email");
+				
 			});
 		});
 

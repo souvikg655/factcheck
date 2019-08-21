@@ -57,7 +57,7 @@ class Home extends CI_Controller {
 			}
 
 		}
-	echo (json_encode($response));
+		echo (json_encode($response));
 	}
 
 	public function fetch_home()
@@ -78,49 +78,52 @@ class Home extends CI_Controller {
 
 	public function dashboard()
 	{	
-		$user_name = $this->session -> userdata('name');
-		$user_id = $this->session -> userdata('id');
-		$res = $this->user_model->fetch_user($user_id);
+		if($this->session -> userdata('id') != ''){
+			$user_name = $this->session -> userdata('name');
+			$user_id = $this->session -> userdata('id');
+			$res = $this->user_model->fetch_user($user_id);
 
 
-		if($res->approval == 'ACCEPTED'){
-			$res1 = $this->home_model->fetch_home_data($user_id);
+			if($res->approval == 'ACCEPTED'){
+				$res1 = $this->home_model->fetch_home_data($user_id);
 
-			$data= array();
-			$data['data'] = $res1;
-			$data['user_name'] = $user_name;
-			$data['menu_type'] = "list";
-			$data['approval'] = $res->approval;
-			$data['points'] = $res->points;
+				$data= array();
+				$data['data'] = $res1;
+				$data['user_name'] = $user_name;
+				$data['menu_type'] = "list";
+				$data['approval'] = $res->approval;
+				$data['points'] = $res->points;
 
-			$this->load->view('dashboard', $data);
-		
-	}else{
-		$this->profile();
+				$this->load->view('dashboard', $data);
+
+			}else{
+				$this->profile();
+			}
+		}else{
+			redirect(base_url());
+		}
 	}
-}
-
-
 
 	public function profile()
 	{
+		if($this->session -> userdata('id') != ''){
 
-		$user_name = $this->session -> userdata('name');
-		$user_id = $this->session -> userdata('id');
+			$user_name = $this->session -> userdata('name');
+			$user_id = $this->session -> userdata('id');
+			$res = $this->home_model->realtor_details($user_id);
 
-		$res = $this->home_model->realtor_details($user_id);
+			$data= array();
+			$data['data'] = $res;
+			$data['user_name'] = $user_name;
+			$data['menu_type'] = "profile";
+			$data['approval'] = $res->approval;
+			$data['points'] = $res->points;
 
-		$data= array();
-		$data['data'] = $res;
-		$data['user_name'] = $user_name;
-		$data['menu_type'] = "profile";
-		$data['approval'] = $res->approval;
-		$data['points'] = $res->points;
-
-		
-		$this->load->view('profile',  $data);
+			$this->load->view('profile',  $data);
+		}else{
+			redirect(base_url());
+		}
 	}
-
-
 }
+
 ?>

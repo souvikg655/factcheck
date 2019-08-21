@@ -25,19 +25,23 @@ class User extends CI_Controller {
 
 	public function add_home()
 	{	
+		if($this->session -> userdata('id') != ''){
 
-		$user_name = $this->session -> userdata('name');
-		$user_id = $this->session -> userdata('id');
-		$res = $this->home_model->realtor_details($user_id);
+			$user_name = $this->session -> userdata('name');
+			$user_id = $this->session -> userdata('id');
+			$res = $this->home_model->realtor_details($user_id);
 
 
-		$data= array();
-		$data['user_name'] = $user_name;
-		$data['menu_type'] = "add_new";
-		$data['approval'] = $res->approval;
-		$data['points'] = $res->points;
+			$data= array();
+			$data['user_name'] = $user_name;
+			$data['menu_type'] = "add_new";
+			$data['approval'] = $res->approval;
+			$data['points'] = $res->points;
 
-		$this->load->view('add_home', $data);
+			$this->load->view('add_home', $data);
+		}else{
+			redirect(base_url());
+		}
 	}
 
 
