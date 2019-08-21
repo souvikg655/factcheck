@@ -56,19 +56,19 @@
 					?>
 
 					<?php
-					if($status_data == "approved"){
+					if($status_data == "APPROVED"){
 					?>
 					<button type="button" class="approval approved">approved</button>
 					<?php } ?>
 
 					<?php
-					if($status_data == "pending"){
+					if($status_data == "PENDING"){
 					?>
 					<button type="button" class="approval waiting">waiting for admin approval</button>
 					<?php } ?>
 
 					<?php
-					if($status_data == "rejected"){
+					if($status_data == "REJECTED"){
 					?>
 					<button type="button" class="approval rejected">rejected</button>
 					<a class="edit" href="javascript:void(0);">edit</a>

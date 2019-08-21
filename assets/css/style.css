@@ -200,8 +200,10 @@ HOME PAGE
 .morelink:hover { color: #39aed9; text-decoration: underline; }
 .morecontent span h2 { font-size: 14px; margin: 10px 0 0 0; color: #000; font-weight: 700; }
 .morecontent span p { font-size: 12px; margin: 5px 0px; }
-[type=file] + label { border: 1px solid #ddd; border-radius: 5px; text-align: left; padding: 0px 15px 0px 50px; width: 100%; height: 44px; left: 0; top: 0px; position: relative; font-size: 13px; line-height: 42px; font-weight: 400; color: #28204f; background-image: url('../images/add-file.png'); background-position: 12px 10px; background-repeat: no-repeat; background-color: #fff; display: block; cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+[type=file] + label { border: 1px solid #ddd; border-radius: 5px; text-align: left; padding: 0px 15px 0px 50px; width: 100%; height: 44px; left: 0; top: 0px; font-size: 13px; line-height: 42px; font-weight: 400; color: #28204f; background-image: url('../images/add-file.png'); background-position: 12px 10px; background-repeat: no-repeat; background-color: #fff; display: block; cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+/*[type=file] + label { border: 1px solid #ddd; border-radius: 5px; text-align: left; padding: 0px 15px 0px 50px; width: 100%; height: 44px; left: 0; top: 0px; position: relative; font-size: 13px; line-height: 42px; font-weight: 400; color: #28204f; background-image: url('../images/add-file.png'); background-position: 12px 10px; background-repeat: no-repeat; background-color: #fff; display: block; cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+*/
 
 /* ============================================
 AFTER LOGIN PAGE

@@ -6,9 +6,6 @@
 	<div class="white-box add-home">
 		<h3>field the details of your home</h3>
 
-		
-
-
 		<form action="javaScript:Void(0)" method="POST" enctype='multipart/form-data'>
 			<ul>
 				<li>
@@ -127,11 +124,6 @@
 			var house_no =  $("#house_no").val();
 			var address =  $("#address").val();
 			
-			//var municipality_paper_check = $("input[name='municipality_paper_check']:checked").val();
-			//var municipality_paper =  $("#municipality_paper").val();
-
-			// var property_image_ckeck = $("input[name='property_image_ckeck']:checked").val();
-			//var property_image =  $("#property_image").val();
 
 			if(title == ''){
 				toastr["error"]("Please enter title");
@@ -174,33 +166,20 @@
 				return false;
 			}
 			if(house_no == ''){
-				toastr["error"]("Please enter postal house no");
+				toastr["error"]("Please enter house no");
 				return false;
 			}
 			if(address == ''){
 				toastr["error"]("Please enter address");
 				return false;
 			}
-			// if(municipality_paper_check == ''){
-			// 	toastr["error"]("Please enter municipality paper check (change message)");
-			// 	return false;
-			// }
 			// if(municipality_paper == ''){
-			// 	toastr["error"]("Please enter mmunicipality paper (change message)");
-			// 	return false;
-			// }
-
-			// if(property_image_ckeck == ''){
-			// 	toastr["error"]("Please enter property image ckeck (change message)");
-			// 	return false;
-			// }
-			// if(property_image == ''){
-			// 	toastr["error"]("Please enter property image (change message)");
+			// 	toastr["error"]("Please select image");
 			// 	return false;
 			// }
 
 			var formdata = new FormData();
-			formdata.append("realtor_id", 2);
+			var fileinput = $('#municipality_paper')[0].files[0];
 			formdata.append("title", title);
 			formdata.append("bedroom", bedroom);
 			formdata.append("bathroom", bathroom);
@@ -213,6 +192,7 @@
 			formdata.append("postal", postal);
 			formdata.append("house_no", house_no);
 			formdata.append("address", address);
+			formdata.append("municipality_paper", fileinput);
 
 			var ajaxReq = $.ajax({
 				url: '<?php echo base_url()?>home/insert_home',
@@ -223,6 +203,13 @@
 				beforeSend: function (xhr) {
 				},
 				success: function (data) {
+					var obj = jQuery.parseJSON(data);
+					if(obj.status){
+						window.location.href = "<?php echo base_url()."home/dashboard"?>";
+					}else{
+						toastr["error"]("Home Add Failed");
+					}
+
 
 				}
 			});

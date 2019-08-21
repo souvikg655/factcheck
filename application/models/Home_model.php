@@ -24,8 +24,7 @@ class Home_model extends CI_Model {
 			'postal' => $data['postal'],
 			'house_no' => $data['house_no'],
 			'address' => $data['address'],
-			'municipality_paper' => $data['municipality_paper'],
-			'status' => $data['status']
+			'municipality_paper' => $data['municipality_paper']
 		);
 		$flag = $this->db->insert('homes',$home_data);
 		return $flag==1?true:flase;

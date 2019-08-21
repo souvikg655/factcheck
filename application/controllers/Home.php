@@ -30,7 +30,7 @@ class Home extends CI_Controller {
 			$filedata = $this->upload->data();
 			$filename = $filedata['file_name'];
 
-			$data['realtor_id'] = $this->input->post('realtor_id');
+			$data['realtor_id'] = $this->session -> userdata('id');
 			$data['title'] = $this->input->post('title');
 			$data['bedroom'] = $this->input->post('bedroom');
 			$data['bathroom'] = $this->input->post('bathroom');
@@ -57,7 +57,7 @@ class Home extends CI_Controller {
 			}
 
 		}
-		print_r($response);
+	echo (json_encode($response));
 	}
 
 	public function fetch_home()
