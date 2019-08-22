@@ -60,7 +60,7 @@
 								</li>
 								<li>
 									<label></label>
-									<input type="button" id="send_email" value="Send Email" class="btn btn-blue">
+									<input type="button" id="mail_send" value="Send Email" class="btn btn-blue">
 								</li>
 							</ul>
 						</span>
@@ -250,9 +250,9 @@
 		});
 
 		$(document).ready(function(){
-			$("#send_email").click(function(){
+			$("#mail_send").click(function(){
 				
-				alert("Email");
+				console.log("Tett");
 				
 			});
 		});
