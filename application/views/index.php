@@ -27,7 +27,7 @@
 				</div>
 			</div>
 		</div>
-		</di
+		</div>
 
 		<!-- Looking For -->
 		<div class="looking-for">
@@ -71,7 +71,7 @@
 				</div>
 				<div class="aside text-aside">
 					<div class="block">
-						<h2>Get the valid information of Building, Properties and Projects for <span>BUY</span> or <span>RENT</span></h2>
+						<h2>Get the valid information of Building, Properties and Projects for <a href="javascript:void(0);">enquiry</a></h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum quasi dolorum similique porro recusandae ipsam a minima accusamus suscipit at. Enim recusandae doloremque nostrum obcaecati beatae. Quam ipsam, voluptate esse. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repudiandae beatae, rem sed nam aut, ex facilis numquam dicta delectus modi quos, animi quia consequuntur maxime sunt quae ducimus autem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde provident quisquam adipisci numquam hic excepturi ex facere natus sit illum atque, debitis ullam aut repudiandae dolores tempora tenetur quae sapiente.</p>
 					</div>
 				</div>

@@ -31,17 +31,28 @@ class User extends CI_Controller {
 			$user_id = $this->session -> userdata('id');
 			$res = $this->home_model->realtor_details($user_id);
 
+			$province_list = $this->home_model->province();
+
 
 			$data= array();
 			$data['user_name'] = $user_name;
 			$data['menu_type'] = "add_new";
 			$data['approval'] = $res->approval;
 			$data['points'] = $res->points;
+			$data['province'] = $province_list;
 
 			$this->load->view('add_home', $data);
 		}else{
 			redirect(base_url());
 		}
+	}
+
+	public function get_city()
+	{
+		$province = $this->input->post('province');
+		$city_list = $this->home_model->city($province);
+
+		echo (json_encode($city_list));
 	}
 
 

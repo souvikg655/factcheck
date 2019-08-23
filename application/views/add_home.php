@@ -47,31 +47,37 @@
 					</div>
 				</li>
 				<li class="address">
-					<div class="col-2">
+					<div class="col-3">
 						<label for="">country</label>
 						<select name="country" id="country">
 							<option value="canada">Canada</option>
 						</select>
 					</div>
 					
-					<div class="col-2">
+
+
+
+					<div class="col-3">
 						<label for="">province/territories</label>
 						<select name="province" id="province">
-							<option value="Alberta">Alberta (AB)</option>
-							<option value="British Columbia">British Columbia (BC)</option>
-							<option value="Prince Edward Island">Prince Edward Island (PE)</option>
-							<option value="Manitoba">Manitoba (MB)</option>
-							<option value="New Brunswick">New Brunswick (NB)</option>
-							<option value="Nova Scotia">Nova Scotia (NS)</option>
-							<option value="Ontario">Ontario (ON)</option>
-							<option value="Quebec">Quebec (QC)</option>
-							<option value="Saskatchewan">Saskatchewan (SK)</option>
-							<option value="Newfoundland and Labrador">Newfoundland and Labrador (NL)</option>
-							<option value="Nunavut">Nunavut (NU)	</option>
-							<option value="Yukon">Yukon (YT)	</option>
-							<option value="Northwest Territories">Northwest Territories (NT)	</option>
+							<?php 
+							foreach ($province as $prov){
+							?>
+							<option value="<?=$prov->province;?>"><?=$prov->province;?></option>
+							<?php } ?>
 						</select>
 					</div>
+					<div class="col-3">
+						<label for="">City</label>
+						<select name="city" id="city">
+							<option value="Alberta">Alberta (AB)</option>
+						</select>
+					</div>
+
+
+
+
+
 				</li>
 				<li>
 					<div class="col-2">
@@ -214,5 +220,36 @@
 				}
 			});
 		});
+
+		$("#province").change(function() {
+		    // Pure JS
+		    var val = this.value;
+
+		    var formdata = new FormData();
+			formdata.append("province", val);
+
+		    var ajaxReq = $.ajax({
+				url: '<?php echo base_url()?>user/get_city',
+				type: 'POST',
+				processData: false,
+				contentType: false,
+				data: formdata,
+				beforeSend: function (xhr) {
+				},
+				success: function (data) {
+					var obj = jQuery.parseJSON(data);
+					st ='';
+					for(var i=0; i<obj.length; i++){
+						console.log(obj[i]['city']);
+
+						st = st + '<option value="'+obj[i]['city']+'">'+obj[i]['city']+'</option>';
+
+					}
+					$("#city").html(st);
+				}
+			});
+
+		}).change();
 	});
+
 </script>

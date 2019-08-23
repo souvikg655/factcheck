@@ -5,23 +5,6 @@
 			for ($i = 0; $i<sizeof($data); $i++){
 			?>
 			<div class="white-box project-listing">
-				<div class="image-aside">
-					<div class="owl-carousel owl-loaded single-slide">
-						<div class="item">
-							<a href="<?php echo base_url()?>assets/images/about-image.jpg"><img src="<?php echo base_url()?>assets/images/about-image.jpg" alt=""></a>
-						</div>
-						<div class="item">
-							<a href="<?php echo base_url()?>assets/images/property-image.jpg"><img src="<?php echo base_url()?>assets/images/property-image.jpg" alt=""></a>
-						</div>
-						<div class="item">
-							<a href="<?php echo base_url()?>assets/images/slider-1.jpg"><img src="<?php echo base_url()?>assets/images/slider-1.jpg" alt=""></a>
-						</div>
-					</div>
-					<div class="image-count">
-						2 more propety photo 
-					</div>
-				</div>
-				<div class="text-aside">
 					<div class="top-block">
 						<h4><?php echo $data[$i]->title; ?></h4>
 						<h6 class="location">Eglinton, Toronto </h6>
@@ -73,8 +56,6 @@
 					<button type="button" class="approval rejected">rejected</button>
 					<a class="edit" href="javascript:void(0);">edit</a>
 					<?php } ?>
-
-				</div>
 			</div>
 			<?php } ?>
 

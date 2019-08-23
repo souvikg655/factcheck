@@ -49,6 +49,26 @@ class Home_model extends CI_Model {
 
 		return $query->row();
 	}
+
+	public function province()
+	{
+		$this->db->distinct();
+		$this -> db -> select('province');
+		$this -> db -> from('mst_province');
+		$query = $this -> db -> get();
+
+		return $query->result();
+	}
+
+	public function city($province)
+	{
+		$this -> db -> select('city');
+		$this -> db -> from('mst_province');
+		$this -> db -> where('province', $province);
+		$query = $this -> db -> get();
+		
+		return $query->result();
+	}
 	
 }
 
