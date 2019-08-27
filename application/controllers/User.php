@@ -18,7 +18,10 @@ class User extends CI_Controller {
 		if($this->session -> userdata('id')!=''){
 			redirect('/home/dashboard');
 		}else{
-			$this->load->view('index');
+			$province_list = $this->home_model->province();
+			$data= array();
+			$data['province'] = $province_list;
+			$this->load->view('index', $data);
 		}
 		
 	}

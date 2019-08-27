@@ -21,6 +21,7 @@ class Home_model extends CI_Model {
 			'beside_road' => $data['beside_road'],
 			'country' => $data['country'],
 			'province' => $data['province'],
+			'city' => $data['city'],
 			'postal' => $data['postal'],
 			'house_no' => $data['house_no'],
 			'address' => $data['address'],
@@ -35,6 +36,7 @@ class Home_model extends CI_Model {
 		$this -> db -> select('*');
 		$this -> db -> from('homes');
 		$this -> db -> where('realtor_id', $realtor_id);
+		$this->db->order_by("id", "desc");
 		$query = $this -> db -> get();
 
 		return $query->result();
@@ -68,6 +70,22 @@ class Home_model extends CI_Model {
 		$query = $this -> db -> get();
 		
 		return $query->result();
+	}
+
+	public function search_home($data)
+	{
+		$this -> db -> select('*');
+		$this -> db -> from('homes');
+		$this -> db -> where('province', $data['province']);
+		$this -> db -> where('city', $data['city']);
+		$this -> db -> where('postal', $data['postal_code']);
+		$this -> db -> where('house_no', $data['house_no']);
+		$this -> db -> where('address', $data['address']);
+
+		$query = $this -> db -> get();
+		$res = $query->result();
+
+		return $res;
 	}
 	
 }

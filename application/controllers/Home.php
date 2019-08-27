@@ -40,6 +40,7 @@ class Home extends CI_Controller {
 			$data['beside_road'] = $this->input->post('beside_road');
 			$data['country'] = $this->input->post('country');
 			$data['province'] = $this->input->post('province');
+			$data['city'] = $this->input->post('city');
 			$data['postal'] = $this->input->post('postal');
 			$data['house_no'] = $this->input->post('house_no');
 			$data['address'] = $this->input->post('address');
@@ -123,6 +124,19 @@ class Home extends CI_Controller {
 		}else{
 			redirect(base_url());
 		}
+	}
+
+	public function search_home()
+	{	
+		$data['province'] = $this->input->post('province');
+		$data['city'] = $this->input->post('city');
+		$data['postal_code'] = $this->input->post('postal_code');
+		$data['house_no'] = $this->input->post('house_no');
+		$data['address'] = $this->input->post('address');	
+
+		$res = $this->home_model->search_home($data);
+
+	echo (json_encode($res));
 	}
 }
 

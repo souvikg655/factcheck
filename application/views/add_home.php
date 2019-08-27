@@ -53,30 +53,23 @@
 							<option value="canada">Canada</option>
 						</select>
 					</div>
-					
-
-
 
 					<div class="col-3">
 						<label for="">province/territories</label>
 						<select name="province" id="province">
 							<?php 
 							foreach ($province as $prov){
-							?>
-							<option value="<?=$prov->province;?>"><?=$prov->province;?></option>
+								?>
+								<option value="<?=$prov->province;?>"><?=$prov->province;?></option>
 							<?php } ?>
 						</select>
 					</div>
 					<div class="col-3">
 						<label for="">City</label>
 						<select name="city" id="city">
-							<option value="Alberta">Alberta (AB)</option>
+							
 						</select>
 					</div>
-
-
-
-
 
 				</li>
 				<li>
@@ -93,6 +86,26 @@
 					<label for="">address</label>
 					<input type="text" name="address" id="address">
 				</li>
+
+
+
+
+				<!-- <li class="address">
+					<div class="col-3">
+						<label for="">Municipality Name</label>
+						<input type="text" name="municipality_name" id="municipality_name">
+					</div>
+
+					<div class="col-3">
+						<label for="">Street</label>
+						<input type="text" name="street" id="street">
+					</div>
+				</li>
+ -->
+
+
+
+
 				<li>
 				</li>
 				<li>
@@ -125,6 +138,8 @@
 			var beside_road = $("input[name='beside_road']:checked").val();
 			var country =  $("#country").val();
 			var province =  $("#province").val();
+
+			var city =  $("#city").val();
 			
 			var postal =  $("#postal").val();
 			var house_no =  $("#house_no").val();
@@ -164,7 +179,11 @@
 				return false;
 			}
 			if(province == ''){
-				toastr["error"]("Please enter province");
+				toastr["error"]("Please choose province");
+				return false;
+			}
+			if(city == ''){
+				toastr["error"]("Please choose city");
 				return false;
 			}
 			if(postal == ''){
@@ -195,6 +214,7 @@
 			formdata.append("beside_road", beside_road);
 			formdata.append("country", country);
 			formdata.append("province", province);
+			formdata.append("city", city);
 			formdata.append("postal", postal);
 			formdata.append("house_no", house_no);
 			formdata.append("address", address);
@@ -222,13 +242,12 @@
 		});
 
 		$("#province").change(function() {
-		    // Pure JS
-		    var val = this.value;
+			var val = this.value;
 
-		    var formdata = new FormData();
+			var formdata = new FormData();
 			formdata.append("province", val);
 
-		    var ajaxReq = $.ajax({
+			var ajaxReq = $.ajax({
 				url: '<?php echo base_url()?>user/get_city',
 				type: 'POST',
 				processData: false,
@@ -240,8 +259,6 @@
 					var obj = jQuery.parseJSON(data);
 					st ='';
 					for(var i=0; i<obj.length; i++){
-						console.log(obj[i]['city']);
-
 						st = st + '<option value="'+obj[i]['city']+'">'+obj[i]['city']+'</option>';
 
 					}
