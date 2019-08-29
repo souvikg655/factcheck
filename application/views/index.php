@@ -123,7 +123,7 @@
 			<ul>
 				<li>
 					<select name="country" id="country" disabled="">
-						<option value="">Canada</option>
+						<option value="" class="searchform">Canada</option>
 					</select>
 				</li>
 				<li>
@@ -131,23 +131,21 @@
 						<?php 
 						foreach ($province as $prov){
 							?>
-							<option value="<?=$prov->province;?>"><?=$prov->province;?></option>
+							<option class="searchform" value="<?=$prov->province;?>"><?=$prov->province;?></option>
 						<?php } ?>
 					</select>
 				</li>
 				<li>
-					<select name="city" id="city">
-						<option value="">Alberta (AB)</option>
-					</select>
+					<select name="city" id="city" class="searchform"></select>
 				</li>
 				<li>
-					<input type="text" name="postal_code" id="postal_code" placeholder="Postal Code">
+					<input type="text" class="searchform" name="postal_code" id="postal_code" placeholder="Postal Code">
 				</li>
 				<li>
-					<input type="text" name="house_no" id="house_no" placeholder="House Number">
+					<input type="text" class="searchform" name="house_no" id="house_no" placeholder="House Number">
 				</li>
 				<li>
-					<textarea name="address" id="address" placeholder="Address"></textarea>
+					<textarea name="address" class="searchform" id="address" placeholder="Address"></textarea>
 				</li>
 				<li>
 					<input type="submit" value="Search" class="btn btn-blue btn_search">
@@ -157,6 +155,12 @@
 	</div>
 
 	<script type="text/javascript">
+		$(".searchform").keyup(function(event) {
+			if (event.keyCode === 13) {
+				$(".btn_search").click();
+			}
+		});
+
 		$("#province").change(function() {
 			var val = this.value;
 

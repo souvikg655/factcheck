@@ -39,13 +39,19 @@
 						<input type="text" placeholder="Company Name" value="<?=$data->company?>" <?=$approval=='REGECTED'?'':'readonly' ?> id="company" >  
 					</li>
 					<li>
-						<label for="">municipal authentication</label>
+						<label for="">Identity proved</label>
+						
 						<figure>
 							<img id="image" src="<?=base_url()?>uploads/<?=$data->image?>" alt="" >
-							<label class="btn-file">
-								<input type="file" onchange="readURL(this);" id="upload_image">
-							</label>
+							<?php
+							if($message == "Rejected"){
+							?>
+								<label class="btn-file">
+									<input type="file" onchange="readURL(this);" id="upload_image">
+								</label>
+							<?php } ?>
 						</figure>
+						
 					</li>
 				</ul>
 				<h6 class="reject-data"><?=$data->reject_status?></h6>

@@ -44,10 +44,10 @@
 			<form action="JavaScript:Void(0);" method="POST" name="login">
 				<ul>
 					<li>
-						<input type="email" name="email" id="login_email" placeholder="Email">
+						<input type="email" name="email" class="loginbox" id="login_email" placeholder="Email">
 					</li>
 					<li>
-						<input type="password" name="password" id="login_password" placeholder="Password">
+						<input type="password" name="password" class="loginbox" id="login_password" placeholder="Password">
 					</li>
 					<li>
 						<input type="button" value="Login" id="btn_login" class="btn btn-blue">
@@ -80,40 +80,52 @@
 			<form action="JavaScript:Void(0);" method="POST"  enctype='multipart/form-data'>
 				<ul>
 					<li>
-						<input type="text" name="name" id="name" placeholder="Full Name">
+						<input type="text" name="name" class="signupbox" id="name" placeholder="Full Name">
 					</li>
 					<li>
-						<input type="email" name="email" id="email" placeholder="Email">
+						<input type="email" name="email" class="signupbox" id="email" placeholder="Email">
 					</li>
 					<li>
-						<input type="text" name="company" id="company" placeholder="Company Name">
+						<input type="text" name="company" class="signupbox" id="company" placeholder="Company Name">
 					</li>
 					<li>
-						<input type="password" name="password" id="password" placeholder="Password">
+						<input type="password" name="password" class="signupbox" id="password" placeholder="Password">
 					</li>
 					<li>
-						<input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password">
+						<input type="password" name="cpassword" class="signupbox" id="cpassword" placeholder="Confirm Password">
 					</li>
 					<li>
 
-						<input  name="licence_image" id="licence_image" type="file" placeholder="Add profile picture" onchange="readURL(this);">
+						<input  name="licence_image" id="licence_image" class="signupbox" type="file" placeholder="Add profile picture" onchange="readURL(this);">
 						<!-- <label for="file1">Upload Property Picture</label> -->
 						<label for="licence_image">Upload ID proof</label>
 					</li>
 					<li>
 						<img id="blah"  src="#" alt="" height="100" width="100" style="border-radius: 50%;" />
 					</li>
-			    	<li>
-			    		<input type="button" value="Sign up Now!" id="btn_signup" name="btn_signup" class="btn btn-blue">
-			    	</li>
-			    	<li><p>Already have an account? <a href="javascript:void(0)" class="signup-button2">Login!</a></p></li>
-			    </ul>
+					<li>
+						<input type="button" value="Sign up Now!" id="btn_signup" name="btn_signup" class="btn btn-blue">
+					</li>
+					<li><p>Already have an account? <a href="javascript:void(0)" class="signup-button2">Login!</a></p></li>
+				</ul>
 			</form>
 		</div>
 		<div id="close2"><a href="#"><img src="assets/images/close_pop.png" alt="close-button"></a></div>
 	</div>
 
 	<script type="text/javascript">
+		$(".loginbox").keyup(function(event) {
+			if (event.keyCode === 13) {
+				$("#btn_login").click();
+			}
+		});
+		$(".signupbox").keyup(function(event) {
+			if (event.keyCode === 13) {
+				$("#btn_signup").click();
+			}
+		});
+
+
 		function readURL(input) {
 			if (input.files && input.files[0]) {
 				var reader = new FileReader();

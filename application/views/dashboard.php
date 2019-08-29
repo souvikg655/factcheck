@@ -13,26 +13,56 @@
 					<div class="buttom-block">
 						<ul>
 							<li>
-								<img src="<?php echo base_url()?>assets/images/icon-bathroom-gray.png" alt="">
-								<?php echo $data[$i]->bathroom; ?> Bathroom
-							</li>
-							<li>
-								<img src="<?php echo base_url()?>assets/images/icon-measurement-gray.png" alt="">
-								<?php echo $data[$i]->area; ?> Sq. ft.
-							</li>
-							<li>
 								<img src="<?php echo base_url()?>assets/images/icon-bedroom-gray.png" alt="">
-								<?php echo $data[$i]->bedroom; ?> Bedroom
+								Bedroom: <?php echo $data[$i]->bedroom; ?> 
+							</li>
+							<li>
+								<img src="<?php echo base_url()?>assets/images/icon-bathroom-gray.png" alt="">
+								Bathroom: <?php echo $data[$i]->bathroom; ?> 
 							</li>
 							<li>
 								<img src="<?php echo base_url()?>assets/images/icon-vr-gray.png" alt="">
-								cc tv coverage
+								Type: <?php echo $data[$i]->type; ?>
+							</li>
+							<li>
+								<img src="<?php echo base_url()?>assets/images/icon-measurement-gray.png" alt="">
+								Area: <?php echo $data[$i]->area; ?> Sq. ft.
+							</li>
+							
+							<li>
+								<img src="<?php echo base_url()?>assets/images/icon-builders.png" alt="">
+								Near Road: <?php echo $data[$i]->beside_road; ?>
 							</li>
 							<li>
 								<img src="<?php echo base_url()?>assets/images/icon-builders.png" alt="">
-								Build in 1990
+								City: <?php echo $data[$i]->city; ?>
+							</li>
+							<li>
+								<img src="<?php echo base_url()?>assets/images/icon-builders.png" alt="">
+								Province: <?php echo $data[$i]->province; ?>
+							</li>
+							<li>
+								<img src="<?php echo base_url()?>assets/images/icon-builders.png" alt="">
+								Postal Code: <?php echo $data[$i]->postal; ?>
+							</li>
+							<li>
+								<img src="<?php echo base_url()?>assets/images/icon-builders.png" alt="">
+								Houce Number: <?php echo $data[$i]->house_no; ?>
+							</li>
+							<li>
+								<img src="<?php echo base_url()?>assets/images/icon-builders.png" alt="">
+								Address: <?php echo $data[$i]->address; ?>
 							</li>
 						</ul>
+						<?php
+							if($data[$i]->status == "REJECTED"){
+						?>
+						<ul>
+							<li>
+								<b>Rejected Reson: </b><span style="color: red;"><?php echo $data[$i]->reject_status; ?></span>
+							</li>
+						</ul>
+						<?php } ?>
 					</div>
 					<?php
 					$status_data = $data[$i]->status;
@@ -47,14 +77,14 @@
 					<?php
 					if($status_data == "PENDING"){
 					?>
-					<button type="button" class="approval waiting">waiting for admin approval</button>
+					<button type="button" class="approval waiting">Pending</button>
 					<?php } ?>
 
 					<?php
 					if($status_data == "REJECTED"){
 					?>
 					<button type="button" class="approval rejected">rejected</button>
-					<a class="edit" href="javascript:void(0);">edit</a>
+					<!-- <a class="edit" href="javascript:void(0);">edit</a> -->
 					<?php } ?>
 			</div>
 			<?php } ?>
