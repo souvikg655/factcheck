@@ -1,4 +1,4 @@
-/*---------------------------------------------- GLOBAL SETTINGS AAA */
+/*---------------------------------------------- GLOBAL SETTINGS */
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; padding: 0px; margin: 0px; }
 html { border: 0; margin: 0; padding: 0; width: 100%; height: 100%; }
 body { border: 0; margin: 0; padding: 0; width: 100%; height: 100%; position: relative; background-color: #fff;  font-family: 'Poppins', sans-serif; font-size: 14px; line-height: 20px; }
@@ -135,7 +135,8 @@ HOME PAGE
 .about-us .row { align-items: center; }
 .about-us .aside { width: 50%; }
 .about-us .block { max-width: 600px; padding-left: 50px; }
-.about-us h2 span { color: #39aed9; font-weight: 500; }
+.about-us h2 a { font-size: 36px; line-height: 46px;color: #39aed9; font-weight: 500; }
+.about-us h2 a:hover { color: #28204f; } 
 .about-us .image-aside img { width: 100%; }
 
 
@@ -200,8 +201,10 @@ HOME PAGE
 .morelink:hover { color: #39aed9; text-decoration: underline; }
 .morecontent span h2 { font-size: 14px; margin: 10px 0 0 0; color: #000; font-weight: 700; }
 .morecontent span p { font-size: 12px; margin: 5px 0px; }
-[type=file] + label { border: 1px solid #ddd; border-radius: 5px; text-align: left; padding: 0px 15px 0px 50px; width: 100%; height: 44px; left: 0; top: 0px; position: relative; font-size: 13px; line-height: 42px; font-weight: 400; color: #28204f; background-image: url('../images/add-file.png'); background-position: 12px 10px; background-repeat: no-repeat; background-color: #fff; display: block; cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+[type=file] + label { border: 1px solid #ddd; border-radius: 5px; text-align: left; padding: 0px 15px 0px 50px; width: 100%; height: 44px; left: 0; top: 0px; font-size: 13px; line-height: 42px; font-weight: 400; color: #28204f; background-image: url('../images/add-file.png'); background-position: 12px 10px; background-repeat: no-repeat; background-color: #fff; display: block; cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+/*[type=file] + label { border: 1px solid #ddd; border-radius: 5px; text-align: left; padding: 0px 15px 0px 50px; width: 100%; height: 44px; left: 0; top: 0px; position: relative; font-size: 13px; line-height: 42px; font-weight: 400; color: #28204f; background-image: url('../images/add-file.png'); background-position: 12px 10px; background-repeat: no-repeat; background-color: #fff; display: block; cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+*/
 
 /* ============================================
 AFTER LOGIN PAGE
@@ -291,23 +294,22 @@ AFTER LOGIN PAGE
 .white-box p { font-size: 13px; line-height: 26px; color: #222; margin-bottom: 10px; }
 .white-box p:last-of-type { margin-bottom: 0px; }
 
-.project-listing { width: 100%; padding: 0px; border-radius: 10px; overflow: hidden; position: relative; }
+.project-listing { width: 100%; padding: 20px; border-radius: 10px; overflow: hidden; position: relative; }
 .project-listing:after { content: ""; display: table; clear: both; }
-.project-listing .image-aside { width: 35%; height: 250px; overflow: hidden; position: relative; float: left; }
+/*.project-listing .image-aside { width: 35%; height: 250px; overflow: hidden; position: relative; float: left; }
 .project-listing .image-aside .item a { display: block; width: 100%; }
 .project-listing .image-aside img { width: 100%; min-width: 100%; min-height: 200px; }
 .project-listing .image-aside .image-count { position: absolute; left: 0px; bottom: 0px; padding: 5px 10px; background-color: rgba(40, 32, 79, 0.8); width: 100%; height: auto; font-size: 12px; line-height: 18px; color: #fff; font-weight: 300; z-index: 9; }
 .project-listing .image-aside .owl-dots { display: none !important; position: absolute; }
 
-.project-listing .text-aside { width: 65%; padding: 20px; position: relative; float: right; }
-.project-listing .top-block { padding-right: 150px; }
+.project-listing .text-aside { width: 65%; padding: 20px; position: relative; float: right; }*/
 .project-listing .location { background-image: url("../images/icon-location-small.png"); background-repeat: no-repeat; background-position: left 4px; padding-left: 14px; text-transform: capitalize; margin-bottom: 5px; }
 .project-listing a.pdf { display: inline-block; vertical-align: top; background-image: url('../images/icon-pdf.png'); background-repeat: no-repeat; background-position: 0px center; padding-left:22px; font-size: 12px; line-height: 20px; }
 .project-listing a.pdf:hover { color: #28204f; }
 .project-listing .buttom-block { margin-top: 20px; width: 100%; display: inline-flex; flex-flow: wrap; justify-content: space-between; }
 .project-listing .buttom-block ul { width: 100%; display: block; font-size: 0px; }
-.project-listing .buttom-block li { width: 32%; margin-right: 2%; margin-bottom: 10px; display: inline-block; vertical-align: top; font-size: 12px; line-height: 20px; color: var(--dark); }
-.project-listing .buttom-block li:nth-child(3n) { margin-right: 0px; }
+.project-listing .buttom-block li { width: 23.5%; margin-right: 2%; margin-bottom: 10px; display: inline-block; vertical-align: top; font-size: 12px; line-height: 20px; color: var(--dark); }
+.project-listing .buttom-block li:nth-child(4n) { margin-right: 0px; }
 .project-listing .buttom-block li:last-child { margin-right: 0px; margin-bottom: 0px; margin-bottom: 0px; }
 .project-listing .buttom-block li img { display: inline-block; vertical-align: top; margin-right: 5px; }
 .project-listing button { position: absolute; right: 20px; top: 20px; min-width: 100px; font-size: 12px; line-height: 18px; color: #fff; text-transform: capitalize; font-weight: 300; text-align: center; border: none; padding: 8px; border-radius: 5px; cursor: pointer; }
@@ -391,7 +393,7 @@ AFTER LOGIN PAGE
 .profile-status .status { display: inline-flex; flex-flow: wrap; width: 100%; justify-content: space-between; align-items: center; background-color: #39aed9; padding: 10px 15px; border-radius: 5px 5px 0px 0px; }
 .profile-status .status .btn.waiting { background-color: #ffc107; }
 .profile-status .status .btn.waiting:hover { background-color: #28204f; }
-.profile-status .status .btn.approved { background-color: #39aed9; }
+.profile-status .status .btn.approved { background-color: #28204f; }
 .profile-status .status .btn.approved:hover { background-color: #ffc107; }
 .profile-status .status .btn.rejected { background-color: #dc3545; }
 .profile-status .status h4 { color: #fff; margin: 0px; }
@@ -399,9 +401,8 @@ AFTER LOGIN PAGE
 .profile-status ul { margin-bottom: 25px; }
 .profile-status li { display: inline-flex; flex-flow: wrap; width: 100%; margin-bottom: 15px; position: relative; }
 
-.profile-status li label { display: block; width: 200px; color: #28204f; text-align: right; text-transform: capitalize; padding-right: 30px; padding-top: 10px; }
-/*.profile-status li input:not([type="button"]):not([type="submit"]):not([type="checkbox"]):not([type="radio"]), textarea, select { width: calc(100% - 200px); }
-*/.profile-status li figure { width: 100px; height: 100px; border-radius: 5px; border: 1px solid #ddd; padding: 2px; position: relative; }
+.profile-status li label { display: block; width: 200px; color: #28204f; text-align: left; text-transform: capitalize; padding-right: 30px; padding-top: 10px; }
+.profile-status li figure { width: 100px; height: 100px; border-radius: 5px; border: 1px solid #ddd; padding: 2px; position: relative; }
 .profile-status li figure img { width: 100%; height: 100%; border-radius: 5px; display: inline-block; vertical-align: top; }
 
 .profile-status li figure label.btn-file { background-image: url('../images/add-file.png'); background-repeat: no-repeat; background-position: center; background-size: 20px; background-color: #ffc107; margin: 0px; padding: 0px; width: 36px; height: 36px; overflow: hidden; border-radius: 50%; position: absolute; right: -14px; bottom: -13px; display: block; cursor: pointer; z-index: 99; }
