@@ -189,61 +189,39 @@
 		}).change();
 
 		$(document).ready(function(){
-			BindControls();
-			//$("#postal_code").keyup(function(){
+			
+			$("#postal_code").keyup(function(){
 				
-				// var text = $('input:text[name=postal_code]').val();
+				var text = $('input:text[name=postal_code]').val();
 
-				// //console.log(text);
+				//console.log(text);
 
-				// var formdata = new FormData();
-				// formdata.append("postal_code", text);
+				var formdata = new FormData();
+				formdata.append("postal_code", text);
 
-				// var ajaxReq = $.ajax({
-				// 	url: '<?php echo base_url()?>home/is_exist_postal_code',
-				// 	type: 'POST',
-				// 	processData: false,
-				// 	contentType: false,
-				// 	data: formdata,
-				// 	beforeSend: function (xhr) {
-				// 	},
-				// 	success: function (data) {
-				// 		var obj = jQuery.parseJSON(data);
-				// 		var data = '';
-				// 		$.each(obj, function(index, val) {
-				// 		    data += val.postal+", ";
-				// 		    //console.log(val.postal);
-				// 		});
-				// 		data = data.replace(/,\s*$/, "");
+				var ajaxReq = $.ajax({
+					url: '<?php echo base_url()?>home/is_exist_postal_code',
+					type: 'POST',
+					processData: false,
+					contentType: false,
+					data: formdata,
+					beforeSend: function (xhr) {
+					},
+					success: function (data) {
+						var obj = jQuery.parseJSON(data);
+						var data = '';
+						$.each(obj, function(index, val) {
+						    data += val.postal+", ";
+						    //console.log(val.postal);
+						});
+						data = data.replace(/,\s*$/, "");
 
-				// 		$("#postal_code_results").text(data);
-				// 	},		
-				// });
+						$("#postal_code_results").text(data);
+					},		
+				});
 
-			//});
+			});
 		});
-
-		function BindControls() {
-        var Countries = ['ARGENTINA', 
-            'AUSTRALIA', 
-            'BRAZIL', 
-            'BELARUS', 
-            'BHUTAN',
-            'CHILE', 
-            'CAMBODIA', 
-            'CANADA', 
-            'DENMARK', 
-            'DOMINICA',
-            'INDIA'];
-
-        $('#postal_code').autocomplete({
-            source: Countries,
-            minLength: 0,
-            scroll: true
-        }).focus(function() {
-            $(this).autocomplete("search", "");
-        });
-    }
 
 		$(document).ready(function(){
 			$(".btn_search").click(function(){
