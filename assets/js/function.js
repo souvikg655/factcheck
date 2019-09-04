@@ -1,11 +1,12 @@
 $(document).ready(function(){
-  carousal();
+	carousal();
   loginPopup();
   custompopup();
   uploadFile();
   //customscroll();
-  // imagepopup();
+  //imagepopup();
   dropdown();
+  toggleMenu();
 });
 
 
@@ -141,13 +142,13 @@ function custompopup() {
 
 
 // Customscroll
-function customscroll() {
-  $(".main-panel").mCustomScrollbar({
-      autoHideScrollbar:true,
-      //scrollbarPosition:"outside"
-  }).mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
+// function customscroll() {
+//   $(".main-panel").mCustomScrollbar({
+//       autoHideScrollbar:true,
+//       //scrollbarPosition:"outside"
+//   }).mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
 
-}
+// }
 
 
 // Image PopUp
@@ -181,6 +182,22 @@ function uploadFile() {
       $(this).next().text(file);
     } else {
       $(this).next().text(dflt);
+    }
+  });
+}
+
+
+// Toggle Menu
+function toggleMenu() {
+  $('.toggle').on('click', function(){
+  $('.toggle').toggleClass('is-clicked');
+    if ( $('.header ul, .left-aside').hasClass('show-more') ) {
+      $('.header ul, .left-aside').removeClass('show-more');
+      $('body').removeClass('overflow-hidden');
+    }
+    else {
+      $('.header ul, .left-aside').addClass('show-more');
+      $('body').addClass('overflow-hidden');
     }
   });
 }

@@ -25,7 +25,10 @@ class Home_model extends CI_Model {
 			'postal' => $data['postal'],
 			'house_no' => $data['house_no'],
 			'address' => $data['address'],
-			'municipality_paper' => $data['municipality_paper']
+			'municipality_name' => $data['municipality_name'],
+			'municipality_paper' => $data['municipality_paper'],
+			'street_no' => $data['street_no'],
+			'street_name' => $data['street_name']
 		);
 		$flag = $this->db->insert('homes',$home_data);
 		return $flag==1?true:flase;
@@ -86,6 +89,23 @@ class Home_model extends CI_Model {
 		$res = $query->result();
 
 		return $res;
+	}
+
+	public function postal_code_exist($data)
+	{
+		if($data != ''){
+			$this->db->distinct();
+			$this->db->select('postal');
+			$this->db->from('homes');
+			$this->db->like('postal', $data, 'after');
+
+			$query = $this->db->get();
+			$res = $query->result();
+		}else{
+			$res = [];
+		}
+		
+	return $res;
 	}
 	
 }

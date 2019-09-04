@@ -44,6 +44,11 @@ class Home extends CI_Controller {
 			$data['postal'] = $this->input->post('postal');
 			$data['house_no'] = $this->input->post('house_no');
 			$data['address'] = $this->input->post('address');
+
+			$data['municipality_name'] = $this->input->post('municipality_name');
+			$data['street_no'] = $this->input->post('street_no');
+			$data['street_name'] = $this->input->post('street_name');
+
 			$data['municipality_paper'] = $filename;
 			$data['status'] = $this->input->post('status');
 
@@ -124,6 +129,15 @@ class Home extends CI_Controller {
 		}else{
 			redirect(base_url());
 		}
+	}
+
+	public function is_exist_postal_code()
+	{	
+		$postal_code = $this->input->post('postal_code');
+		
+		$response = $this->home_model->postal_code_exist($postal_code);
+
+	echo (json_encode($response));
 	}
 
 	public function search_home()

@@ -87,24 +87,22 @@
 					<input type="text" name="address" id="address">
 				</li>
 
-
-
-
-				<!-- <li class="address">
+				<li class="address">
 					<div class="col-3">
 						<label for="">Municipality Name</label>
 						<input type="text" name="municipality_name" id="municipality_name">
 					</div>
 
 					<div class="col-3">
-						<label for="">Street</label>
-						<input type="text" name="street" id="street">
+						<label for="">Street no.</label>
+						<input type="text" name="street_no" id="street_no">
+					</div>
+
+					<div class="col-3">
+						<label for="">Street Name</label>
+						<input type="text" name="street_name" id="street_name">
 					</div>
 				</li>
- -->
-
-
-
 
 				<li>
 				</li>
@@ -140,11 +138,14 @@
 			var province =  $("#province").val();
 
 			var city =  $("#city").val();
-			
 			var postal =  $("#postal").val();
 			var house_no =  $("#house_no").val();
+
 			var address =  $("#address").val();
-			
+
+			var municipality_name =  $("#municipality_name").val();
+			var street_no =  $("#street_no").val();
+			var street_name =  $("#street_name").val();
 
 			if(title == ''){
 				toastr["error"]("Please enter title");
@@ -198,10 +199,18 @@
 				toastr["error"]("Please enter address");
 				return false;
 			}
-			// if(municipality_paper == ''){
-			// 	toastr["error"]("Please select image");
-			// 	return false;
-			// }
+			if(municipality_name == ''){
+				toastr["error"]("Please enter municipality name");
+				return false;
+			}
+			if(street_no == ''){
+				toastr["error"]("Please enter street no");
+				return false;
+			}
+			if(street_name == ''){
+				toastr["error"]("Please enter street name");
+				return false;
+			}
 
 			var formdata = new FormData();
 			var fileinput = $('#municipality_paper')[0].files[0];
@@ -218,6 +227,11 @@
 			formdata.append("postal", postal);
 			formdata.append("house_no", house_no);
 			formdata.append("address", address);
+
+			formdata.append("municipality_name", municipality_name);
+			formdata.append("street_no", street_no);
+			formdata.append("street_name", street_name);
+			
 			formdata.append("municipality_paper", fileinput);
 
 			var ajaxReq = $.ajax({

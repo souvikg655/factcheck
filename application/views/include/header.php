@@ -4,6 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
 	<title>Fact Check</title>
 	
 	<!-- Google Fonts -->
@@ -14,6 +15,11 @@
 	<!-- Custom Stylesheet -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/owl.carousel.min.css">
 	<script src="<?php echo base_url()?>assets/js/jquery-2.2.4.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 </head>
 <body>
@@ -32,6 +38,11 @@
 
 					<li><a href="javascript:void(0);" rel="popuprel2" class="popup">register</a></li>
 				</ul>
+				<a href="javascript:void(0);" class="toggle">
+					<span></span>
+					<span></span>
+					<span></span>
+				</a>
 			</div>
 		</div>
 	</header>
@@ -95,13 +106,14 @@
 						<input type="password" name="cpassword" class="signupbox" id="cpassword" placeholder="Confirm Password">
 					</li>
 					<li>
-
-						<input  name="licence_image" id="licence_image" class="signupbox" type="file" placeholder="Add profile picture" onchange="readURL(this);">
-						<!-- <label for="file1">Upload Property Picture</label> -->
-						<label for="licence_image">Upload ID proof</label>
-					</li>
-					<li>
-						<img id="blah"  src="#" alt="" height="100" width="100" style="border-radius: 50%;" />
+						<div class="block">
+							<input  name="licence_image" id="licence_image" class="signupbox" type="file" placeholder="Add profile picture" onchange="readURL(this);">
+							<!-- <label for="file1">Upload Property Picture</label> -->
+							<label for="licence_image">Upload ID proof</label>
+						</div>
+						<figure>
+							<img id="blah"  src="#" alt=""/>
+						</figure>
 					</li>
 					<li>
 						<input type="button" value="Sign up Now!" id="btn_signup" name="btn_signup" class="btn btn-blue">
@@ -114,11 +126,13 @@
 	</div>
 
 	<script type="text/javascript">
+		
 		$(".loginbox").keyup(function(event) {
 			if (event.keyCode === 13) {
 				$("#btn_login").click();
 			}
 		});
+
 		$(".signupbox").keyup(function(event) {
 			if (event.keyCode === 13) {
 				$("#btn_signup").click();
