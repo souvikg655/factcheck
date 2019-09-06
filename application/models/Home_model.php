@@ -45,6 +45,16 @@ class Home_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function mail_details($home_id)
+	{
+		$this -> db -> select('*');
+		$this -> db -> from('homes');
+		$this -> db -> where('id', $home_id);
+		$query = $this -> db -> get();
+
+		return $query->result();
+	}
+
 	public function realtor_details($realtor_id)
 	{
 		$this -> db -> select('*');
@@ -95,7 +105,7 @@ class Home_model extends CI_Model {
 	{
 		if($data != ''){
 			$this->db->distinct();
-			$this->db->select('postal');
+			$this->db->select('*');
 			$this->db->from('homes');
 			$this->db->like('postal', $data, 'after');
 

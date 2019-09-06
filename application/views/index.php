@@ -250,10 +250,33 @@
 					success: function (data) {
 						var obj = jQuery.parseJSON(data);
 						if(obj != ''){
-							alert("Found");
+							console.log(obj);
+							//$(".payment_popup").show();
+							// var st = '';
+							// st = st + '<div class="custom-popup-container"> <a href="javascript:void(0)" class="custom-popup-close">x</a> <h5>You have to pay $5 for this</h5> <a href="javascript:void(0);" class="btn">start payment</a> </div>';
+							var user_mail = prompt("This home found. Send mail id and pay $5 and give full details in your mail.", "");
+							if(user_mail != ''){
+								var formdata = new FormData();
+								formdata.append("user_mail", user_mail);
+
+								var ajaxReq = $.ajax({
+									url: '<?php echo base_url()?>home/search_home',
+									type: 'POST',
+									processData: false,
+									contentType: false,
+									data: formdata,
+									beforeSend: function (xhr) {
+									},
+									success: function (data) {
+									}
+								});
+
+
+							}
 						}else{
 							alert("Not Found");
 						}
+						// $("#payment_option").html(st).modal('show');
 					},
 				});
 
