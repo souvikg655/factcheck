@@ -27,7 +27,11 @@ class Email extends CI_Controller {
 		);
 		$this->email->initialize($config);
 
-		$home_id = 12;
+        $home_id = $this->input->post('home_id');
+
+        // echo $home_id;
+
+		// $home_id = 12;
 
 		$response = $this->home_model->mail_details($home_id);
 
@@ -212,24 +216,26 @@ class Email extends CI_Controller {
 
 		
 		$this->email->from('souvikg653@gmail.com', 'Factcheck');
-		$this->email->to('yaju_rcc@yahoo.com'); 
+		$this->email->to('souvikg655@gmail.com'); 
 
 		$this->email->subject("Factcheck Search Result");
 		$this->email->message($message);
 
 		$pdf_link = base_url()."municipality_papers/".$municipality_paper;
-
-		echo $pdf_link;
-
+		// echo $pdf_link;
 		$this->email->attach($pdf_link);
 
 		$result = $this->email->send();
-
-		print_r($result);
-
+		// print_r($result);
 		//echo $this->email->print_debugger();
-
-
+        if($result == 1){
+            $res['status'] = True;
+            $res['message'] = "Mail send successfil";
+        }else{
+            $res['status'] = False;
+            $res['message'] = "Mail not send successfil";
+        }
+    echo (json_encode($res));
 	}
 }
 

@@ -275,12 +275,4 @@
 			});
 		});
 
-		$(document).ready(function(){
-			$("#mail_send").click(function(){
-				
-				console.log("Tett");
-				
-			});
-		});
-
 	</script>

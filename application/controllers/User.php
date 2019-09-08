@@ -23,7 +23,6 @@ class User extends CI_Controller {
 			$data['province'] = $province_list;
 			$this->load->view('index', $data);
 		}
-		
 	}
 
 	public function add_home()

@@ -118,7 +118,7 @@
 	<!-- Search Home Popup -->
 	<div class="custom-popup search_home" role="alert">
 		<div class="custom-popup-container">
-			<a href="javascript:void(0)" class="custom-popup-close">x</a>
+			<a href="javascript:void(0)" class="custom-popup-close close_popup">x</a>
 			<h4>Search your home</h4>
 			<ul>
 				<li>
@@ -149,6 +149,7 @@
 					<textarea name="address" class="searchform" id="address" placeholder="Address"></textarea>
 				</li>
 				<li>
+					<!-- <input type="hidden" id="payment_popup" value="Search" class="btn btn-blue trigger-popup" data-target="payment_popup"> -->
 					<input type="submit" value="Search" class="btn btn-blue btn_search">
 				</li>
 			</ul>
@@ -194,8 +195,6 @@
 				
 				var text = $('input:text[name=postal_code]').val();
 
-				//console.log(text);
-
 				var formdata = new FormData();
 				formdata.append("postal_code", text);
 
@@ -211,7 +210,7 @@
 						var obj = jQuery.parseJSON(data);
 						var data = '';
 						$.each(obj, function(index, val) {
-						    data += val.postal+", ";
+							data += val.postal+", ";
 						    //console.log(val.postal);
 						});
 						data = data.replace(/,\s*$/, "");
@@ -250,37 +249,39 @@
 					success: function (data) {
 						var obj = jQuery.parseJSON(data);
 						if(obj != ''){
-							console.log(obj);
-							//$(".payment_popup").show();
+							//console.log(obj[0].id);
 							// var st = '';
-							// st = st + '<div class="custom-popup-container"> <a href="javascript:void(0)" class="custom-popup-close">x</a> <h5>You have to pay $5 for this</h5> <a href="javascript:void(0);" class="btn">start payment</a> </div>';
-							var user_mail = prompt("This home found. Send mail id and pay $5 and give full details in your mail.", "");
-							if(user_mail != ''){
-								var formdata = new FormData();
-								formdata.append("user_mail", user_mail);
+							// st = st + '<div class="custom-popup-container"><a href="javascript:void(0)" class="custom-popup-close">x</a><h5>You have to pay $5 for this</h5><a href="javascript:void(0);" class="btn">start payment</a></div>';
+							// $("#payment_option").html(st);
 
-								var ajaxReq = $.ajax({
-									url: '<?php echo base_url()?>home/search_home',
-									type: 'POST',
-									processData: false,
-									contentType: false,
-									data: formdata,
-									beforeSend: function (xhr) {
-									},
-									success: function (data) {
+							var formdata = new FormData();
+							formdata.append("home_id", obj[0].id);
+
+							var ajaxReq = $.ajax({
+								url: '<?php echo base_url()?>email/send_email',
+								type: 'POST',
+								processData: false,
+								contentType: false,
+								data: formdata,
+								beforeSend: function (xhr) {
+								},
+								success: function (data) {
+									var obj = jQuery.parseJSON(data);
+									if(obj['status']){
+										$(".close_popup").click();
+										toastr["success"](obj['message']);
+									}else{
+										toastr["error"](obj['message']);
 									}
-								});
+								},		
+							});
 
-
-							}
 						}else{
 							alert("Not Found");
 						}
-						// $("#payment_option").html(st).modal('show');
-					},
+					}
 				});
-
-			}); 
+			});
 		});
 	</script>
 
@@ -291,4 +292,6 @@
 			<a href="javascript:void(0);" class="btn">start payment</a>
 		</div>
 	</div> -->
+
+	
 
