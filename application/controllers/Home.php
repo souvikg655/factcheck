@@ -43,11 +43,13 @@ class Home extends CI_Controller {
 			$data['city'] = $this->input->post('city');
 			$data['postal'] = $this->input->post('postal');
 			$data['house_no'] = $this->input->post('house_no');
-			$data['address'] = $this->input->post('address');
-
 			$data['municipality_name'] = $this->input->post('municipality_name');
 			$data['street_no'] = $this->input->post('street_no');
 			$data['street_name'] = $this->input->post('street_name');
+
+			$data['availability'] = $this->input->post('availability');
+			$data['sale_lease'] = $this->input->post('sale_lease');
+			$data['street_abbr'] = $this->input->post('street_abbr');			
 
 			$data['municipality_paper'] = $filename;
 			$data['status'] = $this->input->post('status');
@@ -137,7 +139,13 @@ class Home extends CI_Controller {
 		
 		$response = $this->home_model->postal_code_exist($postal_code);
 
-	echo (json_encode($response));
+		$postal_code_list = array();
+
+		for($i=0; $i<count($response); $i++){
+			array_push($postal_code_list,$response[$i]->postal);
+		}
+
+	echo (json_encode($postal_code_list));
 	}
 
 	public function search_home()
@@ -145,8 +153,10 @@ class Home extends CI_Controller {
 		$data['province'] = $this->input->post('province');
 		$data['city'] = $this->input->post('city');
 		$data['postal_code'] = $this->input->post('postal_code');
-		$data['house_no'] = $this->input->post('house_no');
-		$data['address'] = $this->input->post('address');	
+		$data['house_no'] = $this->input->post('house_no');	
+		$data['municipality_name'] = $this->input->post('municipality_name');	
+		$data['street_name'] = $this->input->post('street_name');	
+		$data['street_no'] = $this->input->post('street_no');	
 
 		$res = $this->home_model->search_home($data);
 

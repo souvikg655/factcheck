@@ -121,11 +121,11 @@
 			<a href="javascript:void(0)" class="custom-popup-close close_popup">x</a>
 			<h4>Search your home</h4>
 			<ul>
-				<li>
+				<!-- <li>
 					<select name="country" id="country" disabled="">
 						<option value="" class="searchform">Canada</option>
 					</select>
-				</li>
+				</li> -->
 				<li>
 					<select name="province" id="province">
 						<?php 
@@ -139,22 +139,134 @@
 					<select name="city" id="city" class="searchform"></select>
 				</li>
 				<li>
-					<input type="text" class="searchform" name="postal_code" id="postal_code" placeholder="Postal Code">
+					<div class="autocomplete">
+						<input class="searchform" name="postal_code" id="postal_code" placeholder="Postal Code (Max 2 characters)">
+					</div>
 				</li>
-				<h6 id="postal_code_results"></h6>
 				<li>
 					<input type="text" class="searchform" name="house_no" id="house_no" placeholder="House Number">
 				</li>
 				<li>
-					<textarea name="address" class="searchform" id="address" placeholder="Address"></textarea>
+					<input type="text" class="searchform" name="municipality_name" id="municipality_name" placeholder="Municipality Name">
 				</li>
 				<li>
-					<!-- <input type="hidden" id="payment_popup" value="Search" class="btn btn-blue trigger-popup" data-target="payment_popup"> -->
-					<input type="submit" value="Search" class="btn btn-blue btn_search">
+					<input type="text" class="searchform" name="street_name" id="street_name" placeholder="Street Name">
+				</li>
+				<li>
+					<input type="text" class="searchform" name="street_no" id="street_no" placeholder="Street No.">
+				</li>
+				
+				<li>
+					<input type="hidden" id="payment_popup" value="Search" class="btn btn-blue trigger-popup" data-target="payment_popup">
+					
+					<input type="button" value="Search" class="btn btn-blue btn_search">
 				</li>
 			</ul>
 		</div>
 	</div>
+
+	<script>
+		function autocomplete(inp, arr) {
+			var currentFocus;
+			inp.addEventListener("input", function(e) {
+				var a, b, i, val = this.value;
+				closeAllLists();
+				if (!val) { return false;}
+				currentFocus = -1;
+				a = document.createElement("DIV");
+				a.setAttribute("id", this.id + "autocomplete-list");
+				a.setAttribute("class", "autocomplete-items");
+				this.parentNode.appendChild(a);
+				for (i = 0; i < arr.length; i++) {
+					if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+						b = document.createElement("DIV");
+						b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+						b.innerHTML += arr[i].substr(val.length);
+						b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+						b.addEventListener("click", function(e) {
+							inp.value = this.getElementsByTagName("input")[0].value;
+							closeAllLists();
+						});
+						a.appendChild(b);
+					}
+				}
+			});
+			inp.addEventListener("keydown", function(e) {
+				var x = document.getElementById(this.id + "autocomplete-list");
+				if (x) x = x.getElementsByTagName("div");
+				if (e.keyCode == 40) {
+					currentFocus++;
+					addActive(x);
+				} else if (e.keyCode == 38) {
+					currentFocus--;
+					addActive(x);
+				} else if (e.keyCode == 13) {
+					e.preventDefault();
+					if (currentFocus > -1) {
+						if (x) x[currentFocus].click();
+					}
+				}
+			});
+			function addActive(x) {
+				if (!x) return false;
+				removeActive(x);
+				if (currentFocus >= x.length) currentFocus = 0;
+				if (currentFocus < 0) currentFocus = (x.length - 1);
+				x[currentFocus].classList.add("autocomplete-active");
+			}
+			function removeActive(x) {
+				for (var i = 0; i < x.length; i++) {
+					x[i].classList.remove("autocomplete-active");
+				}
+			}
+			function closeAllLists(elmnt) {
+				var x = document.getElementsByClassName("autocomplete-items");
+				for (var i = 0; i < x.length; i++) {
+					if (elmnt != x[i] && elmnt != inp) {
+						x[i].parentNode.removeChild(x[i]);
+					}
+				}
+			}
+			document.addEventListener("click", function (e) {
+				closeAllLists(e.target);
+			});
+		}
+
+		$(document).ready(function(){
+			$("#postal_code").keyup(function(){
+				var text = $('input:text[name=postal_code]').val();
+
+				if(text != ''){
+
+					var formdata = new FormData();
+					formdata.append("postal_code", text);
+					var ajaxReq = $.ajax({
+						url: '<?php echo base_url()?>home/is_exist_postal_code',
+						type: 'POST',
+						processData: false,
+						contentType: false,
+						data: formdata,
+						beforeSend: function (xhr) {
+						},
+						success: function (data) {
+							var obj = jQuery.parseJSON(data);
+
+							if(obj != ''){
+
+								var postal_code_arr = [];
+								for(var i=0; i<obj.length; i++){
+									postal_code_arr.push(obj[i]);
+								}
+
+								autocomplete(document.getElementById("postal_code"), postal_code_arr);
+							}
+						},		
+					});
+				}
+
+			});
+		});
+	</script>
 	
 
 	<script type="text/javascript">
@@ -190,52 +302,24 @@
 		}).change();
 
 		$(document).ready(function(){
-			
-			$("#postal_code").keyup(function(){
-				
-				var text = $('input:text[name=postal_code]').val();
-
-				var formdata = new FormData();
-				formdata.append("postal_code", text);
-
-				var ajaxReq = $.ajax({
-					url: '<?php echo base_url()?>home/is_exist_postal_code',
-					type: 'POST',
-					processData: false,
-					contentType: false,
-					data: formdata,
-					beforeSend: function (xhr) {
-					},
-					success: function (data) {
-						var obj = jQuery.parseJSON(data);
-						var data = '';
-						$.each(obj, function(index, val) {
-							data += val.postal+", ";
-						    //console.log(val.postal);
-						});
-						data = data.replace(/,\s*$/, "");
-
-						$("#postal_code_results").text(data);
-					},		
-				});
-
-			});
-		});
-
-		$(document).ready(function(){
 			$(".btn_search").click(function(){
 				var province =  $("#province").val();
 				var city =  $("#city").val();
 				var postal_code =  $("#postal_code").val();;
 				var house_no =  $("#house_no").val();
-				var address =  $("#address").val();
+				var municipality_name =  $("#municipality_name").val();
+				var street_name =  $("#street_name").val();
+				var street_no =  $("#street_no").val();
+
 
 				var formdata = new FormData();
 				formdata.append("province", province);
 				formdata.append("city", city);
 				formdata.append("postal_code", postal_code);
 				formdata.append("house_no", house_no);
-				formdata.append("address", address);
+				formdata.append("municipality_name", municipality_name);
+				formdata.append("street_name", street_name);
+				formdata.append("street_no", street_no);
 				
 
 				var ajaxReq = $.ajax({
@@ -249,33 +333,10 @@
 					success: function (data) {
 						var obj = jQuery.parseJSON(data);
 						if(obj != ''){
+							$(".close_popup").click();
 							//console.log(obj[0].id);
-							// var st = '';
-							// st = st + '<div class="custom-popup-container"><a href="javascript:void(0)" class="custom-popup-close">x</a><h5>You have to pay $5 for this</h5><a href="javascript:void(0);" class="btn">start payment</a></div>';
-							// $("#payment_option").html(st);
-
-							var formdata = new FormData();
-							formdata.append("home_id", obj[0].id);
-
-							var ajaxReq = $.ajax({
-								url: '<?php echo base_url()?>email/send_email',
-								type: 'POST',
-								processData: false,
-								contentType: false,
-								data: formdata,
-								beforeSend: function (xhr) {
-								},
-								success: function (data) {
-									var obj = jQuery.parseJSON(data);
-									if(obj['status']){
-										$(".close_popup").click();
-										toastr["success"](obj['message']);
-									}else{
-										toastr["error"](obj['message']);
-									}
-								},		
-							});
-
+							$("#payment_popup").click();
+							
 						}else{
 							alert("Not Found");
 						}
@@ -283,6 +344,48 @@
 				});
 			});
 		});
+		$(document).ready(function(){
+			$(".mail_id_send").click(function(){
+				var email_id =  $("#email_id").val();
+				var home_id =  $("#home_id").val();
+				var email_regex = new RegExp('^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+');
+				home_id = 21;
+
+				if(email_id == ''){
+					toastr["error"]("Email Id NULL");
+					return false;
+				}
+				if(email_regex.test(email_id)){
+					var formdata = new FormData();
+					formdata.append("email_id", email_id);
+					formdata.append("home_id", home_id);
+
+					var ajaxReq = $.ajax({
+						url: '<?php echo base_url()?>email/send_email',
+						type: 'POST',
+						processData: false,
+						contentType: false,
+						data: formdata,
+						beforeSend: function (xhr) {
+						},
+						success: function (data) {
+							var obj = jQuery.parseJSON(data);
+							if(obj['status']){
+								$(".close_popup").click();
+								toastr["success"](obj['message']);
+							}else{
+								toastr["error"](obj['message']);
+							}
+						},		
+					});
+				}else{
+					toastr["error"]("Send valid email id");
+					return false;
+				}
+
+			});
+		});
+		
 	</script>
 
 	<!-- <div class="custom-popup payment_popup"  id="payment_option" role="alert">
@@ -292,6 +395,14 @@
 			<a href="javascript:void(0);" class="btn">start payment</a>
 		</div>
 	</div> -->
+	<div class="custom-popup payment_popup"  id="payment_option" role="alert">
+		<div class="custom-popup-container">
+			<a href="javascript:void(0)" class="custom-popup-close">x</a>
+			<h5>Send your email id</h5>
+			<input type="email" name="email_id" id="email_id">
+			<a type="button" href="javascript:void(0);" class="btn mail_id_send">Send</a>
+		</div>
+	</div>
 
 	
 

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Fact Check</title>
 	
 	<!-- Google Fonts -->
@@ -18,8 +18,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 	<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-    
-
 
 </head>
 <body>
@@ -31,7 +29,6 @@
 					<a href="<?php echo base_url()?>"><img src="<?php echo base_url()?>assets/images/logo.png" alt=""></a>
 				</div>
 				<ul>
-					<!-- <li><a href="<?php echo base_url()?>home/dashboard">Dashboard</a></li> -->
 					<li><a href="javascript:void(0);">about us</a></li>
 					<li><a href="javascript:void(0);">Contact us</a></li>
 					<li class="login"><a href="javascript:void(0);" rel="popuprel" class="popup">login</a></li>
@@ -108,7 +105,6 @@
 					<li>
 						<div class="block">
 							<input  name="licence_image" id="licence_image" class="signupbox" type="file" placeholder="Add profile picture" onchange="readURL(this);">
-							<!-- <label for="file1">Upload Property Picture</label> -->
 							<label for="licence_image">Upload ID proof</label>
 						</div>
 						<figure>

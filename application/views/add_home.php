@@ -22,21 +22,22 @@
 						<input type="number" name="bathroom" id="bathroom">
 					</div>
 					<div class="col-3">
-						<label for="">property type</label>
+						<label for="">Class</label>
 						<select name="property" id="property">
-							<option value="House">house</option>
-							<option value="Appertment">appertment</option>
+							<option value="Residential Freehold">Residential Freehold</option>
+							<option value="Residential Condo & Other">Residential Condo & Other</option>
+							<option value="Commercial">Commercial</option>
 						</select>
 					</div>
 				</li>
 				<li>
 					<div class="col-3">
 						<label for="">age of house</label>
-						<input type="text" name="house_age" id="house_age">
+						<input type="number" name="house_age" id="house_age">
 					</div>
 					<div class="col-3">
 						<label for="">Area (Sq Ft)</label>
-						<input type="text" name="area" id="area">
+						<input type="number" name="area" id="area">
 					</div>
 					<div class="col-3">
 						<label for="">beside road</label>
@@ -79,14 +80,9 @@
 					</div>
 					<div class="col-2">
 						<label for="">house number</label>
-						<input type="text" name="house_no" id="house_no">
+						<input type="number" name="house_no" id="house_no">
 					</div>
 				</li>
-				<li>
-					<label for="">address</label>
-					<input type="text" name="address" id="address">
-				</li>
-
 				<li class="address">
 					<div class="col-3">
 						<label for="">Municipality Name</label>
@@ -95,12 +91,39 @@
 
 					<div class="col-3">
 						<label for="">Street no.</label>
-						<input type="text" name="street_no" id="street_no">
+						<input type="number" name="street_no" id="street_no">
 					</div>
 
 					<div class="col-3">
 						<label for="">Street Name</label>
 						<input type="text" name="street_name" id="street_name">
+					</div>
+				</li>
+
+
+				<li class="address">
+					<div class="col-3">
+						<label for="">Availability</label>
+						<select name="availability" id="availability">
+							<option value="Available">Available</option>
+							<option value="Unavaliable">Unavaliable</option>
+						</select>
+					</div>
+
+					<div class="col-3">
+						<label for="">Sale or Lease</label>
+						<select name="sale_lease" id="sale_lease">
+							<option value="Sale">Sale</option>
+							<option value="Lease">Lease</option>
+						</select>
+					</div>
+
+					<div class="col-3">
+						<label for="">Street Abbr</label>
+						<select name="street_abbr" id="street_abbr">
+							<option value="Abby">Abby</option>
+							<option value="Acre">Acre</option>
+						</select>
 					</div>
 				</li>
 
@@ -141,11 +164,13 @@
 			var postal =  $("#postal").val();
 			var house_no =  $("#house_no").val();
 
-			var address =  $("#address").val();
-
 			var municipality_name =  $("#municipality_name").val();
 			var street_no =  $("#street_no").val();
 			var street_name =  $("#street_name").val();
+
+			var availability =  $("#availability").val();
+			var sale_lease =  $("#sale_lease").val();
+			var street_abbr =  $("#street_abbr").val();
 
 			if(title == ''){
 				toastr["error"]("Please enter title");
@@ -195,10 +220,6 @@
 				toastr["error"]("Please enter house no");
 				return false;
 			}
-			if(address == ''){
-				toastr["error"]("Please enter address");
-				return false;
-			}
 			if(municipality_name == ''){
 				toastr["error"]("Please enter municipality name");
 				return false;
@@ -226,12 +247,12 @@
 			formdata.append("city", city);
 			formdata.append("postal", postal);
 			formdata.append("house_no", house_no);
-			formdata.append("address", address);
-
 			formdata.append("municipality_name", municipality_name);
 			formdata.append("street_no", street_no);
 			formdata.append("street_name", street_name);
-			
+			formdata.append("availability", availability);
+			formdata.append("sale_lease", sale_lease);
+			formdata.append("street_abbr", street_abbr);
 			formdata.append("municipality_paper", fileinput);
 
 			var ajaxReq = $.ajax({
@@ -249,8 +270,6 @@
 					}else{
 						toastr["error"]("Home Add Failed");
 					}
-
-
 				}
 			});
 		});
@@ -274,7 +293,6 @@
 					st ='';
 					for(var i=0; i<obj.length; i++){
 						st = st + '<option value="'+obj[i]['city']+'">'+obj[i]['city']+'</option>';
-
 					}
 					$("#city").html(st);
 				}

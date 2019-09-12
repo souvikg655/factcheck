@@ -22,7 +22,7 @@
 					</li>
 					<li>
 						<img src="<?php echo base_url()?>assets/images/icon-vr-gray.png" alt="">
-						Type: <?php echo $data[$i]->type; ?>
+						Class: <?php echo $data[$i]->type; ?>
 					</li>
 					<li>
 						<img src="<?php echo base_url()?>assets/images/icon-measurement-gray.png" alt="">
@@ -47,12 +47,29 @@
 					</li>
 					<li>
 						<img src="<?php echo base_url()?>assets/images/icon-builders.png" alt="">
-						Houce Number: <?php echo $data[$i]->house_no; ?>
+						House Number: <?php echo $data[$i]->house_no; ?>
 					</li>
 					<li>
 						<img src="<?php echo base_url()?>assets/images/icon-builders.png" alt="">
-						Address: <?php echo $data[$i]->address; ?>
+						Street Name: <?php echo $data[$i]->street_name; ?>
 					</li>
+					<li>
+						<img src="<?php echo base_url()?>assets/images/icon-builders.png" alt="">
+						Street No.: <?php echo $data[$i]->street_no; ?>
+					</li>
+					<li>
+						<img src="<?php echo base_url()?>assets/images/icon-builders.png" alt="">
+						Availability:  <?php echo $data[$i]->availability; ?>
+					</li>
+					<li>
+						<img src="<?php echo base_url()?>assets/images/icon-builders.png" alt="">
+						Street Abbr: <?php echo $data[$i]->street_abbr; ?>
+					</li>
+					<li>
+						<img src="<?php echo base_url()?>assets/images/icon-builders.png" alt="">
+						Sale Or Lease: <?php echo $data[$i]->sale_lease; ?>
+					</li>
+
 				</ul>
 				<?php
 				if($data[$i]->status == "REJECTED"){
@@ -60,7 +77,6 @@
 					<ul>
 						<li>
 							<h6 class="reject-data"><?=$data[$i]->reject_status;?></h6>
-							<!-- <b>Rejected Reson: </b><span style="color: red;"><?php echo $data[$i]->reject_status; ?></span> -->
 						</li>
 					</ul>
 				<?php } ?>

@@ -170,12 +170,26 @@ class User extends CI_Controller {
 			$response['status'] = true;
 			$response['message'] = "success";
 			echo json_encode($response);
-
-			
 		}	
-		// echo (json_encode($response));
 	}
 
+	public function contact(){
+		$data['name'] = $this->input->post('name');
+		$data['email'] = $this->input->post('email');
+		$data['phone'] = $this->input->post('phone');
+		$data['query'] = $this->input->post('query');
+
+		$res = $this->user_model->contact($data);
+
+		if($res == 1){
+			$response['status'] = true;
+			$response['message'] = "Contact submit successful";
+		}else{
+			$response['status'] = false;
+			$response['message'] = "Contact submit failed";
+		}
+	echo json_encode($response);
+	}
 
 }
 

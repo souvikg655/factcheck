@@ -60,37 +60,47 @@ class User_model extends CI_Model {
 	{
 		$user_id = $data['id'];
 		$value = [
-		 	'name' => $data['name'],
-		 	'email' => $data['email'],
-		 	'company' => $data['company'],
-		 	'approval' => "PENDING",
-		 	'reject_status' => ""
+			'name' => $data['name'],
+			'email' => $data['email'],
+			'company' => $data['company'],
+			'approval' => "PENDING",
+			'reject_status' => ""
 		];
 
 		$this->db->where('id', $user_id);
 		$this->db->update('users', $value);
-	return true;
+		return true;
 	}
 
 	public function update_user_with_image($data)
 	{
 		$user_id = $data['id'];
 		$value = [
-		 	'name' => $data['name'],
-		 	'email' => $data['email'],
-		 	'company' => $data['company'],
-		 	'image' => $data['image'],
-		 	'approval' => "PENDING",
-		 	'reject_status' => ""
+			'name' => $data['name'],
+			'email' => $data['email'],
+			'company' => $data['company'],
+			'image' => $data['image'],
+			'approval' => "PENDING",
+			'reject_status' => ""
 		];
 
 		$this->db->where('id', $user_id);
 		$this->db->update('users', $value);
-	return true;
+		return true;
 	}
 
-
+	public function contact($data){
+		$user_data = array(
+			'name' => $data['name'] ,
+			'email' => $data['email'],
+			'phone' => $data['phone'],
+			'query' => $data['query'],
+		);
+		$flag = $this->db->insert('user_contact',$user_data);
+		return $flag==1?true:flase;
 	}
+
+}
 
 
 

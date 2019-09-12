@@ -24,11 +24,13 @@ class Home_model extends CI_Model {
 			'city' => $data['city'],
 			'postal' => $data['postal'],
 			'house_no' => $data['house_no'],
-			'address' => $data['address'],
 			'municipality_name' => $data['municipality_name'],
 			'municipality_paper' => $data['municipality_paper'],
 			'street_no' => $data['street_no'],
-			'street_name' => $data['street_name']
+			'street_name' => $data['street_name'],
+			'availability' => $data['availability'],
+			'sale_lease' => $data['sale_lease'],
+			'street_abbr' => $data['street_abbr']
 		);
 		$flag = $this->db->insert('homes',$home_data);
 		return $flag==1?true:flase;
@@ -93,7 +95,9 @@ class Home_model extends CI_Model {
 		$this -> db -> where('city', $data['city']);
 		$this -> db -> where('postal', $data['postal_code']);
 		$this -> db -> where('house_no', $data['house_no']);
-		$this -> db -> where('address', $data['address']);
+		$this -> db -> where('municipality_name', $data['municipality_name']);
+		$this -> db -> where('street_name', $data['street_name']);
+		$this -> db -> where('street_no', $data['street_no']);
 
 		$query = $this -> db -> get();
 		$res = $query->result();

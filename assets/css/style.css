@@ -572,3 +572,40 @@ AFTER LOGIN PAGE
 	.custom-popup-close { top: 0px; right: 0px; }
 	.custom-popup li { margin-bottom: 10px; }
 }
+
+
+.autocomplete-items {
+    width: 100%;
+    background-color: #fff;
+    text-align: left;
+    max-height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-box-shadow: 0px 4px 10px 0px #ddd;
+    -moz-box-shadow: 0px 4px 10px 0px #ddd;
+    -ms-box-shadow: 0px 4px 10px 0px #ddd;
+    -o-box-shadow: 0px 4px 10px 0px #ddd;
+    box-shadow: 0px 4px 10px 0px #ddd;
+}
+
+.autocomplete-items > div {
+    padding: 5px;
+    font-size: 12px;
+    line-height: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
