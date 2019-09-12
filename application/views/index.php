@@ -250,20 +250,16 @@
 						},
 						success: function (data) {
 							var obj = jQuery.parseJSON(data);
-
 							if(obj != ''){
-
 								var postal_code_arr = [];
 								for(var i=0; i<obj.length; i++){
 									postal_code_arr.push(obj[i]);
 								}
-
 								autocomplete(document.getElementById("postal_code"), postal_code_arr);
 							}
 						},		
 					});
 				}
-
 			});
 		});
 	</script>
