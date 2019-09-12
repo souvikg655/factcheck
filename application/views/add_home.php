@@ -266,7 +266,7 @@
 				success: function (data) {
 					var obj = jQuery.parseJSON(data);
 					if(obj.status){
-						window.location.href = "<?php echo base_url()."home/dashboard"?>";
+						window.location.href = "<?php echo base_url()."dashboard"?>";
 					}else{
 						toastr["error"]("Home Add Failed");
 					}

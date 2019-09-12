@@ -100,7 +100,7 @@
 				beforeSend: function (xhr) {
 				},
 				success: function (data) {
-					window.location.href = "<?php echo base_url()."home/dashboard"?>";
+					window.location.href = "<?php echo base_url()."dashboard"?>";
 				},
 			});
 

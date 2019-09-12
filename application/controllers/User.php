@@ -128,7 +128,7 @@ class User extends CI_Controller {
 		$this -> session -> set_userdata('name', '');
 		$this -> session -> set_userdata('email', '');
 
-		redirect('/user');
+		redirect(base_url());
 	}
 
 	public function update_profile()

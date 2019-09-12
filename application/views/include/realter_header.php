@@ -52,7 +52,7 @@
 				</a>
 				<div class="clickslide">
 					<ul>
-						<li><a href="javascript:void(0);" title="">Change Password</a></li>
+						<!-- <li><a href="javascript:void(0);" title="">Change Password</a></li> -->
 						<li><a href="<?php echo base_url()?>user/logout" title="">log out</a></li>
 					</ul>
 				</div>
@@ -71,14 +71,14 @@
 			<nav>
 				<ul>
 					
-					<li class="profile-settings <?php echo $menu_type=='profile'?'active':''; ?> "><a href="<?php echo base_url()?>home/profile" title="">Profile</a></li>
+					<li class="profile-settings <?php echo $menu_type=='profile'?'active':''; ?> "><a href="<?php echo base_url()?>user-profile" title="">Profile</a></li>
 					
 					<?php 
 					if($approval=="ACCEPTED"){
 					?>
-					<li class="list <?php echo $menu_type=='list'?'active':''; ?>"><a href="<?php echo base_url()?>home/dashboard" title="">list</a></li>
+					<li class="list <?php echo $menu_type=='list'?'active':''; ?>"><a href="<?php echo base_url()?>dashboard" title="">list</a></li>
 					
-					<li class="add <?php echo $menu_type=='add_new'?'active':''; ?>"><a href="<?php echo base_url()?>user/add_home" title="">add new</a></li>
+					<li class="add <?php echo $menu_type=='add_new'?'active':''; ?>"><a href="<?php echo base_url()?>add-home" title="">add new</a></li>
 					<?php } ?>
 				</ul>
 			</nav>

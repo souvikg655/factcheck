@@ -262,7 +262,7 @@
 							$('#login_email').val("");
 							$('#login_password').val("");
 
-							window.location.href = "<?php echo base_url()."home/dashboard"?>";
+							window.location.href = "<?php echo base_url()."dashboard"?>";
 						}else{
 							toastr["error"]("Login fail");
 						}	
