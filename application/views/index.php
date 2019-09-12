@@ -260,12 +260,14 @@
 						},		
 					});
 				}
+
 			});
 		});
 	</script>
 	
 
 	<script type="text/javascript">
+		var searHomeID;
 		$(".searchform").keyup(function(event) {
 			if (event.keyCode === 13) {
 				$(".btn_search").click();
@@ -330,11 +332,11 @@
 						var obj = jQuery.parseJSON(data);
 						if(obj != ''){
 							$(".close_popup").click();
-							//console.log(obj[0].id);
+							searHomeID = obj[0].id;
 							$("#payment_popup").click();
 							
 						}else{
-							alert("Not Found");
+							toastr["error"]("Not Found");
 						}
 					}
 				});
@@ -343,9 +345,8 @@
 		$(document).ready(function(){
 			$(".mail_id_send").click(function(){
 				var email_id =  $("#email_id").val();
-				var home_id =  $("#home_id").val();
+				var home_id =  searHomeID;
 				var email_regex = new RegExp('^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+');
-				home_id = 21;
 
 				if(email_id == ''){
 					toastr["error"]("Email Id NULL");
@@ -366,6 +367,7 @@
 						},
 						success: function (data) {
 							var obj = jQuery.parseJSON(data);
+							$('#email_id').val("");
 							if(obj['status']){
 								$(".close_popup").click();
 								toastr["success"](obj['message']);
@@ -394,7 +396,7 @@
 	<div class="custom-popup payment_popup"  id="payment_option" role="alert">
 		<div class="custom-popup-container">
 			<a href="javascript:void(0)" class="custom-popup-close">x</a>
-			<h5>Send your email id</h5>
+			<h5>We find this home.  Send your email id</h5>
 			<input type="email" name="email_id" id="email_id">
 			<a type="button" href="javascript:void(0);" class="btn mail_id_send">Send</a>
 		</div>

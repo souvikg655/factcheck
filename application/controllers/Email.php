@@ -226,10 +226,10 @@ class Email extends CI_Controller {
         
         if($result == 1){
             $res['status'] = True;
-            $res['message'] = "Mail send successfil";
+            $res['message'] = "Mail send successful";
         }else{
             $res['status'] = False;
-            $res['message'] = "Mail not send successfil";
+            $res['message'] = "Mail not send successful";
         }
         echo (json_encode($res));
     }
