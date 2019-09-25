@@ -32,11 +32,9 @@
 <script src="<?php echo base_url()?>assets/js/toastr.js" type="text/javascript"></script>
 <!-- end form validation -->
 
-
 <!-- Owl Carousal -->
 <script src="<?php echo base_url()?>assets/js/owl.carousel.js" type="text/javascript"></script>
 <!-- Custom Jquery -->
 <script src="<?php echo base_url()?>assets/js/function.js" type="text/javascript"></script>
 </body>
 </html>
-

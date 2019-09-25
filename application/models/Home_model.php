@@ -33,7 +33,27 @@ class Home_model extends CI_Model {
 			'street_abbr' => $data['street_abbr']
 		);
 		$flag = $this->db->insert('homes',$home_data);
-		return $flag==1?true:flase;
+
+		$this -> db -> select('id');
+		$this -> db -> from('homes');
+		$this -> db -> where('realtor_id', $data['realtor_id']);
+		$this->db->order_by('id', 'DESC');
+		$this->db->limit(1);
+		$query = $this -> db -> get();
+		$last_id = $query->result();
+		
+		$home_image = array(
+			'realtor_id' => $data['realtor_id'],
+			'home_id' => $last_id[0]->id,
+			'image' => $data['upload_home_image']
+		);
+		$flag1 = $this->db->insert('home_images',$home_image);
+
+		if($flag1 == 1 && $flag == 1){
+			return true;
+		}else{
+			return flase;
+		}
 	}
 
 	public function fetch_home_data($realtor_id)
@@ -45,6 +65,26 @@ class Home_model extends CI_Model {
 		$query = $this -> db -> get();
 
 		return $query->result();
+	}
+
+	public function fetch_proparty_type(){
+		$this -> db -> select('name');
+		$this -> db -> from('property');
+		$this->db->order_by("id");
+		$this -> db -> where('status', '1');
+		$query = $this -> db -> get();
+
+	return $query->result();
+	}
+
+	public function fetch_area(){
+		$this -> db -> select('value');
+		$this -> db -> from('area');
+		$this->db->order_by("id");
+		$this -> db -> where('status', '1');
+		$query = $this -> db -> get();
+
+	return $query->result();
 	}
 
 	public function mail_details($home_id)

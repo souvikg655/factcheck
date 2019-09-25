@@ -22,11 +22,13 @@
 						<input type="number" name="bathroom" id="bathroom">
 					</div>
 					<div class="col-3">
-						<label for="">Class</label>
+						<label for="">Proparty Type</label>
 						<select name="property" id="property">
-							<option value="Residential Freehold">Residential Freehold</option>
-							<option value="Residential Condo & Other">Residential Condo & Other</option>
-							<option value="Commercial">Commercial</option>
+							<?php 
+							foreach ($proparty as $proparty){
+								?>
+								<option value="<?=$proparty->name;?>"><?=$proparty->name;?></option>
+							<?php } ?>
 						</select>
 					</div>
 				</li>
@@ -36,8 +38,17 @@
 						<input type="number" name="house_age" id="house_age">
 					</div>
 					<div class="col-3">
-						<label for="">Area (Sq Ft)</label>
-						<input type="number" name="area" id="area">
+						<label for="">Area (square feet)</label>
+						<!-- <input type="number" name="area" id="area"> -->
+
+						<select name="area" id="area">
+							<?php 
+							foreach ($area as $area){
+								?>
+								<option value="<?=$area->value;?>"><?=$area->value;?></option>
+							<?php } ?>
+						</select>
+
 					</div>
 					<div class="col-3">
 						<label for="">beside road</label>
@@ -100,7 +111,6 @@
 					</div>
 				</li>
 
-
 				<li class="address">
 					<div class="col-3">
 						<label for="">Availability</label>
@@ -133,6 +143,13 @@
 					<input type="file" name="municipality_paper" id="municipality_paper">
 					<label for="">upload municipality paper (one image only)</label>
 				</li>
+				<li>
+					<input type="file" name="home_image" id="home_image" onchange="readURL(this);">
+					<label for="">upload home images</label>
+				</li>
+				<li>
+					<img id="image" src="">
+				</li>
 				
 				<li>
 					<input type="button" id="btn_add_home" value="save">
@@ -146,31 +163,41 @@
 <?php include 'include/realter_footer.php' ?>
 
 <script type="text/javascript">
+
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader1 = new FileReader();
+			reader1.onload = function (e) {
+				$('#image')
+				.width(80)
+				.height(80)
+				.attr('src', e.target.result);
+			};
+			reader1.readAsDataURL(input.files[0]);
+		}
+	}
+
 	$(document).ready(function(){
 		$("#btn_add_home").click(function(){
 			var title =  $("#title").val();
 			var bedroom =  $("#bedroom").val();
 			var bathroom =  $("#bathroom").val();
-			
 			var property_type =  $("#property").val();
 			var house_age =  $("#house_age").val();
 			var area =  $("#area").val();
-
 			var beside_road = $("input[name='beside_road']:checked").val();
 			var country =  $("#country").val();
 			var province =  $("#province").val();
-
 			var city =  $("#city").val();
 			var postal =  $("#postal").val();
 			var house_no =  $("#house_no").val();
-
 			var municipality_name =  $("#municipality_name").val();
 			var street_no =  $("#street_no").val();
 			var street_name =  $("#street_name").val();
-
 			var availability =  $("#availability").val();
 			var sale_lease =  $("#sale_lease").val();
 			var street_abbr =  $("#street_abbr").val();
+			var home_image = $("#home_image").val();
 
 			if(title == ''){
 				toastr["error"]("Please enter title");
@@ -235,6 +262,7 @@
 
 			var formdata = new FormData();
 			var fileinput = $('#municipality_paper')[0].files[0];
+			var home_image = $('#home_image')[0].files[0];
 			formdata.append("title", title);
 			formdata.append("bedroom", bedroom);
 			formdata.append("bathroom", bathroom);
@@ -254,6 +282,7 @@
 			formdata.append("sale_lease", sale_lease);
 			formdata.append("street_abbr", street_abbr);
 			formdata.append("municipality_paper", fileinput);
+			formdata.append("home_image", home_image);
 
 			var ajaxReq = $.ajax({
 				url: '<?php echo base_url()?>home/insert_home',
@@ -276,10 +305,8 @@
 
 		$("#province").change(function() {
 			var val = this.value;
-
 			var formdata = new FormData();
 			formdata.append("province", val);
-
 			var ajaxReq = $.ajax({
 				url: '<?php echo base_url()?>user/get_city',
 				type: 'POST',

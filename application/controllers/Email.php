@@ -9,7 +9,6 @@ class Email extends CI_Controller {
 		$this->load->model('home_model');
 
 	}
-
 	public function send_email()
 	{	
 		$this->load->library('email');
@@ -26,12 +25,9 @@ class Email extends CI_Controller {
 			'validation' => True
 		);
 		$this->email->initialize($config);
-
         $home_id = $this->input->post('home_id');
         $email_id = $this->input->post('email_id');
-
         $response = $this->home_model->mail_details($home_id);
-
         $title = $response[0]->title;
         $bedroom = $response[0]->bedroom;
         $bathroom = $response[0]->bathroom;
@@ -47,10 +43,7 @@ class Email extends CI_Controller {
         $postal = $response[0]->postal;
         $house_no = $response[0]->house_no;
         $municipality_name = $response[0]->municipality_name;
-
         $municipality_paper = $response[0]->municipality_paper;
-
-
         $message = '<!DOCTYPE html>
         <html>
         <head>
@@ -116,7 +109,7 @@ class Email extends CI_Controller {
         </tr>
         <tr>
         <td valign="top" style="padding: 10px 0px; font-size: 16px; line-height: 22px; color: #07b1e9; text-transform: capitalize; text-align: left; border-bottom: 1px solid #ddd;">
-        Area (sf)
+        Area (square feet)
         </td>
         <td valign="top" style="padding: 10px 0px; font-size: 16px; line-height: 22px; color: #333; text-transform: capitalize; text-align: right; border-bottom: 1px solid #ddd;">
         '.$area.' 
@@ -211,19 +204,13 @@ class Email extends CI_Controller {
         </body>
         </html>';
 
-        
         $this->email->from('souvikg653@gmail.com', 'Factcheck');
         $this->email->to($email_id); 
-
         $this->email->subject("Factcheck Search Result");
         $this->email->message($message);
-
         $pdf_link = base_url()."municipality_papers/".$municipality_paper;
-        
         $this->email->attach($pdf_link);
-
         $result = $this->email->send();
-        
         if($result == 1){
             $res['status'] = True;
             $res['message'] = "Mail send successful";
@@ -234,5 +221,4 @@ class Email extends CI_Controller {
         echo (json_encode($res));
     }
 }
-
 ?>

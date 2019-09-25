@@ -19,6 +19,7 @@
 
 	<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 
+
 </head>
 <body>
 	<!-- header -->
@@ -186,15 +187,12 @@
 
 				var formdata = new FormData();
 				var fileinput = $('#licence_image')[0].files[0];
-
 				formdata.append("name", name);
 				formdata.append("email", email);
 				formdata.append("company", company);
 				formdata.append("password", password);
 				formdata.append("cpassword", cpassword);
 				formdata.append("licence_image", fileinput);
-
-
 				var ajaxReq = $.ajax({
 					url: '<?php echo base_url()?>user/registration',
 					type: 'POST',
@@ -220,19 +218,15 @@
 						}else{
 							toastr["error"](obj.message);
 						}
-
 					}
 				});
-
 			});
 		});
 
 		$(document).ready(function(){
 			$("#btn_login").click(function(){
-				
 				var email =  $("#login_email").val();
 				var password =  $("#login_password").val();
-
 				if(email == ''){
 					toastr["error"]("Please enter valid email");
 					return false;
@@ -241,12 +235,9 @@
 					toastr["error"]("Please enter password");
 					return false;
 				}
-
 				var formdata = new FormData();
-
 				formdata.append("email", email);
 				formdata.append("password", password);
-
 				var ajaxReq = $.ajax({
 					url: '<?php echo base_url()?>user/login',
 					type: 'POST',
@@ -270,5 +261,4 @@
 				});
 			});
 		});
-
 	</script>

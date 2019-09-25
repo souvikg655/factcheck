@@ -3,6 +3,7 @@
 <div class="main-panel">
 	<?php
 	for ($i = 0; $i<sizeof($data); $i++){
+		$ID = $data[$i]->id;
 		?>
 		<div class="white-box project-listing">
 			<div class="top-block">
@@ -28,7 +29,6 @@
 						<img src="<?php echo base_url()?>assets/images/icon-measurement-gray.png" alt="">
 						Area: <?php echo $data[$i]->area; ?> Sq. ft.
 					</li>
-					
 					<li>
 						<img src="<?php echo base_url()?>assets/images/icon-builders.png" alt="">
 						Near Road: <?php echo $data[$i]->beside_road; ?>
@@ -69,7 +69,6 @@
 						<img src="<?php echo base_url()?>assets/images/icon-builders.png" alt="">
 						Sale Or Lease: <?php echo $data[$i]->sale_lease; ?>
 					</li>
-
 				</ul>
 				<?php
 				if($data[$i]->status == "REJECTED"){
@@ -80,11 +79,11 @@
 						</li>
 					</ul>
 				<?php } ?>
+				
 			</div>
 			<?php
 			$status_data = $data[$i]->status;
 			?>
-
 			<?php
 			if($status_data == "APPROVED"){
 				?>
@@ -105,8 +104,6 @@
 			<?php } ?>
 		</div>
 	<?php } ?>
-
 </div>
 </div>
-
 <?php include 'include/realter_footer.php' ?>

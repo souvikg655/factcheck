@@ -120,12 +120,7 @@
 		<div class="custom-popup-container">
 			<a href="javascript:void(0)" class="custom-popup-close close_popup">x</a>
 			<h4>Search your home</h4>
-			<ul>
-				<!-- <li>
-					<select name="country" id="country" disabled="">
-						<option value="" class="searchform">Canada</option>
-					</select>
-				</li> -->
+			<!-- <ul>
 				<li>
 					<select name="province" id="province">
 						<?php 
@@ -161,11 +156,38 @@
 					
 					<input type="button" value="Search" class="btn btn-blue btn_search">
 				</li>
+			</ul> -->
+			<ul>
+				<li>
+					<b>10</b>
+				</li>
+				<li>
+					<input type="text" class="searchform" name="area" id="area" placeholder="Enter area">
+				</li>
+				<li>
+					<input type="text" class="searchform" name="municipality" id="municipality" placeholder="Enter municipality">
+				</li>
+				<li>
+					<input type="text" class="searchform" name="street_no_start" id="street_no_start" placeholder="Enter street number">
+				</li>
+				<li>
+					<input type="text" class="searchform" name="street_no_end" id="street_no_end" placeholder="Enter street number">
+				</li>
+				<li>
+					<input type="text" class="searchform" name="street_name" id="street_name" placeholder="Enter street name">
+				</li>
+				<li>
+					<input type="text" class="searchform" name="postal_code" id="postal_code" placeholder="Enter postal code">
+				</li>
+				<li>
+					<!-- <input type="button" value="Search" class="btn btn-blue"> -->
+				</li>
 			</ul>
 		</div>
 	</div>
 
-	<script>
+
+	<!-- <script>
 		function autocomplete(inp, arr) {
 			var currentFocus;
 			inp.addEventListener("input", function(e) {
@@ -263,7 +285,7 @@
 
 			});
 		});
-	</script>
+	</script> -->
 	
 
 	<script type="text/javascript">

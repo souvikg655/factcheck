@@ -18,10 +18,7 @@
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/mCustomScrollber.css">
 	<!-- lightbox -->
 	<link href='<?php echo base_url()?>assets/css/simplelightbox.min.css' rel='stylesheet' type='text/css'>
-
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-
 </head>
 <body>
 	<!-- Header -->

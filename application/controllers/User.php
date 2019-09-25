@@ -10,7 +10,6 @@ class User extends CI_Controller {
 		$this->load->library('upload');
 		$this->load->model('user_model');
 		$this->load->model('home_model');
-		
 	}
 
 	public function index()
@@ -28,12 +27,12 @@ class User extends CI_Controller {
 	public function add_home()
 	{	
 		if($this->session -> userdata('id') != ''){
-
 			$user_name = $this->session -> userdata('name');
 			$user_id = $this->session -> userdata('id');
 			$res = $this->home_model->realtor_details($user_id);
-
 			$province_list = $this->home_model->province();
+			$proparty = $this->home_model->fetch_proparty_type();
+			$area = $this->home_model->fetch_area();
 
 
 			$data= array();
@@ -42,6 +41,8 @@ class User extends CI_Controller {
 			$data['approval'] = $res->approval;
 			$data['points'] = $res->points;
 			$data['province'] = $province_list;
+			$data['proparty'] = $proparty;
+			$data['area'] = $area;
 
 			$this->load->view('add_home', $data);
 		}else{
@@ -53,10 +54,8 @@ class User extends CI_Controller {
 	{
 		$province = $this->input->post('province');
 		$city_list = $this->home_model->city($province);
-
 		echo (json_encode($city_list));
 	}
-
 
 	public function registration()
 	{		
@@ -66,20 +65,14 @@ class User extends CI_Controller {
 		$config['max_size']	= '2000';
 		$config['max_width']  = '20000';
 		$config['max_height']  = '30000';
-		
 		$this->upload->initialize($config);
-
 		if (!$this->upload->do_upload('licence_image')) {
-
 			print_r( $this->upload->display_errors());
 			$response['status'] = false;
 			$response['message'] = "error";
-		}
-		else
-		{
+		}else{
 			$filedata = $this->upload->data();
 			$filename = $filedata['file_name'];
-			
 			$data['name'] = $this->input->post('name');
 			$data['email'] = $this->input->post('email');
 			$data['company'] = $this->input->post('company');
@@ -106,13 +99,10 @@ class User extends CI_Controller {
 	{		
 		$data['email'] = $this->input->post('email');	
 		$data['password'] = md5($this->input->post('password'));
-
 		$res = $this->user_model->login($data);
-		
 		if(!empty($res)){
 			$response['status'] = true;
 			$response['value'] = $res;
-
 			$this -> session -> set_userdata('id', $res->id);
 			$this -> session -> set_userdata('name', $res->name);
 			$this -> session -> set_userdata('email', $res->email);
@@ -127,7 +117,6 @@ class User extends CI_Controller {
 		$this -> session -> set_userdata('id', '');
 		$this -> session -> set_userdata('name', '');
 		$this -> session -> set_userdata('email', '');
-
 		redirect(base_url());
 	}
 
@@ -139,38 +128,29 @@ class User extends CI_Controller {
 		$config['max_size']	= '2000';
 		$config['max_width']  = '20000';
 		$config['max_height']  = '30000';
-		
 		$this->upload->initialize($config);
-
 		if (!$this->upload->do_upload('image')) {
-
 			$data['name'] = $this->input->post('name');
 			$data['email'] = $this->input->post('email');
 			$data['company'] = $this->input->post('company');
 			$data['id'] = $this->session -> userdata('id');
 			$res = $this->user_model->update_user_without_image($data);
-
 			print_r( $this->upload->display_errors());
 			$response['status'] = true;
 			$response['message'] = "success";
-			echo json_encode($response);
-		}
-		else
-		{
+		}else{
 			$filedata = $this->upload->data();
 			$filename = $filedata['file_name'];
-			
 			$data['name'] = $this->input->post('name');
 			$data['email'] = $this->input->post('email');
 			$data['company'] = $this->input->post('company');
 			$data['image'] = $filename;
 			$data['id'] = $this->session -> userdata('id');
 			$res = $this->user_model->update_user_with_image($data);
-
 			$response['status'] = true;
 			$response['message'] = "success";
-			echo json_encode($response);
-		}	
+		}
+		echo json_encode($response);	
 	}
 
 	public function contact(){
@@ -178,9 +158,7 @@ class User extends CI_Controller {
 		$data['email'] = $this->input->post('email');
 		$data['phone'] = $this->input->post('phone');
 		$data['query'] = $this->input->post('query');
-
 		$res = $this->user_model->contact($data);
-
 		if($res == 1){
 			$response['status'] = true;
 			$response['message'] = "Contact submit successful";
@@ -188,9 +166,7 @@ class User extends CI_Controller {
 			$response['status'] = false;
 			$response['message'] = "Contact submit failed";
 		}
-	echo json_encode($response);
+		echo json_encode($response);
 	}
-
 }
-
 ?>
