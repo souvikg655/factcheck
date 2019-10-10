@@ -67,18 +67,25 @@ class Home extends CI_Controller {
 			$data['municipality_paper'] = $filename;
 			$data['status'] = $this->input->post('status');
 
-			$data['upload_home_image'] = $this->upload_home_image();
+			$home_image = $this->input->post('home_image');
 
-			$res = $this->home_model->home_add($data);
-			if($res){
-				$response['status'] = true;
-				$response['message'] = "Home add successful";
-			}else{
-				$response['status'] = false;
-				$response['message'] = "Sorry! Not add home";
-			}
+			
+
+			//$data['upload_home_image'] = $this->upload_home_image();
+
+
+			print_r($home_image);
+
+			// $res = $this->home_model->home_add($data);
+			// if($res){
+			// 	$response['status'] = true;
+			// 	$response['message'] = "Home add successful";
+			// }else{
+			// 	$response['status'] = false;
+			// 	$response['message'] = "Sorry! Not add home";
+			// }
 		}
-	echo (json_encode($response));
+	//echo (json_encode($response));
 	}
 
 	public function fetch_home()

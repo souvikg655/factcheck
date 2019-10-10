@@ -1,5 +1,12 @@
 <head><title>Add Home</title></head>
 
+<style type="text/css">
+	.thumbnail{
+		height: 50px;
+		width: 50px;
+	}
+</style>
+
 <?php include 'include/realter_header.php' ?>
 
 <div class="main-panel">
@@ -144,11 +151,14 @@
 					<label for="">upload municipality paper (one image only)</label>
 				</li>
 				<li>
-					<input type="file" name="home_image" id="home_image" onchange="readURL(this);">
+					<?php $RANDOM = rand(1,100); ?>
+					<input type="file" name="home_image" id="home_image" multiple>
 					<label for="">upload home images</label>
 				</li>
 				<li>
-					<img id="image" src="">
+					<article>
+						<output id="image" />
+					</article>
 				</li>
 				
 				<li>
@@ -163,169 +173,225 @@
 <?php include 'include/realter_footer.php' ?>
 
 <script type="text/javascript">
+	var imgArray = [];
+	window.onload = function(){
 
-	function readURL(input) {
-		if (input.files && input.files[0]) {
-			var reader1 = new FileReader();
-			reader1.onload = function (e) {
-				$('#image')
-				.width(80)
-				.height(80)
-				.attr('src', e.target.result);
-			};
-			reader1.readAsDataURL(input.files[0]);
+    //Check File API support
+    if(window.File && window.FileList && window.FileReader)
+    {
+    	var filesInput = document.getElementById("home_image");
+
+    	filesInput.addEventListener("change", function(event){
+
+    		// var imgArray = [];
+        	var home_image = $('#home_image')[0].files[0]['name'];
+			imgArray.push(home_image);
+
+			
+
+
+
+            var files = event.target.files; //FileList object
+            var output = document.getElementById("image");
+            
+            for(var i = 0; i< files.length; i++)
+            {
+            	var file = files[i];
+
+                //Only pics
+                if(!file.type.match('image'))
+                	continue;
+                
+                var picReader = new FileReader();
+                
+                picReader.addEventListener("load",function(event){
+
+                	var picFile = event.target;
+
+                	var div = document.createElement("div");
+
+                	div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+                	"title='" + picFile.name + "'/> <a href='#' class='remove_pict'>X</a>";
+
+                	output.insertBefore(div,null);   
+                	div.children[1].addEventListener("click", function(event){
+                		div.parentNode.removeChild(div);
+                		$("#home_image").replaceWith($("#home_image").val('').clone(true));
+                	});         
+
+                });
+                
+                 //Read the image
+                 picReader.readAsDataURL(file);
+             }                               
+
+         });
+    }
+    else
+    {
+    	console.log("Your browser does not support File API");
+    }
+}
+
+
+$(document).ready(function(){
+	$("#btn_add_home").click(function(){
+		var title =  $("#title").val();
+		var bedroom =  $("#bedroom").val();
+		var bathroom =  $("#bathroom").val();
+		var property_type =  $("#property").val();
+		var house_age =  $("#house_age").val();
+		var area =  $("#area").val();
+		var beside_road = $("input[name='beside_road']:checked").val();
+		var country =  $("#country").val();
+		var province =  $("#province").val();
+		var city =  $("#city").val();
+		var postal =  $("#postal").val();
+		var house_no =  $("#house_no").val();
+		var municipality_name =  $("#municipality_name").val();
+		var street_no =  $("#street_no").val();
+		var street_name =  $("#street_name").val();
+		var availability =  $("#availability").val();
+		var sale_lease =  $("#sale_lease").val();
+		var street_abbr =  $("#street_abbr").val();
+		var home_image = $("#home_image").val();
+
+
+
+		if(title == ''){
+			toastr["error"]("Please enter title");
+			return false;
 		}
-	}
+		if(bedroom == ''){
+			toastr["error"]("Please enter number of bedroom");
+			return false;
+		}
+		if(bathroom == ''){
+			toastr["error"]("Please enter number of bathroom");
+			return false;
+		}
+		if(property_type == ''){
+			toastr["error"]("Please enter property");
+			return false;
+		}
+		if(house_age == ''){
+			toastr["error"]("Please enter house age");
+			return false;
+		}
+		if(area == ''){
+			toastr["error"]("Please enter area");
+			return false;
+		}
+		if(beside_road == ''){
+			toastr["error"]("Please enter beside road");
+			return false;
+		}
+		if(country == ''){
+			toastr["error"]("Please enter country");
+			return false;
+		}
+		if(province == ''){
+			toastr["error"]("Please choose province");
+			return false;
+		}
+		if(city == ''){
+			toastr["error"]("Please choose city");
+			return false;
+		}
+		if(postal == ''){
+			toastr["error"]("Please enter postal code");
+			return false;
+		}
+		if(house_no == ''){
+			toastr["error"]("Please enter house no");
+			return false;
+		}
+		if(municipality_name == ''){
+			toastr["error"]("Please enter municipality name");
+			return false;
+		}
+		if(street_no == ''){
+			toastr["error"]("Please enter street no");
+			return false;
+		}
+		if(street_name == ''){
+			toastr["error"]("Please enter street name");
+			return false;
+		}
 
-	$(document).ready(function(){
-		$("#btn_add_home").click(function(){
-			var title =  $("#title").val();
-			var bedroom =  $("#bedroom").val();
-			var bathroom =  $("#bathroom").val();
-			var property_type =  $("#property").val();
-			var house_age =  $("#house_age").val();
-			var area =  $("#area").val();
-			var beside_road = $("input[name='beside_road']:checked").val();
-			var country =  $("#country").val();
-			var province =  $("#province").val();
-			var city =  $("#city").val();
-			var postal =  $("#postal").val();
-			var house_no =  $("#house_no").val();
-			var municipality_name =  $("#municipality_name").val();
-			var street_no =  $("#street_no").val();
-			var street_name =  $("#street_name").val();
-			var availability =  $("#availability").val();
-			var sale_lease =  $("#sale_lease").val();
-			var street_abbr =  $("#street_abbr").val();
-			var home_image = $("#home_image").val();
+		var formdata = new FormData();
+		var fileinput = $('#municipality_paper')[0].files[0];
+		var home_image = $('#home_image')[0].files[0];
+		formdata.append("title", title);
+		formdata.append("bedroom", bedroom);
+		formdata.append("bathroom", bathroom);
+		formdata.append("property_type", property_type);
+		formdata.append("house_age", house_age);
+		formdata.append("area", area);
+		formdata.append("beside_road", beside_road);
+		formdata.append("country", country);
+		formdata.append("province", province);
+		formdata.append("city", city);
+		formdata.append("postal", postal);
+		formdata.append("house_no", house_no);
+		formdata.append("municipality_name", municipality_name);
+		formdata.append("street_no", street_no);
+		formdata.append("street_name", street_name);
+		formdata.append("availability", availability);
+		formdata.append("sale_lease", sale_lease);
+		formdata.append("street_abbr", street_abbr);
+		formdata.append("municipality_paper", fileinput);
+		//formdata.append("home_image", home_image);
+		for (var i = 0; i < imgArray.length; i++) {
+    		formData.append('home_image[]', imgArray[i]);
+		}
+		//formdata.append("home_image", imgArray);
 
-			if(title == ''){
-				toastr["error"]("Please enter title");
-				return false;
-			}
-			if(bedroom == ''){
-				toastr["error"]("Please enter number of bedroom");
-				return false;
-			}
-			if(bathroom == ''){
-				toastr["error"]("Please enter number of bathroom");
-				return false;
-			}
-			if(property_type == ''){
-				toastr["error"]("Please enter property");
-				return false;
-			}
-			if(house_age == ''){
-				toastr["error"]("Please enter house age");
-				return false;
-			}
-			if(area == ''){
-				toastr["error"]("Please enter area");
-				return false;
-			}
-			if(beside_road == ''){
-				toastr["error"]("Please enter beside road");
-				return false;
-			}
-			if(country == ''){
-				toastr["error"]("Please enter country");
-				return false;
-			}
-			if(province == ''){
-				toastr["error"]("Please choose province");
-				return false;
-			}
-			if(city == ''){
-				toastr["error"]("Please choose city");
-				return false;
-			}
-			if(postal == ''){
-				toastr["error"]("Please enter postal code");
-				return false;
-			}
-			if(house_no == ''){
-				toastr["error"]("Please enter house no");
-				return false;
-			}
-			if(municipality_name == ''){
-				toastr["error"]("Please enter municipality name");
-				return false;
-			}
-			if(street_no == ''){
-				toastr["error"]("Please enter street no");
-				return false;
-			}
-			if(street_name == ''){
-				toastr["error"]("Please enter street name");
-				return false;
-			}
+		console.log(imgArray);
 
-			var formdata = new FormData();
-			var fileinput = $('#municipality_paper')[0].files[0];
-			var home_image = $('#home_image')[0].files[0];
-			formdata.append("title", title);
-			formdata.append("bedroom", bedroom);
-			formdata.append("bathroom", bathroom);
-			formdata.append("property_type", property_type);
-			formdata.append("house_age", house_age);
-			formdata.append("area", area);
-			formdata.append("beside_road", beside_road);
-			formdata.append("country", country);
-			formdata.append("province", province);
-			formdata.append("city", city);
-			formdata.append("postal", postal);
-			formdata.append("house_no", house_no);
-			formdata.append("municipality_name", municipality_name);
-			formdata.append("street_no", street_no);
-			formdata.append("street_name", street_name);
-			formdata.append("availability", availability);
-			formdata.append("sale_lease", sale_lease);
-			formdata.append("street_abbr", street_abbr);
-			formdata.append("municipality_paper", fileinput);
-			formdata.append("home_image", home_image);
-
-			var ajaxReq = $.ajax({
-				url: '<?php echo base_url()?>home/insert_home',
-				type: 'POST',
-				processData: false,
-				contentType: false,
-				data: formdata,
-				beforeSend: function (xhr) {
-				},
-				success: function (data) {
-					var obj = jQuery.parseJSON(data);
-					if(obj.status){
-						window.location.href = "<?php echo base_url()."dashboard"?>";
-					}else{
-						toastr["error"]("Home Add Failed");
-					}
+		var ajaxReq = $.ajax({
+			url: '<?php echo base_url()?>home/insert_home',
+			type: 'POST',
+			processData: false,
+			contentType: false,
+			data: formdata,
+			beforeSend: function (xhr) {
+			},
+			success: function (data) {
+				var obj = jQuery.parseJSON(data);
+				if(obj.status){
+					window.location.href = "<?php echo base_url()."dashboard"?>";
+				}else{
+					toastr["error"]("Home Add Failed");
 				}
-			});
+			}
 		});
-
-		$("#province").change(function() {
-			var val = this.value;
-			var formdata = new FormData();
-			formdata.append("province", val);
-			var ajaxReq = $.ajax({
-				url: '<?php echo base_url()?>user/get_city',
-				type: 'POST',
-				processData: false,
-				contentType: false,
-				data: formdata,
-				beforeSend: function (xhr) {
-				},
-				success: function (data) {
-					var obj = jQuery.parseJSON(data);
-					st ='';
-					for(var i=0; i<obj.length; i++){
-						st = st + '<option value="'+obj[i]['city']+'">'+obj[i]['city']+'</option>';
-					}
-					$("#city").html(st);
-				}
-			});
-
-		}).change();
 	});
 
+	$("#province").change(function() {
+		var val = this.value;
+		var formdata = new FormData();
+		formdata.append("province", val);
+		var ajaxReq = $.ajax({
+			url: '<?php echo base_url()?>user/get_city',
+			type: 'POST',
+			processData: false,
+			contentType: false,
+			data: formdata,
+			beforeSend: function (xhr) {
+			},
+			success: function (data) {
+				var obj = jQuery.parseJSON(data);
+				st ='';
+				for(var i=0; i<obj.length; i++){
+					st = st + '<option value="'+obj[i]['city']+'">'+obj[i]['city']+'</option>';
+				}
+				$("#city").html(st);
+			}
+		});
+
+	}).change();
+});
+
 </script>
+
