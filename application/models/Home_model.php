@@ -41,13 +41,17 @@ class Home_model extends CI_Model {
 		$this->db->limit(1);
 		$query = $this -> db -> get();
 		$last_id = $query->result();
-		
-		$home_image = array(
-			'realtor_id' => $data['realtor_id'],
-			'home_id' => $last_id[0]->id,
-			'image' => $data['upload_home_image']
-		);
-		$flag1 = $this->db->insert('home_images',$home_image);
+
+		$arr_length = sizeof($data['upload_home_image']);
+		for ($i=0; $i < $arr_length ; $i++) { 
+
+			$home_image = array(
+				'realtor_id' => $data['realtor_id'],
+				'home_id' => $last_id[0]->id,
+				'image' => $data['upload_home_image'][$i]
+			);
+			$flag1 = $this->db->insert('home_images',$home_image);
+		}
 
 		if($flag1 == 1 && $flag == 1){
 			return true;
@@ -74,7 +78,7 @@ class Home_model extends CI_Model {
 		$this -> db -> where('status', '1');
 		$query = $this -> db -> get();
 
-	return $query->result();
+		return $query->result();
 	}
 
 	public function fetch_area(){
@@ -84,7 +88,7 @@ class Home_model extends CI_Model {
 		$this -> db -> where('status', '1');
 		$query = $this -> db -> get();
 
-	return $query->result();
+		return $query->result();
 	}
 
 	public function mail_details($home_id)
@@ -159,7 +163,7 @@ class Home_model extends CI_Model {
 			$res = [];
 		}
 		
-	return $res;
+		return $res;
 	}
 	
 }

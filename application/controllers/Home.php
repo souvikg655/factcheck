@@ -10,22 +10,59 @@ class Home extends CI_Controller {
 		$this->load->library('upload');
 		$this->load->model('home_model');
 		$this->load->model('user_model');
+
+		ini_set( 'memory_limit', '200M' );
+		ini_set('upload_max_filesize', '200M');  
+		ini_set('post_max_size', '200M');  
+		ini_set('max_input_time', 3600);  
+		ini_set('max_execution_time', 3600);
+	}
+	private function set_upload_options()
+	{   
+    //upload an image options
+		$config = array();
+		$config['upload_path'] = './home_images';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size'] = '1000000';
+		$config['max_width']  = '1024000';
+		$config['max_height']  = '768000';
+		$config['overwrite']     = FALSE;
+
+		return $config;
 	}
 
 	public function upload_home_image(){
-		$response1 = array();
-		$config1['upload_path'] = './home_images';
-		$config1['allowed_types'] = 'jpg|png|jpeg';
-		$config1['max_size']	= '2000';
-		$config1['max_width']  = '20000';
-		$config1['max_height']  = '30000';
+		// $response1 = array();
+		// $config1['upload_path'] = './home_images';
+		// $config1['allowed_types'] = 'jpg|png|jpeg';
+		// $config1['max_size']	= '2000';
+		// $config1['max_width']  = '20000';
+		// $config1['max_height']  = '30000';
 
-		$this->upload->initialize($config1);
-		if($this->upload->do_upload('home_image')){
+		// $this->upload->initialize($config1);
+		// $file_names = $_FILES['home_image']['name'];
+
+
+
+
+		$files = $_FILES;
+		$cpt = count($_FILES['home_image']['name']);
+		$img_filename = array();
+		for($i=0; $i<$cpt; $i++)
+		{           
+			$_FILES['home_image']['name']= $files['home_image']['name'][$i];
+			$_FILES['home_image']['type']= $files['home_image']['type'][$i];
+			$_FILES['home_image']['tmp_name']= $files['home_image']['tmp_name'][$i];
+			$_FILES['home_image']['error']= $files['home_image']['error'][$i];
+			$_FILES['home_image']['size']= $files['home_image']['size'][$i];    
+
+			$this->upload->initialize($this->set_upload_options());
+			$this->upload->do_upload('home_image');
 			$filedata1 = $this->upload->data();
 			$filename1 = $filedata1['file_name'];
+			$img_filename[$i] = $filename1;
 		}
-	return $filename1;
+	return $img_filename;
 	}
 
 	public function insert_home()
@@ -44,6 +81,8 @@ class Home extends CI_Controller {
 			$response['message'] = "error";
 		}else{
 			$filedata = $this->upload->data();
+			//echo "<pre/>";
+			//print_r($filedata);
 			$filename = $filedata['file_name'];
 			$data['realtor_id'] = $this->session -> userdata('id');
 			$data['title'] = $this->input->post('title');
@@ -67,25 +106,19 @@ class Home extends CI_Controller {
 			$data['municipality_paper'] = $filename;
 			$data['status'] = $this->input->post('status');
 
-			$home_image = $this->input->post('home_image');
+			$data['upload_home_image'] = $this->upload_home_image();
 
+			$res = $this->home_model->home_add($data);
 			
-
-			//$data['upload_home_image'] = $this->upload_home_image();
-
-
-			print_r($home_image);
-
-			// $res = $this->home_model->home_add($data);
-			// if($res){
-			// 	$response['status'] = true;
-			// 	$response['message'] = "Home add successful";
-			// }else{
-			// 	$response['status'] = false;
-			// 	$response['message'] = "Sorry! Not add home";
-			// }
+			if($res){
+				$response['status'] = true;
+				$response['message'] = "Home add successful";
+			}else{
+				$response['status'] = false;
+				$response['message'] = "Sorry! Not add home";
+			}
 		}
-	//echo (json_encode($response));
+	echo (json_encode($response));
 	}
 
 	public function fetch_home()
