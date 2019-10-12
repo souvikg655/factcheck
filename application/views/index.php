@@ -159,7 +159,7 @@
 			</ul> -->
 			<ul>
 				<li>
-					<b>10</b>
+					<b id="no_of_results">10</b>
 				</li>
 				<li>
 					<input type="text" class="searchform" name="area" id="area" placeholder="Enter area">
@@ -185,6 +185,10 @@
 			</ul>
 		</div>
 	</div>
+
+	<script type="text/javascript">
+		
+	</script>
 
 
 	<!-- <script>
