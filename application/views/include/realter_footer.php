@@ -9,11 +9,11 @@
 
 	<!-- Owl Carousal -->
 	<script src="<?php echo base_url()?>assets/js/owl.carousel.js" type="text/javascript"></script>
-	<!-- Custom Jquery -->
-	<script src="<?php echo base_url()?>assets/js/function.js" type="text/javascript"></script>
 	<!-- lightbox -->
 	<script type="text/javascript" src="<?php echo base_url()?>assets/js/simple-lightbox.js"></script>
-	<!-- CUSTOM SCROLLBER PLUGIN -->
-	<script src="<?php echo base_url()?>assets/js/mCustomScrollber.js"></script>
+	<!-- jquery-ui.js -->
+	<script src="<?php echo base_url()?>assets/js/jquery-ui.js" type="text/javascript"></script>
+	<!-- Custom Jquery -->
+	<script src="<?php echo base_url()?>assets/js/function.js" type="text/javascript"></script>
 </body>
 </html>

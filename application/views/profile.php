@@ -27,16 +27,19 @@
 			<form action="#" method="POST">
 				<ul>
 					<li>
-						<label for="">full name</label>
-						<input type="text" placeholder="Your Name" value="<?=$data->name?>" <?=$approval=='REGECTED'?'':'readonly' ?> id="name" >
+						<input type="text" value="<?=$data->name?>" <?=$approval=='REGECTED'?'':'readonly' ?> id="name" required="">
+						<span class="highlight"></span>
+						<label>full name</label>
 					</li>
 					<li>
-						<label for="">email</label>
-						<input type="text" placeholder="email id" value="<?=$data->email?>" <?=$approval=='REGECTED'?'':'readonly' ?> id="email" >
+						<input type="text" value="<?=$data->email?>" <?=$approval=='REGECTED'?'':'readonly' ?> id="email" required="">
+						<span class="highlight"></span>
+						<label>email</label>
 					</li>
 					<li>
-						<label for="">conpamy name</label>
-						<input type="text" placeholder="Company Name" value="<?=$data->company?>" <?=$approval=='REGECTED'?'':'readonly' ?> id="company" >  
+						<input type="text" value="<?=$data->company?>" <?=$approval=='REGECTED'?'':'readonly' ?> id="company" required="">  
+						<span class="highlight"></span>
+						<label>conpamy name</label>
 					</li>
 					<li>
 						<label for="">Identity proved</label>

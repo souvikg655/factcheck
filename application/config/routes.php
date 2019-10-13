@@ -57,3 +57,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route['dashboard'] = "home/dashboard";
 $route['user-profile'] = "home/profile";
 $route['add-home'] = "user/add_home";
+$route['about'] = "user/about";
+$route['contact-us'] = "user/contact_us";

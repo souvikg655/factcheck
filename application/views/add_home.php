@@ -11,54 +11,126 @@
 
 <div class="main-panel">
 	<div class="white-box add-home">
-		<h3>field the details of your home</h3>
-
-		<form action="javaScript:Void(0)" method="POST" enctype='multipart/form-data'>
+		<h4>Location</h4>
+		<form action="javaScript:Void(0);">
 			<ul>
 				<li>
-					<label for="">title</label>
-					<input type="text" name="title" id="title">
+					<div class="col-2">
+						<select name="country" id="country" class="select-text" required="" disabled="">
+							<option value="" disabled="" selected=""></option>
+							<option value="canada">Canada</option>
+						</select>
+						<span class="select-highlight"></span>
+						<label class="select-label">Canada</label>
+					</div>
+					<div class="col-2">
+						<input type="text" name="municipality_name" id="municipality_name" required="">
+						<span class="highlight"></span>
+						<label>Municipality Name</label>
+					</div>
+				</li>
+			</ul>
+		</form>
+	</div>
+	<div class="white-box add-home">
+		<h4>Address</h4>
+		<form action="javaScript:Void(0);">
+			<ul>
+				<li>
+					<div class="col-3">
+						<select name="province" id="province" class="select-text" required="">
+							<option value="" disabled="" selected=""></option>
+							<?php 
+							foreach ($province as $prov){
+								?>
+								<option value="<?=$prov->province;?>"><?=$prov->province;?></option>
+							<?php } ?>
+						</select>
+						<span class="select-highlight"></span>
+						<label class="select-label">province / territories</label>
+					</div>
+					<div class="col-3">
+						<select name="city" id="city" class="select-text" required="">
+							<option value="" disabled="" selected=""></option>
+						</select>
+						<span class="select-highlight"></span>
+						<label class="select-label">City</label>
+					</div>
+					<div class="col-3">
+						<input type="text" name="postal" id="postal" required="">
+						<span class="highlight"></span>
+						<label>Postal Code</label>
+					</div>
 				</li>
 				<li>
 					<div class="col-3">
-						<label for="">numbers of bedroom(s)</label>
-						<input type="number" name="bedroom" id="bedroom">
+						<input type="number" name="house_no" id="house_no" required="">
+						<span class="highlight"></span>
+						<label>house number</label>
 					</div>
 					<div class="col-3">
-						<label for="">numbers of bathroom(s)</label>
-						<input type="number" name="bathroom" id="bathroom">
+						<input type="number" name="street_no" id="street_no" required="">
+						<span class="highlight"></span>
+						<label>Street no.</label>
+					</div>
+
+					<div class="col-3">
+						<input type="text" name="street_name" id="street_name" required="">
+						<span class="highlight"></span>
+						<label>Street Name</label>
+					</div>
+				</li>
+			</ul>
+		</form>
+	</div>
+	<div class="white-box add-home">
+		<h4>House Details</h4>
+		<form action="javaScript:Void(0)" method="POST" enctype='multipart/form-data'>
+			<ul>
+				<li>
+					<div class="col-3">
+						<input type="number" name="bedroom" id="bedroom" required="">
+						<span class="highlight"></span>
+						<label>numbers of bedroom(s)</label>
 					</div>
 					<div class="col-3">
-						<label for="">Proparty Type</label>
-						<select name="property" id="property">
+						<input type="number" name="bathroom" id="bathroom" required="">
+						<span class="highlight"></span>
+						<label>numbers of bathroom(s)</label>
+					</div>
+					<div class="col-3">
+						<select name="property" id="property" class="select-text" required="">
+							<option value="" disabled="" selected=""></option>
 							<?php 
 							foreach ($proparty as $proparty){
 								?>
 								<option value="<?=$proparty->name;?>"><?=$proparty->name;?></option>
 							<?php } ?>
 						</select>
+						<span class="select-highlight"></span>
+						<label class="select-label">Proparty Type</label>
 					</div>
 				</li>
 				<li>
 					<div class="col-3">
-						<label for="">age of house</label>
-						<input type="number" name="house_age" id="house_age">
+						<input type="number" name="house_age" id="house_age" required="">
+						<span class="highlight"></span>
+						<label>age of house</label>
 					</div>
 					<div class="col-3">
-						<label for="">Area (square feet)</label>
-						<!-- <input type="number" name="area" id="area"> -->
-
-						<select name="area" id="area">
+						<select name="area" id="area" class="select-text" required="">
+							<option value="" disabled="" selected=""></option>
 							<?php 
 							foreach ($area as $area){
 								?>
 								<option value="<?=$area->value;?>"><?=$area->value;?></option>
 							<?php } ?>
 						</select>
-
+						<span class="select-highlight"></span>
+						<label class="select-label">Area (square feet)</label>
 					</div>
 					<div class="col-3">
-						<label for="">beside road</label>
+						<p>beside road</p>
 						<fieldset>
 							<input type="radio" name="beside_road" value="YES" checked> <span>Yes</span>
 							<input type="radio" name="beside_road" value="NO"> <span>No</span>
@@ -67,86 +139,44 @@
 				</li>
 				<li class="address">
 					<div class="col-3">
-						<label for="">country</label>
-						<select name="country" id="country">
-							<option value="canada">Canada</option>
-						</select>
-					</div>
-
-					<div class="col-3">
-						<label for="">province/territories</label>
-						<select name="province" id="province">
-							<?php 
-							foreach ($province as $prov){
-								?>
-								<option value="<?=$prov->province;?>"><?=$prov->province;?></option>
-							<?php } ?>
-						</select>
-					</div>
-					<div class="col-3">
-						<label for="">City</label>
-						<select name="city" id="city"></select>
-					</div>
-
-				</li>
-				<li>
-					<div class="col-2">
-						<label for="">Postal Code</label>
-						<input type="text" name="postal" id="postal">
-					</div>
-					<div class="col-2">
-						<label for="">house number</label>
-						<input type="number" name="house_no" id="house_no">
-					</div>
-				</li>
-				<li class="address">
-					<div class="col-3">
-						<label for="">Municipality Name</label>
-						<input type="text" name="municipality_name" id="municipality_name">
-					</div>
-
-					<div class="col-3">
-						<label for="">Street no.</label>
-						<input type="number" name="street_no" id="street_no">
-					</div>
-
-					<div class="col-3">
-						<label for="">Street Name</label>
-						<input type="text" name="street_name" id="street_name">
-					</div>
-				</li>
-
-				<li class="address">
-					<div class="col-3">
-						<label for="">Availability</label>
-						<select name="availability" id="availability">
+						<select name="availability" id="availability" class="select-text" required="">
+							<option value="" disabled="" selected=""></option>
 							<option value="Available">Available</option>
 							<option value="Unavaliable">Unavaliable</option>
 						</select>
+						<span class="select-highlight"></span>
+						<label class="select-label">Availability</label>
 					</div>
 
 					<div class="col-3">
-						<label for="">Sale or Lease</label>
-						<select name="sale_lease" id="sale_lease">
+						<select name="sale_lease" id="sale_lease" class="select-text" required="">
+							<option value="" disabled="" selected=""></option>
 							<option value="Sale">Sale</option>
 							<option value="Lease">Lease</option>
 						</select>
+						<span class="select-highlight"></span>
+						<label class="select-label">Sale or Lease</label>
 					</div>
 
 					<div class="col-3">
-						<label for="">Street Abbr</label>
-						<select name="street_abbr" id="street_abbr">
+						<select name="street_abbr" id="street_abbr" class="select-text" required="">
+							<option value="" disabled="" selected=""></option>
 							<option value="Abby">Abby</option>
 							<option value="Acre">Acre</option>
 						</select>
+						<span class="select-highlight"></span>
+						<label class="select-label">Street Abbr</label>
 					</div>
 				</li>
-
+			</ul>
+		</form>
+	</div>
+	<div class="white-box add-home">
+		<form action="javaScript:Void(0)" method="POST" enctype='multipart/form-data'>
+			<ul>
 				<li>
-				</li>
-				<li>
-					<input type="file" name="municipality_paper" id="municipality_paper">
-					<label for="">upload municipality paper (one image only)</label>
+					<button class="upload">upload municipality paper</button>
+					<figure class="pdf"><img src="assets/images/pdf-icon.png" alt=""></figure>
 				</li>
 				<li>
 					<input type="file" name="ca_image[]" accept="image/*" class="form-control uploadmcq_image" 
@@ -154,7 +184,7 @@
 					<label for="">upload home images</label>
 				</li>
 				<li>
-					<span class="addImageList" id="selectedFiles"></span>
+					<div class="addImageList" id="selectedFiles"></div>
 				</li>
 				
 				<li>
@@ -184,7 +214,7 @@
 			storedFiles.push(f);
 			var reader = new FileReader();
 			reader.onload = function (e) {
-				var html = "<li><img style=\"height:50px; width:50px;\" src=\"" + e.target.result + "\" data-file='" + f.name + "' title='" + f.name + "'><span data-file='" + f.name + "' class='selFile'><i class='fa fa-times' aria-hidden='true'></i><span><br clear=\"left\"/></li>";
+				var html = "<figure><img style=\"height:50px; width:50px;\" src=\"" + e.target.result + "\" data-file='" + f.name + "' title='" + f.name + "'><span data-file='" + f.name + "' class='selFile'><i class='fa fa-times' aria-hidden='true'></i><span><br clear=\"left\"/></figure>";
 				selDiv.append(html);
 			}
 			reader.readAsDataURL(f);

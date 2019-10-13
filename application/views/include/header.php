@@ -6,18 +6,21 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Fact Check</title>
+	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url()?>assets/images/favicon.png">
 	
 	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/
+	css?family=Livvic:300,400,400i,500,600,700&display=swap" rel="stylesheet">
 	<!-- Custom Stylesheet -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css">
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/toastr.css">
 	<!-- Custom Stylesheet -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/owl.animate.css">
 	<script src="<?php echo base_url()?>assets/js/jquery-2.2.4.js" type="text/javascript"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-	<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+	<!-- <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/> -->
 
 	
 
@@ -31,97 +34,123 @@
 				<div class="logo">
 					<a href="<?php echo base_url()?>"><img src="<?php echo base_url()?>assets/images/logo.png" alt=""></a>
 				</div>
-				<ul>
-					<li><a href="javascript:void(0);">about us</a></li>
-					<li><a href="javascript:void(0);">Contact us</a></li>
-					<li class="login"><a href="javascript:void(0);" rel="popuprel" class="popup">login</a></li>
-
-					<li><a href="javascript:void(0);" rel="popuprel2" class="popup">register</a></li>
-				</ul>
 				<a href="javascript:void(0);" class="toggle">
 					<span></span>
 					<span></span>
 					<span></span>
 				</a>
+				<ul>
+					<li><a href="<?php echo base_url()?>about">about us</a></li>
+					<li><a href="<?php echo base_url()?>contact-us">Contact us</a></li>
+					<li class="login"><a href="javascript:void(0);" class="trigger-popup" data-target="login-popup">login</a></li>
+				</ul>
 			</div>
 		</div>
 	</header>
 
 
-	<div class="popupbox" id="popuprel">
-		<div id="intabdiv" class="flex-body">
-			<h4>Login</h4>
-			<h6>Welcome! Login to your account</h6>
-			<form action="JavaScript:Void(0);" method="POST" name="login">
+	<!-- Login Popup -->
+	<div class="custom-popup login-popup" role="alert">
+		<div class="custom-popup-container">
+			<a href="javascript:void(0)" class="custom-popup-close">x</a>
+			<h4>Search your home</h4>
+			<form>
 				<ul>
 					<li>
-						<input type="email" name="email" class="loginbox" id="login_email" placeholder="Email">
-					</li>
-					<li>
-						<input type="password" name="password" class="loginbox" id="login_password" placeholder="Password">
-					</li>
+						<input type="email" name="email" class="loginbox" id="login_email" required="">
+						<span class="highlight"></span>
+						<label>Email</label>
+			    	</li>
+			    	<li>
+						<input type="password" name="password" class="loginbox" id="login_password" required="">
+						<span class="highlight"></span>
+						<label>Password</label>
+			    	</li>
 					<li>
 						<input type="button" value="Login" id="btn_login" class="btn btn-blue">
-						<span class="more">
-							<span>Forgot your password?</span>
-							<p id="enter-text">Enter your Email Address here to receive a link to change password.</p>
-							<ul>
-								<li>
-									<input type="email" name="forgot_email" id="forgot_email" placeholder="Email">
-								</li>
-								<li>
-									<label></label>
-									<input type="button" id="mail_send" value="Send Email" class="btn btn-blue">
-								</li>
-							</ul>
-						</span>
 					</li>
-					<li><p>Don't have an account? <a href="javascript:void(0)" class="signup-button">Create One!</a></p></li>
 				</ul>
-			</form>     
+			</form>
+			<a href="javascript:void(0);" class="trigger-popup forger-password" data-target="forger-password-popup">Forgot your password?</a>
+			<p>Don't have an account? <a href="javascript:void(0)" class="trigger-popup" data-target="signup-popup">Create One!</a></p>
 		</div>
-		<div id="close"><a href="#"><img src="assets/images/close_pop.png" alt="close-button"></a></div>
 	</div>
 
-	<!-- Registration Popup -->
-	<div class="popupbox2" id="popuprel2">
-		<div id="intabdiv2" class="flex-body">
-			<h4>create an account</h4>
-			<h6>Welcome! Register for an account</h6>
-			<form action="JavaScript:Void(0);" method="POST"  enctype='multipart/form-data'>
+	<!-- Forget Password Popup -->
+	<div class="custom-popup forger-password-popup" role="alert">
+		<div class="custom-popup-container">
+			<a href="javascript:void(0)" class="custom-popup-close">x</a>
+			<h4>Forgot your password?</h4>
+			<p>Enter your Email Address here to receive a link to change password.</p>
+			<form>
 				<ul>
 					<li>
-						<input type="text" name="name" class="signupbox" id="name" placeholder="Full Name">
-					</li>
-					<li>
-						<input type="email" name="email" class="signupbox" id="email" placeholder="Email">
-					</li>
-					<li>
-						<input type="text" name="company" class="signupbox" id="company" placeholder="Company Name">
-					</li>
-					<li>
-						<input type="password" name="password" class="signupbox" id="password" placeholder="Password">
-					</li>
-					<li>
-						<input type="password" name="cpassword" class="signupbox" id="cpassword" placeholder="Confirm Password">
-					</li>
-					<li>
-						<div class="block">
-							<input  name="licence_image" id="licence_image" class="signupbox" type="file" placeholder="Add profile picture" onchange="readURL(this);">
-							<label for="licence_image">Upload ID proof</label>
-						</div>
-						<figure>
-							<img id="blah"  src="#" alt=""/>
-						</figure>
-					</li>
-					<li>
-						<input type="button" value="Sign up Now!" id="btn_signup" name="btn_signup" class="btn btn-blue">
-					</li>
-					<li><p>Already have an account? <a href="javascript:void(0)" class="signup-button2">Login!</a></p></li>
+						<input type="email" name="forgot_email" id="forgot_email" required="">
+						<span class="highlight"></span>
+						<label>Email</label>
+				    </li>
+				    <li>
+	    				<label></label>
+						<input type="button" id="mail_send" value="Send Email" class="btn btn-blue">
+	    			</li>
 				</ul>
 			</form>
 		</div>
-		<div id="close2"><a href="#"><img src="assets/images/close_pop.png" alt="close-button"></a></div>
+	</div>
+
+	<!-- Sign Up Popup -->
+	<div class="custom-popup signup-popup" role="alert">
+		<div class="custom-popup-container popup-container-large">
+			<a href="javascript:void(0)" class="custom-popup-close">x</a>
+			<h4>create an account</h4>
+			<p>Welcome! Register for an account</p>
+			<form>
+				<ul>
+					<li>
+						<div class="col-2">
+							<input type="text" name="name" class="signupbox" id="name" required="">
+							<span class="highlight"></span>
+							<label>Full Name</label>
+						</div>
+						<div class="col-2">
+							<input type="email" name="email" class="signupbox" id="email" required="">
+							<span class="highlight"></span>
+							<label>Email</label>
+						</div>
+					</li>
+					<li>
+						<div class="col-2">
+							<input type="text" name="company" class="signupbox" id="company" required="">
+							<span class="highlight"></span>
+							<label>Company Name</label>
+						</div>
+						<div class="col-2">
+							<input type="password" name="password" class="signupbox" id="password" required="">
+							<span class="highlight"></span>
+							<label>Password</label>
+						</div>
+					</li>
+					<li>
+						<div class="col-2">
+							<input type="password" name="cpassword" class="signupbox" id="cpassword" required="">
+							<span class="highlight"></span>
+							<label>Confirm Password</label>
+						</div>
+						<div class="col-2">
+							<div class="block">
+				    			<input  name="licence_image" id="licence_image" class="signupbox" type="file" placeholder="Add profile picture" onchange="readURL(this);">
+	  							<label for="licence_image">Upload ID proof</label>
+				    		</div>
+				    		<figure><img id="blah"  src="#" alt=""/></figure>
+						</div>
+					</li>
+			    	<li>
+			    		<input type="button" value="Sign up Now!" id="btn_signup" name="btn_signup" class="btn btn-blue">
+			    	</li>
+				</ul>
+			</form>
+			<p class="gap15">Already have an account? <a href="javascript:void(0)" class="trigger-popup" data-target="login-popup">Login!</a></p>
+		</div>
 	</div>
 
 	<script type="text/javascript">

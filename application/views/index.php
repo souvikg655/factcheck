@@ -32,8 +32,10 @@
 	<!-- Looking For -->
 	<div class="looking-for">
 		<div class="container">
-			<h3>WHAT ARE YOU LOOKING FOR?</h3>
-			<h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h6>
+			<h2>what are you looking for?</h2>
+			<div class="headling-bg">
+				<span><img src="assets/images/border-img.png" alt=""></span>
+			</div>
 			<div class="row">
 				<div class="block">
 					<div class="image-block">
@@ -71,8 +73,9 @@
 			</div>
 			<div class="aside text-aside">
 				<div class="block">
-					<h2>Get the valid information of Building, Properties and Projects for <a href="javascript:void(0);">enquiry</a></h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum quasi dolorum similique porro recusandae ipsam a minima accusamus suscipit at. Enim recusandae doloremque nostrum obcaecati beatae. Quam ipsam, voluptate esse. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repudiandae beatae, rem sed nam aut, ex facilis numquam dicta delectus modi quos, animi quia consequuntur maxime sunt quae ducimus autem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde provident quisquam adipisci numquam hic excepturi ex facere natus sit illum atque, debitis ullam aut repudiandae dolores tempora tenetur quae sapiente.</p>
+					<h2>Get the valid information of Building, Properties and Projects for sale</h2>
+					<h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h6>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum quasi dolorum similique porro recusandae ipsam a minima accusamus suscipit at. Enim recusandae doloremque nostrum obcaecati beatae. Quam ipsam, voluptate esse. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto repudiandae beatae, rem sed nam aut, ex facilis numquam dicta delectus modi quos, animi quia consequuntur maxime sunt quae ducimus autem.</p>
 				</div>
 			</div>
 		</div>
@@ -81,32 +84,35 @@
 	<!-- What We Do -->
 	<div class="what-we-do">
 		<div class="container">
-			<h3>What We Do</h3>
-			<h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h6>
+			<h2>What We Do</h2>
+			<div class="headling-bg">
+				<span><img src="assets/images/border-img.png" alt=""></span>
+			</div>
 			<div class="row">
 				<div class="block">
-					<img src="assets/images/icon-home-search.png" alt="">
-					<h5>Search Your Home</h5>
+					<figure><img src="assets/images/icon-home-search.png" alt=""></figure>
+					<h4>Search Your Home</h4>
 					<p>Consectetur adipisicing elit. Ex provident, aut modi quidem enim ipsam veritatis maxime est.</p>
 				</div>
 				<div class="block">
-					<img src="assets/images/icon-make-contact.png" alt="">
-					<h5>Let's Contact With Us</h5>
+					<figure><img src="assets/images/icon-make-contact.png" alt=""></figure>
+					<h4>Let's Contact With Us</h4>
 					<p>Consectetur adipisicing elit. Ex provident, aut modi quidem enim ipsam veritatis maxime est.</p>
 				</div>
 				<div class="block">
-					<img src="assets/images/icon-deal-payment.png" alt="">
-					<h5>Make a Deal and Payment</h5>
+					<figure><img src="assets/images/icon-deal-payment.png" alt=""></figure>
+					<h4>Make a Deal and Payment</h4>
 					<p>Consectetur adipisicing elit. Ex provident, aut modi quidem enim ipsam veritatis maxime est.</p>
 				</div>
 			</div>
 		</div>
 	</div>
 
+	<!-- Contact Us -->
 	<div class="contact-us">
 		<div class="container">
-			<h4>Do you have any question?</h4>
-			<h5>please leave us a message by <a href="mailto:support@factchech.com">support@factchech.com</a> or call us on <span>+1 0945675647</span></h5>
+			<h3>Do you have any question?</h3>
+			<h6>please leave us a message by <a href="mailto:support@factchech.com">support@factchech.com</a> or call us on <span>+1 0945675647</span></h6>
 		</div>
 	</div>
 

@@ -6,16 +6,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Dashboard</title>
+	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url()?>assets/images/favicon.png">
 	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/
+	css?family=Livvic:300,400,400i,500,600,700&display=swap" rel="stylesheet">
 	<!-- Custom Stylesheet -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css">
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/toastr.css">
 
 	<!-- Custom Stylesheet -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/owl.carousel.min.css">
-	<!-- custom scrollbar css -->
-	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/mCustomScrollber.css">
 	<!-- lightbox -->
 	<link href='<?php echo base_url()?>assets/css/simplelightbox.min.css' rel='stylesheet' type='text/css'>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

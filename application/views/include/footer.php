@@ -1,23 +1,17 @@
+<!-- Footer -->
 <footer class="footer">
-	<div class="footer-bg"></div>
-	<div class="skew"></div>
-	<div class="main-footer">
-		<div class="container">
-			<div class="row">
-				<div class="logo">
-					<a href="javascript:void(0);"><img src="assets/images/footer-logo.png" alt=""></a>
-				</div>
-				<div class="copyright">
-					<p>&copy; 2019 Fact Check | All right reserved</p>
-					<ul>
-						<li><a href="javascript:void(0);">Terms &amp; Conditions</a></li>
-						<li><a href="javascript:void(0);">Privacy &amp; Policy</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
+	<div class="container">
+		<p></p>
+		<ul>
+			<li>&copy; 2019 Fact Check</li>
+			<li>All right reserved</li>
+			<li><a href="<?php echo base_url()?>terms">Terms &amp; Conditions</a></li>
+			<li><a href="<?php echo base_url()?>privacy">Privacy &amp; Policy</a></li>
+		</ul>
 	</div>
 </footer>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -34,6 +28,8 @@
 
 <!-- Owl Carousal -->
 <script src="<?php echo base_url()?>assets/js/owl.carousel.js" type="text/javascript"></script>
+<!-- jquery-ui.js -->
+<script src="<?php echo base_url()?>assets/js/jquery-ui.js" type="text/javascript"></script>
 <!-- Custom Jquery -->
 <script src="<?php echo base_url()?>assets/js/function.js" type="text/javascript"></script>
 </body>
