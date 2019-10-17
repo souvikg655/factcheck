@@ -26,7 +26,6 @@ class User_model extends CI_Model {
 		return $flag==1?true:flase;
 	}
 
-
 	public function is_realter_exist($email){
 		$this -> db -> select('*');
 		$this -> db -> from('users');

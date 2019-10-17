@@ -7,7 +7,7 @@
 			<div class="row">
 				<h2>Privacy &amp; Policy</h2>
 				<ul>
-					<li><a href="javascript:void(0);" title="">home</a></li>
+					<li><a href="<?php echo base_url()?>" title="">home</a></li>
 					<li><span>Privacy &amp; Policy</span></li>
 				</ul>
 			</div>

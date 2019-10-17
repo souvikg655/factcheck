@@ -5,9 +5,9 @@
 	<div class="inner-banner" style="background-image: url('assets/images/slider-1.jpg');">
 		<div class="container">
 			<div class="row">
-				<h2>Privacy &amp; Policy</h2>
+				<h2>Terms &amp; Condition</h2>
 				<ul>
-					<li><a href="javascript:void(0);" title="">home</a></li>
+					<li><a href="<?php echo base_url()?>" title="">home</a></li>
 					<li><span>Privacy &amp; Policy</span></li>
 				</ul>
 			</div>

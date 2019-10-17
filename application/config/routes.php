@@ -59,3 +59,6 @@ $route['user-profile'] = "home/profile";
 $route['add-home'] = "user/add_home";
 $route['about'] = "user/about";
 $route['contact-us'] = "user/contact_us";
+$route['terms-condition'] = "user/terms_condition";
+$route['privacy-policy'] = "user/privacy_policy";
+$route['search'] = "search/view_page";

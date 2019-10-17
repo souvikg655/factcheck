@@ -29,6 +29,13 @@ class User extends CI_Controller {
 	public function contact_us(){
 		$this->load->view('contact');
 	}
+	public function terms_condition(){
+		$this->load->view('terms');
+	}
+	public function privacy_policy(){
+		$this->load->view('privacy');
+	}
+	
 
 	public function add_home()
 	{	

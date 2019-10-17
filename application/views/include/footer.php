@@ -5,8 +5,8 @@
 		<ul>
 			<li>&copy; 2019 Fact Check</li>
 			<li>All right reserved</li>
-			<li><a href="<?php echo base_url()?>terms">Terms &amp; Conditions</a></li>
-			<li><a href="<?php echo base_url()?>privacy">Privacy &amp; Policy</a></li>
+			<li><a href="<?php echo base_url()?>terms-condition">Terms &amp; Conditions</a></li>
+			<li><a href="<?php echo base_url()?>privacy-policy">Privacy &amp; Policy</a></li>
 		</ul>
 	</div>
 </footer>

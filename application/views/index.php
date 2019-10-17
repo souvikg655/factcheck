@@ -7,7 +7,8 @@
 				<div class="caption">
 					<h2>Lorem ipsum dolor sit amet</h2>
 					<p>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-					<button type="button" class="trigger-popup" data-target="search_home">search home</button>
+					<!-- <button type="button" class="trigger-popup" data-target="search_home">search home</button> -->
+					<a href="<?php echo base_url()?>search" title="" class="button">Search Home</a>
 				</div>
 			</div>
 			<div class="item">
@@ -15,7 +16,8 @@
 				<div class="caption">
 					<h2>Lorem ipsum dolor sit amet</h2>
 					<p>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-					<button type="button" class="trigger-popup" data-target="search_home">search home</button>
+					<!-- <button type="button" class="trigger-popup" data-target="search_home">search home</button> -->
+					<a href="<?php echo base_url()?>search" title="" class="button">Search Home</a>
 				</div>
 			</div>
 			<div class="item">
@@ -23,7 +25,8 @@
 				<div class="caption">
 					<h2>Lorem ipsum dolor sit amet</h2>
 					<p>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-					<button type="button" class="trigger-popup" data-target="search_home">search home</button>
+					<!-- <button type="button" class="trigger-popup" data-target="search_home">search home</button> -->
+					<a href="<?php echo base_url()?>search" title="" class="button">Search Home</a>
 				</div>
 			</div>
 		</div>
