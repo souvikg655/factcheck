@@ -2,19 +2,20 @@ var searchDataArray = {};
 var multi;
 
 function searchFunction(searchDataArray) {
-	console.log(searchDataArray);
+	//console.log(searchDataArray);
 
 	var formdata = new FormData();
 	formdata.append("searchDataArray", JSON.stringify(searchDataArray));
 
 	$.ajax({
-	url: 'search/search_homes',
-	type: 'POST',
-	processData: false,
-	contentType: false,
-	data: formdata,
-	success: function(data){
-		//var city_list = jQuery.parseJSON(data);
+		url: 'search/search_homes',
+		type: 'POST',
+		processData: false,
+		contentType: false,
+		data: formdata,
+		success: function(data){
+		var obj = jQuery.parseJSON(data);
+		console.log(obj);
 	}
 });
 }
@@ -50,26 +51,26 @@ function getMunicipality(country){
 	formdata.append("country", country);
 
 	$.ajax({
-	url: 'search/fetch_all_citys',
-	type: 'POST',
-	processData: false,
-	contentType: false,
-	data: formdata,
-	success: function(data){
-		var city_list = jQuery.parseJSON(data);
-		if (typeof multi === "undefined") {
-   		multi = new SelectPure(".multi-select", {
-			options: city_list,
-			value: [],
-			multiple: true,
-			icon: "fa fa-times",
-			onChange: value => {
-					searchDataArray['municipality'] = value;
-					searchFunction(searchDataArray);
-				},
-			});
-		}
-	}});
+		url: 'search/fetch_all_citys',
+		type: 'POST',
+		processData: false,
+		contentType: false,
+		data: formdata,
+		success: function(data){
+			var city_list = jQuery.parseJSON(data);
+			if (typeof multi === "undefined") {
+				multi = new SelectPure(".multi-select", {
+					options: city_list,
+					value: [],
+					multiple: true,
+					icon: "fa fa-times",
+					onChange: value => {
+						searchDataArray['municipality'] = value;
+						searchFunction(searchDataArray);
+					},
+				});
+			}
+		}});
 }
 
 

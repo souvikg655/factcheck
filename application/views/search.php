@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css">
 	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url()?>assets/images/favicon.png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+	
 	<!-- Autocomplete input -->
 	<script src="<?php echo base_url()?>assets/js/bundle.min.js" type="text/javascript"></script>
 </head>

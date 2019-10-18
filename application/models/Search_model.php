@@ -29,16 +29,24 @@ class Search_model extends CI_Model {
 	}
 
 	public function search_home_in_model($search_array){
-		$search_array = array();
-
 		
+		$this -> db -> select('*');
+		$this -> db -> from('homes');
+		$this -> db -> where('country', $search_array->country);
 
-		// if($search_array->country){
-
-		// }
-
-		//print_r($search_array->municipality);
+		if(count($search_array->municipality) == 1){
+			$this -> db -> where('city', $search_array->municipality[0]);
+		}else{
+			$this -> db -> where('city', $search_array->municipality[0]);
+			for($i=1; $i<count($search_array->municipality); $i++){
+				$this -> db -> or_where('city', $search_array->municipality[$i]);
+			}
+		}
 		
+		$query = $this -> db -> get();
+		$result = $query->result();
+		
+	return $result;
 	}
 
 }
