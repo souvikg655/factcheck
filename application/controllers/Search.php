@@ -43,15 +43,23 @@ class Search extends CI_Controller {
 
 	public function search_homes(){
 		$value = $this->input->post('searchDataArray');
+
+		
+
 		$value = json_decode($value);
+
+		print_r($value);
 
 		if(!$value->municipality){
 			
 		}else{
 			$result = $this->search_model->search_home_in_model($value);
+
+			$searchData['value'] = $result;
+			$searchData['count'] = count($result);
 		}
 
-	echo (json_encode($result));
+	echo (json_encode($searchData));
 	}
 
 }

@@ -23,7 +23,7 @@
 					</div>
 					<div class="result">
 						<h6>your search match with</h6>
-						<button class="trigger-popup" data-target="serach-results-popup">100</button>
+						<button class="trigger-popup" id="search_count" data-target="serach-results-popup"><span></span></button>
 					</div>
 				</div>
 			</div>
@@ -38,7 +38,7 @@
 								<div class="col-2">
 									<h6>Area</h6>
 									<div class="col">
-										<span class="single-select" id="area"></span>
+										<span class="area"></span>
 										<span class="highlight"></span>
 									</div>
 								</div>
@@ -60,13 +60,13 @@
 								<div class="col-3">
 									<h6>Street #</h6>
 									<div class="col">
-										<div class="col-2">
-											<input type="text" name="" id="" required="">
+										<div class="col-2"> 
+											<input type="text" id="street_from" required="">
 											<span class="highlight"></span>
 											<label>From</label>
 										</div>
 										<div class="col-2">
-											<input type="text" name="" id="" required="">
+											<input type="text" id="street_to" required="">
 											<span class="highlight"></span>
 											<label>To</label>
 										</div>
@@ -75,14 +75,14 @@
 								<div class="col-3">
 									<h6>Street Name</h6>
 									<div class="col">
-										<input type="text" name="" id="" required="">
+										<span class="street_name" ></span>
 										<span class="highlight"></span>
 									</div>
 								</div>
 								<div class="col-3">
 									<h6>Postal Code</h6>
 									<div class="col">
-										<input type="text" name="" id="" required="">
+										<span class="single-select" id="postal_code"></span>
 										<span class="highlight"></span>
 									</div>
 								</div>

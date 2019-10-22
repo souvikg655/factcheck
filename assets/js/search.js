@@ -2,22 +2,32 @@ var searchDataArray = {};
 var multi;
 
 function searchFunction(searchDataArray) {
+
 	//console.log(searchDataArray);
 
-	var formdata = new FormData();
-	formdata.append("searchDataArray", JSON.stringify(searchDataArray));
+	if(searchDataArray.municipality === undefined){
+		$("#search_count").html('Not Found');
+	}else{
+		var formdata = new FormData();
+		formdata.append("searchDataArray", JSON.stringify(searchDataArray));
 
-	$.ajax({
-		url: 'search/search_homes',
-		type: 'POST',
-		processData: false,
-		contentType: false,
-		data: formdata,
-		success: function(data){
-		var obj = jQuery.parseJSON(data);
-		console.log(obj);
+		$.ajax({
+			url: 'search/search_homes',
+			type: 'POST',
+			processData: false,
+			contentType: false,
+			data: formdata,
+			success: function(data){
+				//var streetArray = [];
+				//var obj = jQuery.parseJSON(data);
+
+				//console.log(data);
+
+				//$("#search_count").html(obj.count);
+				//streetForm();
+			}
+		});
 	}
-});
 }
 
 $( document ).ready(function() {
@@ -32,16 +42,16 @@ $( document ).ready(function() {
 			getMunicipality(selectValue);
 			searchFunction(searchDataArray);
 
-			var single = new SelectPure(".single-select", {
+			var single = new SelectPure(".area", {
 				options: dataArray,
 				onChange: value => {
 					searchDataArray['country'] = value;
 					getMunicipality(value);
 					searchFunction(searchDataArray); 
-
 				},
 			});
-		}});
+		}
+	});
 });
 
 
@@ -66,11 +76,33 @@ function getMunicipality(country){
 					icon: "fa fa-times",
 					onChange: value => {
 						searchDataArray['municipality'] = value;
-						searchFunction(searchDataArray);
+						if(value != ''){
+							searchFunction(searchDataArray);
+						}else{
+							$("#search_count").html('Not Found');
+						}
 					},
 				});
 			}
-		}});
+		}
+	});
 }
+
+function streetForm(){
+	$('#street_from').keyup(function() {
+    	searchDataArray['street_form'] = this.value;
+    	//searchFunction(searchDataArray);
+    	streetTo();
+	});
+}
+function streetTo(){
+	$('#street_to').keyup(function() {
+    	searchDataArray['street_to'] = this.value;
+    	//searchFunction(searchDataArray);
+	});
+	//searchFunction(searchDataArray);
+}
+
+
 
 
