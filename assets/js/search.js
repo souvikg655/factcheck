@@ -3,10 +3,11 @@ var multi;
 
 function searchFunction(searchDataArray) {
 
-	//console.log(searchDataArray);
+	console.log(searchDataArray);
 
 	if(searchDataArray.municipality === undefined){
 		$("#search_count").html('Not Found');
+		$('#search_count').attr('disabled', true);
 	}else{
 		var formdata = new FormData();
 		formdata.append("searchDataArray", JSON.stringify(searchDataArray));
@@ -18,16 +19,80 @@ function searchFunction(searchDataArray) {
 			contentType: false,
 			data: formdata,
 			success: function(data){
-				//var streetArray = [];
-				//var obj = jQuery.parseJSON(data);
+				var obj = jQuery.parseJSON(data);
 
-				//console.log(data);
+				if(obj.count == 0){
+					$("#search_count").html("Not found");
+					$('#search_count').attr('disabled', true);
+				}else{
+					$("#search_count").html(obj.count);
+					$('#search_count').attr('disabled', false);
+				}
+				streetName(obj);
+				postalCode(obj);
+				propertyType();
+				areas();
 
-				//$("#search_count").html(obj.count);
-				//streetForm();
+				streetForm();
 			}
 		});
 	}
+}
+
+function streetName(obj){
+	var single = new SelectPure(".street_name", {
+		options: obj.street_name,
+		onChange: value => {
+			searchDataArray['street_name'] = value;
+			searchFunction(searchDataArray);
+		},
+	});
+}
+
+function postalCode(obj){
+	var single = new SelectPure(".postal_code", {
+		options: obj.postal_code,
+		onChange: value => {
+			searchDataArray['postal_code'] = value;
+			searchFunction(searchDataArray);
+		},
+	});
+}
+
+function propertyType(){
+	$.ajax({
+		url: 'search/fetch_all_propertys',
+		context: document.body,
+		success: function(data){
+			var property_data = jQuery.parseJSON(data);
+
+			var single = new SelectPure(".property", {
+				options: property_data,
+				onChange: value => {
+					searchDataArray['property'] = value;
+					searchFunction(searchDataArray);
+				},
+			});
+		}
+	});	
+}
+
+function areas(){
+	$.ajax({
+		url: 'search/fetch_all_areas',
+		context: document.body,
+		success: function(data){
+			var area_data = jQuery.parseJSON(data);
+
+			var single = new SelectPure(".area_sf", {
+				options: area_data,
+				onChange: value => {
+					searchDataArray['area'] = value;
+					searchFunction(searchDataArray);
+				},
+			});
+		}
+	});	
 }
 
 $( document ).ready(function() {
@@ -47,7 +112,7 @@ $( document ).ready(function() {
 				onChange: value => {
 					searchDataArray['country'] = value;
 					getMunicipality(value);
-					searchFunction(searchDataArray); 
+					searchFunction(searchDataArray);
 				},
 			});
 		}
@@ -80,6 +145,7 @@ function getMunicipality(country){
 							searchFunction(searchDataArray);
 						}else{
 							$("#search_count").html('Not Found');
+							$('#search_count').attr('disabled', true);
 						}
 					},
 				});
@@ -90,19 +156,19 @@ function getMunicipality(country){
 
 function streetForm(){
 	$('#street_from').keyup(function() {
-    	searchDataArray['street_form'] = this.value;
-    	//searchFunction(searchDataArray);
-    	streetTo();
+		if(this.value != ''){
+			searchDataArray['street_form'] = this.value;
+			searchFunction(searchDataArray);
+			streetTo();
+		}
 	});
 }
+
 function streetTo(){
 	$('#street_to').keyup(function() {
-    	searchDataArray['street_to'] = this.value;
-    	//searchFunction(searchDataArray);
+		if(this.value != ''){
+			searchDataArray['street_to'] = this.value;
+			searchFunction(searchDataArray);
+		}
 	});
-	//searchFunction(searchDataArray);
 }
-
-
-
-

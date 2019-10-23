@@ -23,7 +23,7 @@
 					</div>
 					<div class="result">
 						<h6>your search match with</h6>
-						<button class="trigger-popup" id="search_count" data-target="serach-results-popup"><span></span></button>
+						<button class="trigger-popup" id="search_count" data-target="serach-results-popup"></button>
 					</div>
 				</div>
 			</div>
@@ -82,7 +82,7 @@
 								<div class="col-3">
 									<h6>Postal Code</h6>
 									<div class="col">
-										<span class="single-select" id="postal_code"></span>
+										<span class="postal_code"></span>
 										<span class="highlight"></span>
 									</div>
 								</div>
@@ -98,14 +98,14 @@
 								<div class="col-2">
 									<h6>Property Type</h6>
 									<div class="col">
-										<input type="text" name="" id="" required="">
+										<span class="property"></span>
 										<span class="highlight"></span>
 									</div>
 								</div>
 								<div class="col-2">
 									<h6>Apx sqft</h6>
 									<div class="col">
-										<input type="text" name="" id="" required="">
+										<span class="area_sf"></span>
 										<span class="highlight"></span>
 									</div>
 								</div>
@@ -121,7 +121,7 @@
 	<div class="custom-popup serach-results-popup" role="alert">
 		<div class="custom-popup-container">
 			<a href="javascript:void(0)" class="custom-popup-close">x</a>
-			<h6>Your search has been matched with 10 properties. Do you want to get them on your email?</h6>
+			<h6>Your search has been matched.    Do you want to get them on your email?</h6>
 			<form>
 				<ul>
 					<li>
