@@ -85,7 +85,6 @@ class Home extends CI_Controller {
 			//print_r($filedata);
 			$filename = $filedata['file_name'];
 			$data['realtor_id'] = $this->session -> userdata('id');
-			$data['title'] = $this->input->post('title');
 			$data['bedroom'] = $this->input->post('bedroom');
 			$data['bathroom'] = $this->input->post('bathroom');
 			$data['property_type'] = $this->input->post('property_type');

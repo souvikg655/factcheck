@@ -167,7 +167,8 @@
 		<form action="javaScript:Void(0)" method="POST" enctype='multipart/form-data'>
 			<ul>
 				<li>
-					<button class="upload">upload municipality paper</button>
+					<input type="file" name="municipality_paper" id="municipality_paper">
+					<!-- <button class="upload">upload municipality paper</button> -->
 					<figure class="pdf"><img src="assets/images/pdf-icon.png" alt=""></figure>
 				</li>
 				<li>
@@ -257,46 +258,13 @@
 			}
 
 
-			if(municipality_name == ''){
-				toastr["error"]("Please enter municipality name");
-				return false;
-			}
-			// if(bedroom == ''){
-			// 	toastr["error"]("Please enter number of bedroom");
+
+			// if(municipality_name == ''){
+			// 	toastr["error"]("Please enter municipality name");
 			// 	return false;
 			// }
-			// if(bathroom == ''){
-			// 	toastr["error"]("Please enter number of bathroom");
-			// 	return false;
-			// }
-			// if(property_type == ''){
-			// 	toastr["error"]("Please enter property");
-			// 	return false;
-			// }
-			// if(house_age == ''){
-			// 	toastr["error"]("Please enter house age");
-			// 	return false;
-			// }
-			// if(area == ''){
-			// 	toastr["error"]("Please enter area");
-			// 	return false;
-			// }
-			// if(beside_road == ''){
-			// 	toastr["error"]("Please enter beside road");
-			// 	return false;
-			// }
-			// if(country == ''){
-			// 	toastr["error"]("Please enter country");
-			// 	return false;
-			// }
-			// if(province == ''){
-			// 	toastr["error"]("Please choose province");
-			// 	return false;
-			// }
-			// if(city == ''){
-			// 	toastr["error"]("Please choose city");
-			// 	return false;
-			// }
+
+
 			// if(postal == ''){
 			// 	toastr["error"]("Please enter postal code");
 			// 	return false;
@@ -305,7 +273,6 @@
 			// 	toastr["error"]("Please enter house no");
 			// 	return false;
 			// }
-			
 			// if(street_no == ''){
 			// 	toastr["error"]("Please enter street no");
 			// 	return false;
@@ -315,8 +282,43 @@
 			// 	return false;
 			// }
 
+
+			// if(bathroom == ''){
+			// 	toastr["error"]("Please enter number of bathroom");
+			// 	return false;
+			// }
+			// if(bedroom == ''){
+			// 	toastr["error"]("Please enter number of bedroom");
+			// 	return false;
+			// }
+			// if(property_type == null){
+			// 	toastr["error"]("Please select property");
+			// 	return false;
+			// }
+			// if(house_age == ''){
+			// 	toastr["error"]("Please enter house age");
+			// 	return false;
+			// }
+			// if(area == null){
+			// 	toastr["error"]("Please enter area");
+			// 	return false;
+			// }
+			// if(availability == null){
+			// 	toastr["error"]("Please select availability");
+			// 	return false;
+			// }
+			// if(sale_lease == null){
+			// 	toastr["error"]("Please select availability");
+			// 	return false;
+			// }
+			// if(street_abbr == null){
+			// 	toastr["error"]("Please select street abbr");
+			// 	return false;
+			// }
+
+			
+
 			var fileinput = $('#municipality_paper')[0].files[0];
-			formdata.append("title", title);
 			formdata.append("bedroom", bedroom);
 			formdata.append("bathroom", bathroom);
 			formdata.append("property_type", property_type);
@@ -338,28 +340,28 @@
 
 
 
-			// var ajaxReq = $.ajax({
-			// 	url: '<?php echo base_url()?>home/insert_home',
-			// 	type: 'POST',
-			// 	processData: false,
-			// 	contentType: false,
-			// 	data: formdata,
-			// 	beforeSend: function (xhr) {
-			// 	},
-			// 	success: function (data) {
-			// 		var obj = jQuery.parseJSON(data);
-			// 		console.log(obj);
-			// 		if(obj.status){
-			// 			window.location.href = "<?php echo base_url()."dashboard"?>";
-			// 		}else{
-			// 			toastr["error"]("Home Add Failed");
-			// 		}
-			// 	}
-			// });
+			var ajaxReq = $.ajax({
+				url: '<?php echo base_url()?>home/insert_home',
+				type: 'POST',
+				processData: false,
+				contentType: false,
+				data: formdata,
+				beforeSend: function (xhr) {
+				},
+				success: function (data) {
+					var obj = jQuery.parseJSON(data);
+					console.log(obj);
+					if(obj.status){
+						window.location.href = "<?php echo base_url()."dashboard"?>";
+					}else{
+						toastr["error"]("Home Add Failed");
+					}
+				}
+			});
 		});
 
 		$("#province").change(function() {
-			var val = this.value;/home/souvik/Downloads/select-pure-master/examples/bundle.min.js
+			var val = this.value;
 			var formdata = new FormData();
 			formdata.append("province", val);
 			var ajaxReq = $.ajax({

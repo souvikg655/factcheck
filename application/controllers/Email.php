@@ -28,7 +28,7 @@ class Email extends CI_Controller {
         $home_id = $this->input->post('home_id');
         $email_id = $this->input->post('email_id');
         $response = $this->home_model->mail_details($home_id);
-        $title = $response[0]->title;
+        $title = "Dummy Title";
         $bedroom = $response[0]->bedroom;
         $bathroom = $response[0]->bathroom;
         $type = $response[0]->type;

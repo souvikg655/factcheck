@@ -14,7 +14,6 @@
 			</div>
 			<div class="aside-data">
 				<div class="top-block">
-					<h4><?php echo $data[$i]->title; ?></h4>
 					<h6 class="location"><?php echo $data[$i]->province; ?>, <?php echo $data[$i]->city; ?> </h6>
 					<a href="<?php echo base_url()?>municipality_papers/<?php echo $data[$i]->municipality_paper; ?>" title="" class="pdf" download>download PDF of municipality</a>
 				</div>

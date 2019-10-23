@@ -12,7 +12,6 @@ class Home_model extends CI_Model {
 	{	
 		$home_data = array(
 			'realtor_id' => $data['realtor_id'] ,
-			'title' => $data['title'],
 			'bedroom' => $data['bedroom'],
 			'bathroom' => $data['bathroom'],
 			'type' => $data['property_type'],
