@@ -167,8 +167,8 @@
 		<form action="javaScript:Void(0)" method="POST" enctype='multipart/form-data'>
 			<ul>
 				<li>
-					<input type="file" name="municipality_paper" id="municipality_paper">
-					<!-- <button class="upload">upload municipality paper</button> -->
+					<!-- <input type="file" name="municipality_paper" id="municipality_paper"> -->
+					<button class="upload">upload municipality paper</button>
 					<figure class="pdf"><img src="assets/images/pdf-icon.png" alt=""></figure>
 				</li>
 				<li>
@@ -259,62 +259,62 @@
 
 
 
-			// if(municipality_name == ''){
-			// 	toastr["error"]("Please enter municipality name");
-			// 	return false;
-			// }
+			if(municipality_name == ''){
+				toastr["error"]("Please enter municipality name");
+				return false;
+			}
 
 
-			// if(postal == ''){
-			// 	toastr["error"]("Please enter postal code");
-			// 	return false;
-			// }
-			// if(house_no == ''){
-			// 	toastr["error"]("Please enter house no");
-			// 	return false;
-			// }
-			// if(street_no == ''){
-			// 	toastr["error"]("Please enter street no");
-			// 	return false;
-			// }
-			// if(street_name == ''){
-			// 	toastr["error"]("Please enter street name");
-			// 	return false;
-			// }
+			if(postal == ''){
+				toastr["error"]("Please enter postal code");
+				return false;
+			}
+			if(house_no == ''){
+				toastr["error"]("Please enter house no");
+				return false;
+			}
+			if(street_no == ''){
+				toastr["error"]("Please enter street no");
+				return false;
+			}
+			if(street_name == ''){
+				toastr["error"]("Please enter street name");
+				return false;
+			}
 
 
-			// if(bathroom == ''){
-			// 	toastr["error"]("Please enter number of bathroom");
-			// 	return false;
-			// }
-			// if(bedroom == ''){
-			// 	toastr["error"]("Please enter number of bedroom");
-			// 	return false;
-			// }
-			// if(property_type == null){
-			// 	toastr["error"]("Please select property");
-			// 	return false;
-			// }
-			// if(house_age == ''){
-			// 	toastr["error"]("Please enter house age");
-			// 	return false;
-			// }
-			// if(area == null){
-			// 	toastr["error"]("Please enter area");
-			// 	return false;
-			// }
-			// if(availability == null){
-			// 	toastr["error"]("Please select availability");
-			// 	return false;
-			// }
-			// if(sale_lease == null){
-			// 	toastr["error"]("Please select availability");
-			// 	return false;
-			// }
-			// if(street_abbr == null){
-			// 	toastr["error"]("Please select street abbr");
-			// 	return false;
-			// }
+			if(bathroom == ''){
+				toastr["error"]("Please enter number of bathroom");
+				return false;
+			}
+			if(bedroom == ''){
+				toastr["error"]("Please enter number of bedroom");
+				return false;
+			}
+			if(property_type == null){
+				toastr["error"]("Please select property");
+				return false;
+			}
+			if(house_age == ''){
+				toastr["error"]("Please enter house age");
+				return false;
+			}
+			if(area == null){
+				toastr["error"]("Please enter area");
+				return false;
+			}
+			if(availability == null){
+				toastr["error"]("Please select availability");
+				return false;
+			}
+			if(sale_lease == null){
+				toastr["error"]("Please select availability");
+				return false;
+			}
+			if(street_abbr == null){
+				toastr["error"]("Please select street abbr");
+				return false;
+			}
 
 			
 
