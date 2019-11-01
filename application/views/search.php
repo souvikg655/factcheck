@@ -122,7 +122,7 @@
 	<!-- Login Popup -->
 	<div class="custom-popup serach-results-popup" role="alert">
 		<div class="custom-popup-container">
-			<a href="javascript:void(0)" class="custom-popup-close">x</a>
+			<a href="javascript:void(0)" class="custom-popup-close close_popup">x</a>
 			<h6>Your search has been matched.    Do you want to get them on your email?</h6>
 			<form>
 				<ul>

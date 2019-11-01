@@ -165,8 +165,12 @@ $( document ).ready(function() {
 			data: formdata,
 			success: function(data){
 				var log = jQuery.parseJSON(data);
-				// console.log(log);
-				toastr["success"]("Mail Send Successful");
+				$('.close_popup').click();
+				toastr.success('Mail Send Successful', '', {
+					onHidden: function() {
+						window.location='';
+					}
+				});
 			}
 		});
 
