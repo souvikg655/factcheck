@@ -1,9 +1,11 @@
 var searchDataArray = {};
-var multi;
+var municipality_obj;
 
-function searchFunction(searchDataArray) {
+var FINAL_DATA = '';
 
-	console.log(searchDataArray);
+function searchFunction(searchDataArray,street_name_val=1, postal_code_val=1, property_type_value=1) {
+
+	//console.log(searchDataArray);
 
 	if(searchDataArray.municipality === undefined){
 		$("#search_count").html('Not Found');
@@ -20,6 +22,7 @@ function searchFunction(searchDataArray) {
 			data: formdata,
 			success: function(data){
 				var obj = jQuery.parseJSON(data);
+				FINAL_DATA = data;
 
 				if(obj.count == 0){
 					$("#search_count").html("Not found");
@@ -28,38 +31,62 @@ function searchFunction(searchDataArray) {
 					$("#search_count").html(obj.count);
 					$('#search_count').attr('disabled', false);
 				}
-				streetName(obj);
-				postalCode(obj);
-				propertyType();
-				areas();
 
 				streetForm();
+
+				if(street_name_val == 1){
+					streetName(obj);
+				}
+
+				if(postal_code_val == 1){
+					postalCode(obj);
+				}				
 			}
 		});
 	}
 }
 
 function streetName(obj){
-	var single = new SelectPure(".street_name", {
-		options: obj.street_name,
-		onChange: value => {
-			searchDataArray['street_name'] = value;
-			searchFunction(searchDataArray);
-		},
-	});
+	$('.street_name').empty();
+	if(obj!= null){
+		var single = new SelectPure(".street_name", {
+			options: obj.street_name,
+			onChange: value => {
+				searchDataArray['street_name'] = value;
+				searchFunction(searchDataArray,-1,1,1);
+			},
+		});
+	}else{
+		var single = new SelectPure(".street_name", {
+			options: [],
+			onChange: value => {
+
+			},
+		});
+	}
 }
 
 function postalCode(obj){
-	var single = new SelectPure(".postal_code", {
-		options: obj.postal_code,
-		onChange: value => {
-			searchDataArray['postal_code'] = value;
-			searchFunction(searchDataArray);
-		},
-	});
+	$('.postal_code').empty();
+	if(obj!= null){
+		var single = new SelectPure(".postal_code", {
+			options: obj.postal_code,
+			onChange: value => {
+				searchDataArray['postal_code'] = value;
+				searchFunction(searchDataArray, -1, -1, 1);
+			},
+		});
+	}else{
+		var single = new SelectPure(".postal_code", {
+			options: [],
+			onChange: value => {
+				
+			},
+		});
+	}
 }
 
-function propertyType(){
+function propertyType(obj){
 	$.ajax({
 		url: 'search/fetch_all_propertys',
 		context: document.body,
@@ -70,11 +97,12 @@ function propertyType(){
 				options: property_data,
 				onChange: value => {
 					searchDataArray['property'] = value;
-					searchFunction(searchDataArray);
+					searchFunction(searchDataArray,-1,-1,-1);
 				},
 			});
 		}
-	});	
+	});
+
 }
 
 function areas(){
@@ -107,6 +135,11 @@ $( document ).ready(function() {
 			getMunicipality(selectValue);
 			searchFunction(searchDataArray);
 
+			streetName(null);
+			postalCode(null);
+			propertyType();
+			areas();
+
 			var single = new SelectPure(".area", {
 				options: dataArray,
 				onChange: value => {
@@ -117,11 +150,31 @@ $( document ).ready(function() {
 			});
 		}
 	});
+	$('.btn_mail').click(function() {
+		var mail_id =  $("#mail_id").val();
+
+		var formdata = new FormData();
+		formdata.append("mail_id", mail_id);
+		formdata.append("value", FINAL_DATA);
+		
+		$.ajax({
+			url: 'email/send_email',
+			type: 'POST',
+			processData: false,
+			contentType: false,
+			data: formdata,
+			success: function(data){
+				var log = jQuery.parseJSON(data);
+				// console.log(log);
+				toastr["success"]("Mail Send Successful");
+			}
+		});
+
+	});
 });
 
 
 function getMunicipality(country){
-
 	var formdata = new FormData();
 	formdata.append("country", country);
 
@@ -133,8 +186,8 @@ function getMunicipality(country){
 		data: formdata,
 		success: function(data){
 			var city_list = jQuery.parseJSON(data);
-			if (typeof multi === "undefined") {
-				multi = new SelectPure(".multi-select", {
+			if (typeof municipality_obj === "undefined") {
+				municipality_obj = new SelectPure(".multi-select", {
 					options: city_list,
 					value: [],
 					multiple: true,
@@ -172,3 +225,6 @@ function streetTo(){
 		}
 	});
 }
+
+
+

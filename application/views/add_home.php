@@ -168,7 +168,7 @@
 			<ul>
 				<li>
 					<!-- <input type="file" name="municipality_paper" id="municipality_paper"> -->
-					<button class="upload">upload municipality paper</button>
+					<button type="button" class="upload">upload municipality paper</button>
 					<figure class="pdf"><img src="assets/images/pdf-icon.png" alt=""></figure>
 				</li>
 				<li>

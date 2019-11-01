@@ -4,13 +4,15 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Fact Check</title>
+	<title>Search</title>
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css">
 	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url()?>assets/images/favicon.png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	<!-- Autocomplete input -->
 	<script src="<?php echo base_url()?>assets/js/bundle.min.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/toastr.css">
 </head>
 
 <body>
@@ -125,12 +127,12 @@
 			<form>
 				<ul>
 					<li>
-						<input type="email" name="email" class="loginbox" id="login_email" required="">
+						<input type="text" name="email" class="loginbox" id="mail_id" required="">
 						<span class="highlight"></span>
 						<label>Enter your Email</label>
 					</li>
 					<li>
-						<input type="button" value="Login" id="btn_login" class="btn btn-blue">
+						<input type="button" value="Send" id="btn_login" class="btn btn-blue btn_mail">
 					</li>
 				</ul>
 			</form>
@@ -146,6 +148,7 @@
 	<!-- Custom Jquery -->
 	<script src="<?php echo base_url()?>assets/js/function.js" type="text/javascript"></script>
 	<script src="<?php echo base_url()?>assets/js/search.js" type="text/javascript"></script>
+	<script src="<?php echo base_url()?>assets/js/toastr.js" type="text/javascript"></script>
 	
 </body>
 </html>
