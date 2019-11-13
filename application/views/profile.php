@@ -27,22 +27,23 @@
 			<form action="#" method="POST">
 				<ul>
 					<li>
+						<p>Full Name</p>
 						<input type="text" value="<?=$data->name?>" <?=$approval=='REGECTED'?'':'readonly' ?> id="name" required="">
 						<span class="highlight"></span>
-						<label>full name</label>
 					</li>
 					<li>
+						<p>Email</p>
 						<input type="text" value="<?=$data->email?>" <?=$approval=='REGECTED'?'':'readonly' ?> id="email" required="">
 						<span class="highlight"></span>
-						<label>email</label>
 					</li>
 					<li>
+						<p>Conpamy Name</p>
 						<input type="text" value="<?=$data->company?>" <?=$approval=='REGECTED'?'':'readonly' ?> id="company" required="">  
 						<span class="highlight"></span>
-						<label>conpamy name</label>
+						<label></label>
 					</li>
 					<li>
-						<label for="">Identity proved</label>
+						<p style="margin-right: 10px;">Identity proved</p>
 						
 						<figure>
 							<img id="image" src="<?=base_url()?>uploads/<?=$data->image?>" alt="" >

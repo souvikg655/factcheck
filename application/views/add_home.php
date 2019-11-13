@@ -167,8 +167,10 @@
 		<form action="javaScript:Void(0)" method="POST" enctype='multipart/form-data'>
 			<ul>
 				<li>
-					<!-- <input type="file" name="municipality_paper" id="municipality_paper"> -->
-					<button type="button" class="upload">upload municipality paper</button>
+					<div style="width: calc(100% - 65px); display: inline-block; vertical-align: top;">
+						<input type="file" name="ca_image[]" accept="image/*" class="form-control uploadmcq_image" id="files" multiple="multiple">
+						<label for="">upload home images</label>
+					</div>
 					<figure class="pdf"><img src="assets/images/pdf-icon.png" alt=""></figure>
 				</li>
 				<li>
